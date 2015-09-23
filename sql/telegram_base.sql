@@ -36,9 +36,9 @@ CREATE TABLE IF NOT EXISTS `admins` (
 --
 -- Dump dei dati per la tabella `admins`
 --
-
+-- default user:admin  default_password:password
 INSERT INTO `admins` (`id`, `username`, `password`, `active`) VALUES
-(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 1);
+(1, 'admin', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', 1);
 
 -- --------------------------------------------------------
 
