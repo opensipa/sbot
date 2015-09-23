@@ -1,0 +1,90 @@
+/* foglio di stile della pagina di gestione Sbot */
+/* Elementi di base */
+html { font-size: 61%; font-family: helvetica, arial, verdana, sans-serif; min-height: 100%; }
+body { background:#2e3131; padding:0; margin:0; }
+
+blockquote {
+	background: url(img/quote.gif) no-repeat;
+	display: block;
+	margin: 0 auto;
+	font-weight: bold;
+	padding-left: 28px;
+}
+
+/* Elementi personalizzati
+   Questi elementi servono a collocare correttamente 
+   gli elementi principali all'interno della gabbia strutturale */
+
+img { vertical-align:bottom; border:0; }
+
+img.small {vertical-align:bottom; border:0; height:50px; width:50px; margin-bottom:10px;}
+
+a:link, a:visited, a:hover, a:active, a:focus {
+text-decoration: none; cursor:pointer; }
+
+a:hover, a:active, a:focus {
+text-decoration: underline; }
+
+div#footer:after,
+div.content-row:after,
+.clearfix:after {
+    content: "."; 
+    display: block; 
+    height: 0; 
+    clear: both; 
+    visibility: hidden;
+}
+
+.clearfix {display: inline-block;}
+
+/* Hides from IE-mac \*/
+* html .clearfix {height: 1%;}
+.clearfix {display: block;}
+/* End hide from IE-mac */
+
+
+/* Elementi della gabbia strutturale */
+div#container { width: 920px; margin: 40px auto; background: #fff; border-top:3px solid #c04343; }
+
+/* Intestazione
+   L'intestazione e' composta da un'unica riga e un'unica colonna 
+   contiene sia il titolo che il menu di navigazione */
+
+div#header { width:900px; height:80px; background:#fff; position:relative; padding-left:20px; }
+div#header h1 { font-size:1em; text-transform:uppercase; color:#bebebe; font-weight:normal; padding-top:21px; }
+div#header h1 span { font-family:georgia, serif; font-size:2.2em; font-weight:bold; color:#262626; position:relative; top:4px; padding:2px 15px 2px 0; margin-right:12px; border-right:1px solid #bebebe; }
+
+/* Menu Navigazione */
+
+div#header ul#menunav { position:absolute; top:23px; right:20px; margin:0; padding:0; list-style:none; }
+div#header ul#menunav li { float:left; padding:4px 8px; background:#fff; margin:0 0 0 1px; }
+div#header ul#menunav li a { color:#c04343; border-bottom:0px solid #fff; padding:4px 8px; text-decoration:none; }
+div#header ul#menunav li a:hover { color:#fff; border-bottom:0px solid #fff; padding:4px 8px; text-decoration:none; background:#c04343; }
+div#header ul#menunav li.active { float:left; padding:4px 8px; background:#c04343; margin:0 0 0 1px; }
+div#header ul#menunav li.active a { color:#fff; border-bottom:0px solid #fff; padding:4px 8px; text-decoration:none; }
+
+/* Contenuti - su 3 colonne - stile giornale */
+
+div#content { width:900px; height:auto; background:#fff; padding:0 10px 20px 10px; }
+
+div.content-row { display:block; background:#fff; padding:5px 0; float:left; }
+div.content-rows { display:block; background:#fff; padding:25px 0 5px 0; float:left; }
+div.content-col { width:280px; margin:0 10px; background:#fff; float:left; display:inline; }
+div.content-col h2 { color:#c04343; font-size:1.8em; text-transform:uppercase; padding:0 ; }
+div.content-col h3 { color:#545454; font-size:1.4em; line-height:1.4em; font-family:georgia, serif; font-weight:normal; text-align:justify; margin:5px 0 20px 0; }
+div.content-col p { margin:5px 0; font-size:1.3em; line-height:1.4em;  }
+div.content-col p.descr { color: #664; font-size: 1.1em; margin-bottom: 6px; }
+div.content-col strong { color:#545454; }
+div.content-col img { margin:5px 0; }
+div.content-col a { font-size:1.3em; color:#c04343; }
+div.content-colwide { width:570px; margin:0 10px; background:#fff; float:left; }
+div.content-colwide p { margin:5px 0; font-size:1.3em; line-height:1.4em; text-align:justify; }
+div.content-colwide a { font-size:1.3em; color:#c04343; }
+
+
+/* Pie' di Pagina, chiusura pagina 
+   Unica riga, unica colonna */
+
+div#footer { width:900px; height:auto; background:#c04343 url(./img/bg-footer.jpg) top left repeat-x; padding:3px 10px; }
+div#footer p a { font-size:1em; color:#fff; padding:3px 10px; border:0; }
+
