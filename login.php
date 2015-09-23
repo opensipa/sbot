@@ -24,7 +24,6 @@ $submit = filter_input(INPUT_POST, 'Submit', FILTER_SANITIZE_STRING);
 
 //convert password for security this system is possible change to md5 sha256 ecc..
 $password = hash('sha256', $password);
-echo $password;
 
 if (!empty($submit)) {
     $conn=getDbConnection();
