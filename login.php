@@ -22,9 +22,13 @@ $username=filter_input(INPUT_POST, 'username', FILTER_SANITIZE_EMAIL);
 $password=filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
 $submit = filter_input(INPUT_POST, 'Submit', FILTER_SANITIZE_STRING);
 
+//convert password for security this system is possible change to md5 sha256 ecc..
+$password = hash('sha256', $password);
+echo $password;
+
 if (!empty($submit)) {
     $conn=getDbConnection();
-    $sql="select username from admins where username=:username and password=md5(:password) and active=1";
+    $sql="select username from admins where username=:username and password=:password and active=1";
     //$password=password_hash($password, PASSWORD_DEFAULT);
     $stmt = $conn->prepare($sql);
     $stmt->bindValue(':username',$username, PDO::PARAM_STR);
