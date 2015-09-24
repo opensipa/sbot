@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS `admins` (
 --
 -- default user:admin  default_password:password
 INSERT INTO `admins` (`id`, `username`, `password`, `active`) VALUES
-(1, 'admin', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', 1);
+(1, 'admin', 'sha256:1000:T2vvAPNGbltVdfnLi3hveiuCi/4Chp5w:u/U7a9WppkzD2213syyhruPMTFHSguCI', 1);
 
 -- --------------------------------------------------------
 

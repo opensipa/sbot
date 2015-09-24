@@ -17,24 +17,22 @@ include("config.php");
 include("init.php");
 include("functions/function.php");
 include("functions/functionDb.php");
+include("functions/PasswordHash.php");
 
 $username=filter_input(INPUT_POST, 'username', FILTER_SANITIZE_EMAIL);
 $password=filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
 $submit = filter_input(INPUT_POST, 'Submit', FILTER_SANITIZE_STRING);
 
-//convert password for security this system is possible change to md5 sha256 ecc..
-$password = hash('sha256', $password);
-
 if (!empty($submit)) {
     $conn=getDbConnection();
-    $sql="select username from admins where username=:username and password=:password and active=1";
+    $sql="select username,password from admins where username=:username and active=1";
     //$password=password_hash($password, PASSWORD_DEFAULT);
     $stmt = $conn->prepare($sql);
     $stmt->bindValue(':username',$username, PDO::PARAM_STR);
-    $stmt->bindValue(':password',$password , PDO::PARAM_STR);
     $stmt->execute();
+    $riga=$stmt->fetch(PDO::FETCH_ASSOC);
 
-    if ($riga=$stmt->fetch(PDO::FETCH_ASSOC)) {
+    if ($riga != FALSE && validate_password($password, $riga['password'])) {
         $_SESSION['username']=$riga['username'];
     } else {
         unset($_SESSION['username']);
