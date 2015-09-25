@@ -17,7 +17,7 @@ include("config.php");
 include("init.php");
 include("functions/function.php");
 include("functions/functionDb.php");
-include("functions/PasswordHash.php");
+include("functions/passwordHash.php");
 
 $username=filter_input(INPUT_POST, 'username', FILTER_SANITIZE_EMAIL);
 $password=filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
