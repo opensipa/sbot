@@ -19,7 +19,7 @@
         echo '<li><a href="help.php">Help on-line</a></li>';
         echo '<li><a href="logout.php">Logout</a></li>';
         } else {
-              echo '<li class="active"><a href="index.php">Home page {S}Bot</a></li>';
+        echo '<li class="active"><a href="index.php">Home page {S}Bot</a></li>';
         }
         ?>
 			<img src="img/logo.png" alt="logo Sbot">
