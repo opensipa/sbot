@@ -7,8 +7,7 @@
 	<a href="mailto:sbot.opensipa@gmail.com?Subject=Assistenza per Sbot" target="_top">Invia Mail</a>
 	</h2>
 	<p>Note:Ti risponderemo quanto prima.</p>		
-  <h2><p><a href="admin.php">Torna alla pagina di Gestione</a></p></h2>	
 	</div>
-
-
+	
+<!-- footer page -->
 <?php include 'theme/footer.php'; ?>

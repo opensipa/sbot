@@ -131,7 +131,7 @@ function dbActiveUsersFull()
 {
     try {
         $conn=getDbConnection();
-        $sql = "select UserID, FirstName, LastName from utenti where StatoUtente=1 order BY FirstName";
+        $sql = "select UserID, FirstName, LastName, DataInsert from utenti where StatoUtente=1 order BY FirstName";
         $stmt = $conn->prepare($sql);
         $stmt->execute();
         $tableUser=array();

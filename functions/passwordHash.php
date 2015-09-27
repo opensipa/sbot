@@ -26,19 +26,16 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
-
 // These constants may be changed without breaking existing hashes.
 define("PBKDF2_HASH_ALGORITHM", "sha256");
 define("PBKDF2_ITERATIONS", 1000);
 define("PBKDF2_SALT_BYTE_SIZE", 24);
 define("PBKDF2_HASH_BYTE_SIZE", 24);
-
 define("HASH_SECTIONS", 4);
 define("HASH_ALGORITHM_INDEX", 0);
 define("HASH_ITERATION_INDEX", 1);
 define("HASH_SALT_INDEX", 2);
 define("HASH_PBKDF2_INDEX", 3);
-
 function create_hash($password)
 {
     // format: algorithm:iterations:salt:hash
@@ -53,7 +50,6 @@ function create_hash($password)
             true
         ));
 }
-
 function validate_password($password, $correct_hash)
 {
     $params = explode(":", $correct_hash);
@@ -72,7 +68,6 @@ function validate_password($password, $correct_hash)
         )
     );
 }
-
 // Compares two strings $a and $b in length-constant time.
 function slow_equals($a, $b)
 {
@@ -83,7 +78,6 @@ function slow_equals($a, $b)
     }
     return $diff === 0;
 }
-
 /*
  * PBKDF2 key derivation function as defined by RSA's PKCS #5: https://www.ietf.org/rfc/rfc2898.txt
  * $algorithm - The hash algorithm to use. Recommended: SHA256
@@ -106,7 +100,6 @@ function pbkdf2($algorithm, $password, $salt, $count, $key_length, $raw_output =
         trigger_error('PBKDF2 ERROR: Invalid hash algorithm.', E_USER_ERROR);
     if($count <= 0 || $key_length <= 0)
         trigger_error('PBKDF2 ERROR: Invalid parameters.', E_USER_ERROR);
-
     if (function_exists("hash_pbkdf2")) {
         // The output length is in NIBBLES (4-bits) if $raw_output is false!
         if (!$raw_output) {
@@ -114,10 +107,8 @@ function pbkdf2($algorithm, $password, $salt, $count, $key_length, $raw_output =
         }
         return hash_pbkdf2($algorithm, $password, $salt, $count, $key_length, $raw_output);
     }
-
     $hash_length = strlen(hash($algorithm, "", true));
     $block_count = ceil($key_length / $hash_length);
-
     $output = "";
     for($i = 1; $i <= $block_count; $i++) {
         // $i encoded as 4 bytes, big endian.
@@ -130,7 +121,6 @@ function pbkdf2($algorithm, $password, $salt, $count, $key_length, $raw_output =
         }
         $output .= $xorsum;
     }
-
     if($raw_output)
         return substr($output, 0, $key_length);
     else

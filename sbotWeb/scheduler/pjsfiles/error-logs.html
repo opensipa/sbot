@@ -1,0 +1,16 @@
+<form name="ff" method="post">
+  <input type="hidden" name="id" value="0"><div align="center"><center>
+ <table cellSpacing="1" bgcolor="#008000" cellpadding="4" width="1100">
+    <tr align="center">
+      <th align="center" bgcolor="#94CE94" colSpan="4" class="header_cell">
+      <strong>Error LOGS</strong></th>
+    </tr>
+    <tr>
+      <th align="center" bgcolor="#FFFFFF" width="70%"><small>Script and Output</small></th>
+      <th align="center" bgcolor="#FFFFFF" width=""><small>Log recorded at:</small> </th>
+   </tr>
+
+<?php 
+$start = (empty($_GET['start'])) ? '0' : $_GET['start'];
+show_logs($start); 
+?>

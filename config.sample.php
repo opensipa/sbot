@@ -1,6 +1,6 @@
 <?php
 // Variabili di sistema
-define('BOT_TOKEN', 'token_del_bot');    //inserire il token del bot
+define('BOT_TOKEN', 'toke_del_bot');    //inserire il token del bot
 define('API_URL', 'https://api.telegram.org/bot'.BOT_TOKEN.'/');
 
 // Variabili del database
@@ -19,7 +19,7 @@ define('MESSAGE_INFO', 'Opensipa, la comunita\' dei Sistemisti Informatici della
 define('MESSAGE_SOCIAL', 'Twitter: https://twitter.com/opensipa'."\r\n".'Facebook: http://www.facebook.com/opensipa'."\r\n".'Linkedin: https://www.linkedin.com/grp/home?gid=5187218'."\r\n".'GPlus: https://plus.google.com/+OpensipaItalia');
 define('MESSAGE_FORUM', ' Il forum della comunità si trova su forum.opensipa.it');
 define('MESSAGE_CREDIT', 'Progetto realizzato dalla comunità Opensipa.');
-define('MESSAGE_NULL','Questo bot non puo\' rispondere a questa domanda.');
+define('MESSAGE_NULL','Questo bot non puo\' rispondere a questa domanda. Ma ogni segnalazione che fai verra\' registrata sul server.');
 define('MESSAGE_SCUSE','Per ora posso solo utilizzare alcuni comandi. Mi spiace.');
 define('MESSAGE_EXIT', 'Non riceverai più news da Opensipa, usa /start per riattivarle');
 define('MESSAGE_BENVENUTO','Benvenuto nel Bot della comunita\' Opensipa.');

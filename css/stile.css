@@ -63,6 +63,16 @@ div#header ul#menunav li a:hover { color:#fff; border-bottom:0px solid #fff; pad
 div#header ul#menunav li.active { float:left; padding:4px 8px; background:#c04343; margin:0 0 0 1px; }
 div#header ul#menunav li.active a { color:#fff; border-bottom:0px solid #fff; padding:4px 8px; text-decoration:none; }
 
+/* Menu Admin */
+div#top_menu { clear: both; width:100%; }
+div ul#admin_menu { top:23px; right:20px; margin:0; padding:0; list-style:none; }
+div ul#admin_menu li { float:left; padding:4px 4px; background:#fff; margin:0 0 0 1px; }
+div ul#admin_menu li a { color:#c04343; border-bottom:0px solid #fff; padding:4px 4px; text-decoration:none; }
+div ul#admin_menu li a:hover { color:#fff; border-bottom:0px solid #fff; padding:4px 4px; text-decoration:none; background:#c04343; }
+div ul#admin_menu li.active { float:left; padding:4px 8px; background:#c04343; margin:0 0 0 1px; }
+div ul#admin_menu li.active a { color:#fff; border-bottom:0px solid #fff; padding:4px 4px; text-decoration:none; }
+
+
 /* Contenuti - su 3 colonne - stile giornale */
 
 div#content { width:900px; height:auto; background:#fff; padding:0 10px 20px 10px; }

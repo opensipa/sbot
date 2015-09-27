@@ -115,6 +115,31 @@ function sendPicture($chat_id, $photo) {
  echo $output;
 }
 
+
+/**
+ * topMenu
+ * 
+ * disegna il menu come lista puntata
+ * 
+ * @param array $menu array associativo con descrizione del link => link
+ * 
+ */
+function topMenu($menu)
+{
+    echo '<div>';
+    echo '<ul id="admin_menu">';
+    printMenuItems($menu);
+	echo '</ul>';
+    echo '</div>';
+}
+
+function printMenuItems($menu)
+{
+    foreach ($menu as $nome=>$uri) {
+        echo '<li><a href="'.$uri.'">'.$nome.'</a></li> ';
+    }
+}
+
 /*
 //Funzioni di prossima implementazione
 

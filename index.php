@@ -17,5 +17,5 @@
 
 		</div>
 	</div>
-
+<!-- Footer page -->
 <?php include 'theme/footer.php'; ?>
