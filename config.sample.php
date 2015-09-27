@@ -1,9 +1,11 @@
 <?php
-// Variabili di sistema
+// Variabili del Token Sbot
+// Define this variable immediatly. Insert the token of bot. Readme: https://core.telegram.org/bots#botfather
 define('BOT_TOKEN', 'toke_del_bot');    //inserire il token del bot
 define('API_URL', 'https://api.telegram.org/bot'.BOT_TOKEN.'/');
 
-// Variabili del database
+// Variabili del database Mysql
+// Define this variable immediatly. This is variable of Mysql Server
 $GLOBALS['mysql_host']='localhost';
 $GLOBALS['mysql_port']='3306';
 $GLOBALS['mysql_user']='';
@@ -11,8 +13,9 @@ $GLOBALS['mysql_pass']='';
 $GLOBALS['mysql_db']='telegram';
 
 // Variabili dipendenti dal path - sostituire con il percorso della directory di upload
+// Define this variable immediatly. This is the path folder of upload image.
 define('INFO_PHOTO', "@/var/www/html/opensipa/upload_img/foto.jpg");	//qui serve il path alla foto di benvenuto
-define('PHOTO_SEND', "@/var/www/html/opensipa/upload_img/"); 			//qui serve solo il path, la foto cambia sempre
+define('PHOTO_SEND', "@/var/www/html/opensipa/upload_img/");            //qui serve solo il path, la foto cambia sempre
 
 // Variabili per personalizzazione messaggi
 define('MESSAGE_INFO', 'Opensipa, la comunita\' dei Sistemisti Informatici della Pubblica Amministrazione. Visita il sito www.opensipa.it');
