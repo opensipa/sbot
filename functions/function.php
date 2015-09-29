@@ -3,7 +3,6 @@
 function avvio(){
     shell_exec('php ../demone.php'); // questo demone deve sempre rimanere in ascolto per far funzionare il bot
     echo 'Demone avviato';
-    echo '<p><a href="admin.php">Torna alla pagina di Admin</a></p> ';
   }
   
 // Funzioni di scrittura per file LOG errori
@@ -129,14 +128,14 @@ function topMenu($menu)
     echo '<div>';
     echo '<ul id="admin_menu">';
     printMenuItems($menu);
-	echo '</ul>';
+    echo '</ul>';
     echo '</div>';
 }
 
 function printMenuItems($menu)
 {
     foreach ($menu as $nome=>$uri) {
-        echo '<li><a href="'.$uri.'">'.$nome.'</a></li> ';
+    echo '<li><a href="'.$uri.'">'.$nome.'</a></li> ';
     }
 }
 
