@@ -1,22 +1,21 @@
 <?php
-include 'theme/verification.php';
-include 'theme/header.php';
-include("config.php");
-include("init.php");
-include("functions/function.php");
-include("functions/functionDb.php");
-include("functions/passwordHash.php");
+include ('theme/verification.php');
+include ('theme/header.php');
+include ('config.php');
+include ('init.php');
+include ('functions/function.php');
+include ('functions/functionDb.php');
+include ('functions/passwordHash.php');
 ?>
 
 	<div id="content" class="clearfix">
 		<div class="content-row">
-				<h2>Per cambiare la password di gestione di {S}bot compila questi campi:</h2>
+			<h2>Per cambiare la password di <strong> <?php echo $_SESSION['username'] ?> </strong> in {S}bot compila questi campi:</h2>
 				   <form id='pwd' action='pwd.php' method='post' accept-charset='UTF-8'>
 					  <fieldset >
 					  <legend>Cambio password</legend>
 					  <input type='hidden' name='submitted' id='submitted' value='1'/>
-					  <label for='username' >UserName*:</label>
-					  <input type='text' name='username' id='username'  maxlength="50" />
+					  <input type='hidden' name='username' id='username' value=<?php echo $_SESSION['username']?> maxlength="50" />
 					  <label for='password' >Nuova Password*: </label>
 					  <input type='password' name='password' id='password' maxlength="50" />
 					  <label for='newpassword' >Ripeti Password*: </label>
@@ -37,10 +36,6 @@ $password=filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
 $newpassword=filter_input(INPUT_POST, 'newpassword', FILTER_SANITIZE_STRING);
 $submit = filter_input(INPUT_POST, 'Submit', FILTER_SANITIZE_STRING);
 
-//Deprecato con aggiunta salt password
-//convert password for security in sha 256 
-//$password = hash('sha256', $password); //hash 256 della password
-//$newpassword = hash('sha256', $newpassword); //hash 256 della password
 
 //controllo se inserito le password due volte uguali
 
