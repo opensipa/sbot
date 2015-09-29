@@ -8,7 +8,7 @@ include ('functions/functionDb.php');
 ?>
 
 	<div id="content" class="clearfix">
-		<div class="content-row">
+            <div class="content-row">
 			<h1>
                 <?php
                 //Ricevo il testo e id utente a cui inviare il messaggio da message.php
@@ -27,7 +27,7 @@ include ('functions/functionDb.php');
                 <p>Hai inviato il seguente testo: <br> <strong><?php echo $testo_ricevuto; ?></strong></p>
                 <p>Al seguente identificativo: <br> <strong><?php echo $nome_var; ?></strong></p>
 			</h1>
-		</div>			
+            </div>			
 	</div>
 <!-- Footer page -->
 <?php include 'theme/footer.php'; ?>
