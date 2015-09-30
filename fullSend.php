@@ -1,17 +1,13 @@
 <?php
 include('theme/verification.php');
 include('theme/header.php');
-include('config.php');
-include('init.php');
 include('functions/function.php');
 include('functions/functionDb.php');
+include('config.php');
+include('init.php');
 ?>
 
 <div id="content" class="clearfix">
-    <div id="top_menu">
-        <?php topMenu($menu);?>
-    </div>
-
     <div class="content-row">
         <form action="fullSend.php"> 
            <input type="submit" name="submit" value="Aggiorna">
@@ -41,5 +37,7 @@ include('functions/functionDb.php');
     </div>			
 </div>
 
+
 <!-- Footer page -->
+<?php
 include('theme/footer.php');

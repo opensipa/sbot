@@ -1,6 +1,4 @@
 <?php
-include ('theme/header.php');
-include ('theme/footer.php');
 session_start();
 if (empty($_SESSION['username'])) {
 	echo'<div id="content" class="clearfix">';

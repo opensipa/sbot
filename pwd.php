@@ -1,10 +1,10 @@
 <?php
 include ('theme/verification.php');
 include ('theme/header.php');
-include ('config.php');
-include ('init.php');
 include ('functions/function.php');
 include ('functions/functionDb.php');
+include ('config.php');
+include ('init.php');
 include ('functions/passwordHash.php');
 ?>
 
@@ -35,7 +35,6 @@ $username=filter_input(INPUT_POST, 'username', FILTER_SANITIZE_EMAIL);
 $password=filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
 $newpassword=filter_input(INPUT_POST, 'newpassword', FILTER_SANITIZE_STRING);
 $submit = filter_input(INPUT_POST, 'Submit', FILTER_SANITIZE_STRING);
-
 
 //controllo se inserito le password due volte uguali
 

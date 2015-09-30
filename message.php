@@ -1,10 +1,10 @@
 <?php 
 include ('theme/verification.php');
 include ('theme/header.php');
-include ('config.php');
-include ('init.php');
 include ('functions/function.php');
 include ('functions/functionDb.php');
+include ('config.php');
+include ('init.php');
 ?>
 
     <div id="content" class="clearfix">
@@ -34,7 +34,7 @@ include ('functions/functionDb.php');
                        echo '<td><form method="post" action="sendSingle.php" method="POST">';
                        echo '<textarea name="testo" rows="1" cols="40" placeholder="Inserisci qui la risposta"></textarea>';
                        echo '<td>';
-                       echo '<input type="hidden" name="nome_var" value="'.$message['UserID'].'">';
+                       echo '<input name="nome_var" value="'.$message['UserID'].'">';
                        echo '<br>';
                        echo '<input type="submit" name="invia" value="Invia messaggio">';
                        echo '</form></td>';

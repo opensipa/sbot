@@ -1,13 +1,16 @@
 <?php
 include('theme/verification.php');
 include('theme/header.php');
-include("config.php");
-include("init.php");
 include("functions/function.php");
 include("functions/functionDb.php");
+include("config.php");
+include("init.php");
 ?>
 
 <div id="content" class="clearfix">
+	<div id="top_menu">
+		<?php topMenu($menu);?>
+	</div>
 	<div class="content-row">
 
             <h2>Ecco il responso da parte del server telegram:
