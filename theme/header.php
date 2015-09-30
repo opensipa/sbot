@@ -11,25 +11,24 @@
     </head>
 <body>
 <div id="container">
+    <h1><span><img src="img/logo.png" alt="logo Sbot"> </span>by Opensipa.it</h1>
 	<div id="header">    
-		<h1><span><img src="img/logo.png" alt="logo Sbot"> </span>by Opensipa.it</h1>
-	<ul id="menu">
-        <?php
-        if (!empty($_SESSION['username'])) { 
-        echo '<li><a href="admin.php">Pagina di gestione</a>';
-        echo '<ul>
-            <li><a href="user.php">Utenti attivi</a></li>
-            <li><a href="coda.php">Coda Telegram</a></li>
-            <li><a href="message.php">Messaggi utenti</a></li>
-            <li><a href="fullSend.php">Messaggi inviati</a></li>
-            <li><a href="pwd.php">Cambio password</a></li>
-            </ul></li>';
-        echo '<li><a href="help.php">Help on-line</a></li>';
-        echo '<li><a href="logout.php">Logout</a></li>';
-        } else {
-              echo '<li><a href="index.php">Home page {S}Bot</a></li>';
-        }
-        ?>
-		</ul>
-   
+            <ul id="menu">
+            <?php
+            if (!empty($_SESSION['username'])) { 
+            echo '<li><a href="admin.php">Pagina di gestione</a>';
+            echo '<ul>
+                <li><a href="user.php">Utenti attivi</a></li>
+                <li><a href="coda.php">Coda Telegram</a></li>
+                <li><a href="message.php">Messaggi utenti</a></li>
+                <li><a href="fullSend.php">Messaggi inviati</a></li>
+                <li><a href="pwd.php">Cambio password</a></li>
+                </ul></li>';
+            echo '<li><a href="help.php">Help on-line</a></li>';
+            echo '<li><a href="logout.php">Logout</a></li>';
+            } else {
+                  echo '<li><a href="index.php">Home page {S}Bot</a></li>';
+            }
+            ?>
+            </ul>
 	</div> 
