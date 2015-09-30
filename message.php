@@ -32,7 +32,7 @@ include ('functions/functionDb.php');
                        echo '<td>'.$message['DataInsert'].'</td>';
                        echo '<td>'.$message['Text'].'</td>';
                        echo '<td><form method="post" action="sendSingle.php" method="POST">';
-                       echo '<textarea name="testo" rows="1" cols="40">Testo di risposta...</textarea>';
+                       echo '<textarea name="testo" rows="1" cols="40" placeholder="Inserisci qui la risposta"></textarea>';
                        echo '<td>';
                        echo '<input type="hidden" name="nome_var" value="'.$message['UserID'].'">';
                        echo '<br>';
