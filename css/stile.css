@@ -73,6 +73,8 @@ div ul#admin_menu li.active { float:left; padding:4px 8px; background:#c04343; m
 div ul#admin_menu li.active a { color:#fff; border-bottom:0px solid #fff; padding:4px 4px; text-decoration:none; }
 
 
+
+
 /* Contenuti - su 3 colonne - stile giornale */
 
 div#content { width:900px; height:auto; background:#fff; padding:0 10px 20px 10px; }
@@ -92,6 +94,7 @@ div.content-colwide p { margin:5px 0; font-size:1.3em; line-height:1.4em; text-a
 div.content-colwide a { font-size:1.3em; color:#c04343; }
 
 
+
 /* Pie' di Pagina, chiusura pagina 
    Unica riga, unica colonna */
 
@@ -100,26 +103,8 @@ div#footer p a { font-size:1em; color:#fff; padding:3px 10px; border:0; }
 
 /* Menu a discesa per pannello di gestione */
 
-#menu {
-margin: 0;
-padding: 0;
-height: 2em;
-border-width: 0 0 1px 0;
-border-style: solid;
-float: right;
-}
-
-#menu li {
-margin: 0;
-padding: 0;
-float: left;
-height: 2em;
-width: 10em;
-display: inline;
-list-style-type: none;
-position: relative;
-line-height: 2em;
-}
+#menu {margin: 0; padding: 0;  height: 2em; border-width: 0 0 1px 0; border-style: solid; float: right;}
+#menu li { margin: 0; padding: 0; float: left; height: 3em; width: 10em; display: inline; list-style-type: none; position: relative; line-height: 3em;}
 
 #menu li a:link,
 #menu li a:visited {
@@ -170,7 +155,6 @@ background: #fff;
 color: #c00;
 }
 
-
 #menu li:hover ul {
 display: block;
 position: absolute;
@@ -197,3 +181,6 @@ left: 0;
   -webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
           transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
 }
+
+
+
