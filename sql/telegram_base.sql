@@ -61,6 +61,7 @@ CREATE TABLE IF NOT EXISTS `utenti` (
 --
 
 CREATE TABLE IF NOT EXISTS `utenti_message` (
+  `ID` int(11) NOT NULL,
   `UserID` int(11) NOT NULL,
   `FirstName` text,
   `DataInsert` datetime DEFAULT NULL,
@@ -84,6 +85,13 @@ ALTER TABLE `admins`
 --
 ALTER TABLE `utenti`
   ADD PRIMARY KEY (`UserID`);
+
+
+--
+-- Indexes for table `utenti_message`
+--
+ALTER TABLE `utenti_message`
+  ADD PRIMARY KEY (`ID`);
 
 --
 -- AUTO_INCREMENT for dumped tables
