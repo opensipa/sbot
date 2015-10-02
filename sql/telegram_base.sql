@@ -124,7 +124,7 @@ CREATE TABLE IF NOT EXISTS `message_send` (
   `ID` int(11) NOT NULL,
   `DataInsert` datetime DEFAULT NULL,
   `Text` varchar(2048) CHARACTER SET utf8 NOT NULL,
-  `signature` VARCHAR(255) NULL AFTER,
+  `Signature` VARCHAR(255) NULL AFTER,
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 

@@ -20,4 +20,4 @@ ALTER TABLE `admins` ADD `signature` VARCHAR(255) NULL AFTER `password`;
 --
 -- Update table message send with name/surname user to send
 --
-ALTER TABLE `message_send` ADD `signature` VARCHAR(255) NULL AFTER `Text`;
+ALTER TABLE `message_send` ADD `Signature` VARCHAR(255) NULL AFTER `Text`;
