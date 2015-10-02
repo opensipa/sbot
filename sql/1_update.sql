@@ -6,6 +6,18 @@
 -- Apply the patch 1_update.sql only not first installation. Or installation is antecedent at 01/10/2015
 
 ALTER TABLE `utenti_message` ADD `ID` INT(11) NOT NULL FIRST;
-UPDATE `utenti_message` SET `ID` = `Message`;
+ALTER TABLE `utenti_message` CHANGE `ID` `ID` INT(11) NOT NULL AUTO_INCREMENT;
 ALTER TABLE `utenti_message` ADD PRIMARY KEY (`ID`);
 ALTER TABLE `utenti_message` ADD UNIQUE(`ID`);
+UPDATE `utenti_message` SET `ID` = `Message`;
+
+--
+-- Update table admin with name/surname user
+--
+ALTER TABLE `admins` ADD `signature` VARCHAR(255) NULL AFTER `password`;
+
+
+--
+-- Update table message send with name/surname user to send
+--
+ALTER TABLE `message_send` ADD `signature` VARCHAR(255) NULL AFTER `Text`;

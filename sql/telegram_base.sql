@@ -30,6 +30,7 @@ CREATE TABLE IF NOT EXISTS `admins` (
   `id` int(11) NOT NULL,
   `username` varchar(120) NOT NULL,
   `password` varchar(120) NOT NULL,
+  `signature` VARCHAR(255) NULL AFTER,
   `active` int(2) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
@@ -38,7 +39,7 @@ CREATE TABLE IF NOT EXISTS `admins` (
 --
 -- default user:admin  default_password:password
 INSERT INTO `admins` (`id`, `username`, `password`, `active`) VALUES
-(1, 'admin', 'sha256:1000:T2vvAPNGbltVdfnLi3hveiuCi/4Chp5w:u/U7a9WppkzD2213syyhruPMTFHSguCI', 1);
+(1, 'admin', 'sha256:1000:T2vvAPNGbltVdfnLi3hveiuCi/4Chp5w:u/U7a9WppkzD2213syyhruPMTFHSguCI',admin, 1);
 
 -- --------------------------------------------------------
 
@@ -122,7 +123,8 @@ SET time_zone = "+00:00";
 CREATE TABLE IF NOT EXISTS `message_send` (
   `ID` int(11) NOT NULL,
   `DataInsert` datetime DEFAULT NULL,
-  `Text` varchar(2048) CHARACTER SET utf8 NOT NULL
+  `Text` varchar(2048) CHARACTER SET utf8 NOT NULL,
+  `signature` VARCHAR(255) NULL AFTER,
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
