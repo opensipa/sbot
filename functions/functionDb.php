@@ -13,6 +13,27 @@
 
 /**
  * 
+ * Function dbInsertAdmin
+ * 
+ * @param type $username username utente
+ * @param type $password password utente
+ * @param type $signature firma utente
+ * @return int Ritorna 0 su successo, altrimenti un testo descrittivo dell'errore 
+ */
+
+function dbInsertAdmin ($username, $password, $signature)
+{
+    $conn=getDbConnection();
+    $sql="insert admins set username=:username, password=:password, signature=:signature, active='1'";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindValue(':username',$username, PDO::PARAM_STR);
+    $stmt->bindValue(':signature',$signature, PDO::PARAM_STR);
+    $stmt->bindValue(':password',create_hash($password), PDO::PARAM_STR);    
+    $stmt->execute();
+}        
+
+/**
+ * 
  * Function dbLogUserStart
  * 
  * @param type $chat ID dell'utente come riportato da Telegram
@@ -240,7 +261,6 @@ function dbLogTextFullSend()
     }
     return ($tableMessage);
 }
-
 
 
 /**
