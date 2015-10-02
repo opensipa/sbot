@@ -16,18 +16,23 @@
             <ul id="menu">
             <?php
             if (!empty($_SESSION['username'])) { 
-            echo '<li><a href="admin.php">Pagina di gestione</a>';
+            echo '<li><a href="#">Pagina di gestione</a>';
             echo '<ul>
+                <li><a href="admin.php">Invia messaggi</a></li>
                 <li><a href="user.php">Utenti attivi</a></li>
                 <li><a href="coda.php">Coda Telegram</a></li>
                 <li><a href="message.php">Messaggi utenti</a></li>
                 <li><a href="fullSend.php">Messaggi inviati</a></li>
-                <li><a href="pwd.php">Cambio password</a></li>
                 </ul></li>';
-            echo '<li><a href="help.php">Help on-line</a></li>';
-            echo '<li><a href="logout.php">Logout</a></li>';
+            echo '<li><a href="#">Panello Controllo</a>';
+            echo '<ul>    
+                <li><a href="changePwd.php">Cambio password</a></li>
+                <li><a href="addAdmin.php">Aggiungi utenti</a></li>
+                </ul></li>';
+            echo'<li><a href="help.php">Help on-line</a></li>';
+            echo'<li><a href="logout.php">Logout</a></li>';
             } else {
-                  echo '<li><a href="index.php">Home page {S}Bot</a></li>';
+            echo'<li><a href="index.php">Home page {S}Bot</a></li>';
             }
             ?>
             </ul>
