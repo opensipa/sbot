@@ -9,9 +9,20 @@ include ('init.php');
 
     <div id="content" class="clearfix">
         <div class="content-row">
-		<form action="message.php"> 
-                <input type="submit" name="submit" value="Aggiorna">
-		</form> 
+            <table border="0">
+                <tr>
+                    <td>
+                        <form action="message.php"> 
+                        <input type="submit" name="submit" value="Aggiorna">
+                        </form> 
+                    </td>
+                    <td>
+                        <form action="sbotWeb/messageExport.php"> 
+                        <input type="submit" name="submit" value="Esporta in Excel">
+                        </form>
+                    </td>
+                </tr>
+            </table> 
                 <br>
                 <table border="1">
                     <tr>
