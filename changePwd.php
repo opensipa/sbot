@@ -11,7 +11,7 @@ include ('functions/passwordHash.php');
 	<div id="content" class="clearfix">
 		<div class="content-row">
 			<h2>Per cambiare la password di <strong> <?php echo $_SESSION['username'] ?> </strong> in {S}bot compila questi campi:</h2>
-				   <form id='pwd' action='pwd.php' method='post' accept-charset='UTF-8'>
+				   <form id='pwd' action='changePwd.php' method='post' accept-charset='UTF-8'>
 					  <fieldset >
 					  <legend>Cambio password</legend>
 					  <input type='hidden' name='submitted' id='submitted' value='1'/>
