@@ -30,7 +30,8 @@ CREATE TABLE IF NOT EXISTS `admins` (
   `id` int(11) NOT NULL,
   `username` varchar(120) NOT NULL,
   `password` varchar(120) NOT NULL,
-  `signature` VARCHAR(255) NULL AFTER,
+  `signature` VARCHAR(255) NULL,
+  `level` VARCHAR(25) NULL;
   `active` int(2) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 

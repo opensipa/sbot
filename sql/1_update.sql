@@ -15,6 +15,7 @@ UPDATE `utenti_message` SET `ID` = `Message`;
 -- Update table admin with name/surname user
 --
 ALTER TABLE `admins` ADD `signature` VARCHAR(255) NULL AFTER `password`;
+ALTER TABLE `admins` ADD `level` VARCHAR(25)  NULL AFTER `signature`;
 
 
 --
