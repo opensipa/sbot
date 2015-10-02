@@ -1,12 +1,12 @@
 # README #
 
-Date: 30/09/2015
+Date: 02/10/2015
 
 
 ### What is this repository for? ###
 
 * Telegram Bot
-* Version: 0.10 beta 3
+* Version: 0.11 beta 4
 * name: {S}bot
 
 ### How do I get set up? ###
@@ -37,4 +37,9 @@ Date: 30/09/2015
 * In /etc/rc.local your server Linux insert: "php /var/www/_PATH_OF_FOLDER_SBOT/sbot/demone.php > /var/www/_PATH_OF_FOLDER_SBOT/sbot/log/sbot.log, andr restart Server linux.
 * Ok, the sbot is run and you to be working. User login: admin Password login: password
 
- 
+### Changelog ###
+
+* 01/10/2015
+* Add page of insert multiuser
+* Insert in single message signature of user to send message
+* Update table admins and send_message (use 1_update.sql)

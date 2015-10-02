@@ -18,11 +18,13 @@
  * @param type $username username utente
  * @param type $password password utente
  * @param type $signature firma utente
- * @return int Ritorna 0 su successo, altrimenti un testo descrittivo dell'errore 
+ * Permette l'inserimento di nuovi utenti in Sbot 
+ * @return int ritorna 1 su errore, altrimenti inserimento correto
  */
 
 function dbInsertAdmin ($username, $password, $signature)
 {
+try {
     $conn=getDbConnection();
     $sql="insert admins set username=:username, password=:password, signature=:signature, active='1'";
     $stmt = $conn->prepare($sql);
@@ -30,8 +32,10 @@ function dbInsertAdmin ($username, $password, $signature)
     $stmt->bindValue(':signature',$signature, PDO::PARAM_STR);
     $stmt->bindValue(':password',create_hash($password), PDO::PARAM_STR);    
     $stmt->execute();
-}        
-
+  } catch (Exception $ex) {
+    return '1';
+  }
+}  
 /**
  * 
  * Function dbLogUserStart

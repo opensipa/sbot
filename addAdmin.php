@@ -8,7 +8,7 @@ include ('init.php');
 include ('functions/passwordHash.php');
 ?>
 
-		<div id="content" class="clearfix">
+	<div id="content" class="clearfix">
 		<div class="content-row">
 			<h2>Per inserire un nuovo utente in {S}bot compila questi campi:</h2>
 				   <form id='pwd' action='addAdmin.php' method='post' accept-charset='UTF-8'>
@@ -34,19 +34,25 @@ $password=filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
 $signature=filter_input(INPUT_POST, 'signature', FILTER_SANITIZE_STRING);
 $submit = filter_input(INPUT_POST, 'Submit', FILTER_SANITIZE_STRING);
 
-//controllo se i campi sono compilati
-
+//controllo se i campi sono compilati e verifico se doppi inserimenti
 if (!empty($submit)) {
     // Richiamo la funzione di inserimento
-    dbInsertAdmin ($username, $password, $signature);
+if( dbInsertAdmin ($username, $password, $signature) == 1){
     echo '<div id="content" class="clearfix">';
-	echo '<div class="content-row">';
-            echo '<h2>Hai inserito correttamente l\'utente: '.$username.'</h2>';
-            echo '<br>Al prossimo login effettua l\'accesso con il nuovo utente.';
-            echo '</div></div>';
-  } 
+	  echo '<div class="content-row">';
+          echo '<h2>Hai inserito un utente gi&agrave; presente nella banca dati. Scegli una username differente.</h2>';
+    echo '</div>'
+     . '</div>';
+  } else {
+    echo '<div id="content" class="clearfix">';
+	  echo '<div class="content-row">';
+          echo '<h2>Hai inserito correttamente l\'utente: '.$username.'</h2>';
+          echo '<br>Al prossimo login effettua l\'accesso con il nuovo utente.';
+    echo '</div>'
+    . '</div>';
+  }
+  }
 } 
 ?>
-
 <!-- Footer della pagina html -->
 <?php include 'theme/footer.php'; ?>
