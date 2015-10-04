@@ -275,7 +275,6 @@ function dbLogTextSend ($text, $signature,$MessageID, $utenti_messageID)
     return 0;
 }
 
-
 /**
  * Function dbLogTextFullSend
  * Ritorna tutti i messaggi inviati agli utenti
@@ -298,7 +297,29 @@ function dbLogTextFullSend()
     }
     return ($tableMessage);
 }
-
+/**
+ * Function dbJoinMessageSend
+ * Ritorna tutti i messaggi inviati agli utenti collegato al messaggio originale
+ * 
+ * @return type Array 
+ */
+function dbJoinMessageSend($Message)
+{
+    try {
+        $conn=getDbConnection();
+        $sql = "SELECT utenti_message.FirstName,utenti_message.DataInsert, utenti_message.Text, message_send.Text, message_send.DataInsert, message_send.Signature FROM utenti_message, message_send WHERE utenti_message.Message=MessageID  AND utenti_message.Message=$Message";
+        $stmt = $conn->prepare($sql);
+        $stmt->bindValue(':MessageID',$Message,PDO::PARAM_STR);
+        $stmt->execute();
+        $tableJoinMessage=array();
+        while ($riga=$stmt->fetch(PDO::FETCH_ASSOC)) {
+            $tableJoinMessage[]=$riga;            
+        }
+    } catch (Exception $ex) {
+        return $ex->getMessage();
+    }
+    return ($tableJoinMessage);
+}
 
 /**
  * getDbConnection

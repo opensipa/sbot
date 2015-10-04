@@ -17,7 +17,7 @@ include ('init.php');
                         </form> 
                     </td>
                     <td>
-                        <form action="sbotWeb/messageExport.php"> 
+                        <form action="messageExport.php"> 
                         <input type="submit" name="submit" value="Esporta in Excel">
                         </form>
                     </td>
@@ -29,12 +29,13 @@ include ('init.php');
                         <td>First name</td>
                         <td>Data inserimento</td>
                         <td>Messaggio</td>
+                        <td>Coll.</td>
                         <td>Testo di risposta</td>
                         <td>A:</td>
                     </tr>
                 <?php
                 /******
-                 * questa fase cicla sugli utenti attivi inseriti nel database 
+                 * This table view the message send by single user
                  ******/
                 $messageUsers = dbLogTextFull();
                 foreach ($messageUsers as $message) { 
@@ -42,15 +43,20 @@ include ('init.php');
                        echo '<td>'.$message['FirstName'].'</td>';
                        echo '<td>'.$message['DataInsert'].'</td>';
                        echo '<td>'.$message['Text'].'</td>';
-                       echo '<td><form method="post" action="sendSingle.php" method="POST">';
-                       echo '<textarea name="testo" rows="1" cols="40" placeholder="Inserisci qui la risposta"></textarea>';
-                       echo '<td>';
-                       echo '<input type="hidden" name="id_user" value="'.$message['UserID'].'">';
-                       echo '<input type="hidden" name="id_message" value="'.$message['Message'].'">';
-                       echo '<input type="hidden" name="id_total" value="'.$message['ID'].'">';
-                       echo '<br>';
-                       echo '<input type="submit" name="invia" value="Invia messaggio">';
-                       echo '</form></td>';
+                       echo '<td>'
+                       .    '<form method="post" action="joinMessage.php" method="POST">'
+                       .    '<input type="hidden" name="id_message" value="'.$message['Message'].'">'
+                       .    '<input type="submit" id="join" name="join" value="Coll."></form>'
+                       .    '</td>';
+                       echo '<td><form method="post" action="sendSingle.php" method="POST">'
+                       .    '<textarea name="testo" rows="1" cols="40" placeholder="Inserisci qui la risposta"></textarea>'
+                       .    '</td>';
+                       echo '<td><input type="hidden" name="id_user" value="'.$message['UserID'].'">'
+                       .    '<input type="hidden" name="id_message" value="'.$message['Message'].'">'
+                       .    '<input type="hidden" name="id_total" value="'.$message['ID'].'">'
+                       .    '<br>'
+                       .    '<input type="submit" id="invia" name="invia" value="Invia messaggio">'
+                       .    '</form></td>';
                        echo '</tr>';
                 }
                 ?>
