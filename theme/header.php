@@ -37,4 +37,12 @@
             }
             ?>
             </ul>
-	</div> 
+	</div>
+    <div id="content" class="clearfix" align="center"> 
+        <?php
+        $back = $_SERVER['HTTP_REFERER'];
+        echo '<form action="'.$back.'" method="GET">'
+        . '<input type="submit" value="Torna indietro" name="Submit" id="Submit">'
+        . '</form>';
+        ?>
+    </div>
