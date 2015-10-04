@@ -9,7 +9,7 @@ include ('functions/passwordHash.php');
 ?>
 <div id="content" class="clearfix">
 		<div class="content-row">
-<h2>Utenti amministratori presenti in {S}BOT.</h2>
+<h2>Utenti amministratori presenti in {S}BOT:</h2>
   <table border="1" align="left">
     <tr>
       <td>Username</td>
