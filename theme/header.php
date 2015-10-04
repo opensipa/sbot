@@ -38,11 +38,13 @@
             ?>
             </ul>
 	</div>
-    <div id="content" class="clearfix" align="center"> 
         <?php
-        $back = $_SERVER['HTTP_REFERER'];
-        echo '<form action="'.$back.'" method="GET">'
-        . '<input type="submit" value="Torna indietro" name="Submit" id="Submit">'
-        . '</form>';
+        if (!empty($_SESSION['username'])) { 
+            $back = $_SERVER['HTTP_REFERER'];
+            echo '<div id="content" class="clearfix" align="center">';
+            echo '<form action="'.$back.'" method="GET">'
+            . '<input type="submit" value="Torna indietro" name="Submit" id="Submit">'
+            . '</form>';
+            echo '</div>';
+            }
         ?>
-    </div>
