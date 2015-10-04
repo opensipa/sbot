@@ -19,6 +19,7 @@
  * @param type $password password utente
  * @param type $signature firma utente
  * Permette l'inserimento di nuovi utenti in Sbot 
+ *  
  * @return int ritorna 1 su errore, altrimenti inserimento correto
  */
 
@@ -36,6 +37,36 @@ try {
     return '1';
   }
 }  
+
+/**
+ * 
+ * Function dbSelectAdmin
+ * 
+ * @param type $username username utente
+ * @param type $password password utente
+ * @param type $signature firma utente
+ * @Permette di avere la lista degli utenti admin in Sbot
+ *   
+ * @return int ritorna 1 su errore, altrimenti crea elenco
+ */
+ 
+function dbSelectAdmin()
+{
+    try {
+        $conn=getDbConnection();
+        $sql = "select username, signature, level from admins where active=1 order BY username";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+        $tableAdmin=array();
+        while ($riga=$stmt->fetch(PDO::FETCH_ASSOC)) {
+            $tableAdmin[]=$riga;            
+        }
+    } catch (Exception $ex) {
+        return $ex->getMessage();
+    }
+    return ($tableAdmin);
+}
+
 /**
  * 
  * Function dbLogUserStart
@@ -44,6 +75,7 @@ try {
  * @param type $first_name Nome proprio dell'utente
  * @param type $last_name Cognome dell'utente
  * @param type $username Username inserito in Telegram
+ *  
  * @return int Ritorna 0 su successo, altrimenti un testo descrittivo dell'errore 
  */
 
@@ -81,7 +113,6 @@ function dbLogUserStart ($chat,$first_name,$last_name, $username)
  * Function dbLogUserStop
  * Invocata quando un utente si scollega:
  * imposta lo stato utente a zero nel DB
- * 
  * @param type $chat ID dell'utente come riportato da Telegram
  */
 function dbLogUserStop ($chat)
