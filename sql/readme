@@ -1,0 +1,5 @@
+# Read the README.md for more information
+#
+# telegram_base.sql for new installation
+# 1_update.sql + 2_update.sql if installation is beetwen 01/10/2015 and 04/10/2015
+# 1_update.sql if installation is before 04/10/2015
