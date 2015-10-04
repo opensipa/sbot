@@ -6,7 +6,6 @@ include ('functions/functionDb.php');
 include ('config.php');
 include ('init.php');
 ?>
-
     <div id="content" class="clearfix">
         <div class="content-row">
             <table border="0">
@@ -24,15 +23,15 @@ include ('init.php');
                 </tr>
             </table> 
                 <br>
-                <table border="1">
-                    <tr>
-                        <td>First name</td>
-                        <td>Data inserimento</td>
-                        <td>Messaggio</td>
-                        <td>Coll.</td>
-                        <td>Testo di risposta</td>
-                        <td>A:</td>
-                    </tr>
+            <table border="1">
+                <tr>
+                    <td>First name</td>
+                    <td>Data inserimento</td>
+                    <td>Messaggio</td>
+                    <td>Coll.</td>
+                    <td>Testo di risposta</td>
+                    <td>A:</td>
+                </tr>
                 <?php
                 /******
                  * This table view the message send by single user
@@ -44,14 +43,14 @@ include ('init.php');
                        echo '<td>'.$message['DataInsert'].'</td>';
                        echo '<td>'.$message['Text'].'</td>';
                        echo '<td>'
-                       .    '<form method="post" action="joinMessage.php" method="POST">'
+                       .    '<form method="post" action="joinMessage.php" method="POST" target="_blank">'
                        .    '<input type="hidden" name="id_message" value="'.$message['Message'].'">'
                        .    '<input type="submit" id="join" name="join" value="Coll."></form>'
                        .    '</td>';
                        echo '<td><form method="post" action="sendSingle.php" method="POST">'
                        .    '<textarea name="testo" rows="1" cols="40" placeholder="Inserisci qui la risposta"></textarea>'
-                       .    '</td>';
-                       echo '<td><input type="hidden" name="id_user" value="'.$message['UserID'].'">'
+                       .    '</td>'
+                       .    '<td><input type="hidden" name="id_user" value="'.$message['UserID'].'">'
                        .    '<input type="hidden" name="id_message" value="'.$message['Message'].'">'
                        .    '<input type="hidden" name="id_total" value="'.$message['ID'].'">'
                        .    '<br>'
@@ -60,7 +59,7 @@ include ('init.php');
                        echo '</tr>';
                 }
                 ?>
-                </table>	
+            </table>	
         </div>			
     </div>
 
