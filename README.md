@@ -53,6 +53,7 @@ Date: 04/10/2015
 *change sendSingle for connection with single message send
 *change send for new functionDB dbLogTextSend
 *disable button send message after one click
+*add connection single user with single messag
 *launch 2_update.sql
 *
 * 01/10/2015
