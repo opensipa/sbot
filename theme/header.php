@@ -7,6 +7,7 @@
         <meta name="email" content="opensipa[at]gmail[dot]com @gmail">
         <link rel="shortcut icon" href="img/favicon.ico" >
         <title>{S}Bot - Telegram Bot by OpenSipa</title>
+        <script src="http://code.jquery.com/jquery-latest.js"></script>
         <link href="css/stile.css" rel="stylesheet" type="text/css">
     </head>
 <body>

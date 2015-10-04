@@ -28,8 +28,14 @@ include ('init.php');
             <h1>Per inviare un messaggio usa questo form:</h1>
             <form method="post" action="send.php" method="POST">
                 <textarea name="testo" rows="9" cols="60">Testo avviso da inviare..</textarea> <br>
-                <input type="submit" name="invia" value="Invia messaggio">
+                <input type="submit" id="invio" name="invia" value="Invia messaggio">
             </form>
+            <!-- Disable button send after one click-->
+            <script type="text/javascript">
+                $('#invio').click(function(){
+                $(this).prop("disabled",true);
+                });
+            </script>
         </div>
     </div>
     <div id="content" class="clearfix">

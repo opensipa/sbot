@@ -11,7 +11,7 @@ Date: 04/10/2015
 
 ### How do I get set up? ###
 
-* Mysql + Php + Scripting + Html
+* Mysql + Php + JQuery + Html
 
 
 ### Contribution guidelines ###
@@ -52,6 +52,7 @@ Date: 04/10/2015
 *change function dbLogTextFull()
 *change sendSingle for connection with single message send
 *change send for new functionDB dbLogTextSend
+*disable button send message after one click
 *launch 2_update.sql
 *
 * 01/10/2015
