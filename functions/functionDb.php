@@ -207,7 +207,7 @@ function dbLogTextFull()
 {
     try {
         $conn=getDbConnection();
-        $sql = "select UserID, FirstName, DataInsert, Text from utenti_message order BY DataInsert desc";
+        $sql = "select UserID, FirstName, DataInsert, Text, ID, Message from utenti_message order BY DataInsert desc";
         $stmt = $conn->prepare($sql);
         $stmt->execute();
         $tableMessage=array();
@@ -227,14 +227,16 @@ function dbLogTextFull()
  * @return type Array 
  */
 
-function dbLogTextSend ($text, $signature)
+function dbLogTextSend ($text, $signature,$MessageID, $utenti_messageID)
 {
     try {
         $conn=getDbConnection();
-        $sql = "insert into message_send(DataInsert, Text, Signature) values (now(),:Text,:Signature)";
+        $sql = "insert into message_send(DataInsert, Text, Signature, MessageID, utenti_messageID) values (now(),:Text,:Signature,:MessageID,:utenti_messageID)";
         $stmt = $conn->prepare($sql);
         $stmt->bindValue(':Text',$text , PDO::PARAM_STR);
         $stmt->bindValue(':Signature',$signature , PDO::PARAM_STR);
+        $stmt->bindValue(':MessageID',$MessageID , PDO::PARAM_STR);
+        $stmt->bindValue(':utenti_messageID',$utenti_messageID , PDO::PARAM_STR);
         $stmt->execute();
     } catch (Exception $ex) {
         return $ex->getMessage();

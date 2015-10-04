@@ -1,12 +1,12 @@
 # README #
 
-Date: 02/10/2015
+Date: 04/10/2015
 
 
 ### What is this repository for? ###
 
 * Telegram Bot
-* Version: 0.11 beta 4
+* Version: 0.12 beta 4
 * name: {S}bot
 
 ### How do I get set up? ###
@@ -16,7 +16,7 @@ Date: 02/10/2015
 
 ### Contribution guidelines ###
 
-* Writing tests: Community
+* Writing tests: Community Opensipa.it
 
 
 ### Who do I talk to? ###
@@ -36,10 +36,26 @@ Date: 02/10/2015
 * Use telegram_base.sql in folder sql and install in your server Mysql (launch in DB telegram the instruction sql).
 * In /etc/rc.local your server Linux insert: "php /var/www/_PATH_OF_FOLDER_SBOT/sbot/demone.php > /var/www/_PATH_OF_FOLDER_SBOT/sbot/log/sbot.log, andr restart Server linux.
 * Ok, the sbot is run and you to be working. User login: admin Password login: password
+*
+*
+* Install library for cron command:
+* Author page script cron: http://code.tutsplus.com/tutorials/managing-cron-jobs-with-php--net-19428
+* Use the command (for debian/ubuntu): "apt-get install libssh2-php" and restart apache with "/etc/init.d/apache2 restart"
+* For more details for installation visit the page: http://www.php.net/manual/en/ssh2.installation.php
+*
 
 ### Changelog ###
 
+*04/10/2014
+*change functionDB function dbLogTextSend
+*change sendSingle.php add into dbLogTextSend ($testo_ricevuto,$_SESSION['username'],$MessageID, $utenti_messageID);
+*change function dbLogTextFull()
+*change sendSingle for connection with single message send
+*change send for new functionDB dbLogTextSend
+*
 * 01/10/2015
 * Add page of insert multiuser
 * Insert in single message signature of user to send message
 * Update table admins and send_message (use 1_update.sql)
+
+

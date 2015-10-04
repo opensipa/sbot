@@ -28,7 +28,7 @@ foreach ($activeUsers as $user) {
 }
 
 $numeroInvi = dbCountActiveUsers();
-dbLogTextSend ($testo_ricevuto,$_SESSION['username']);
+dbLogTextSend ($testo_ricevuto,$_SESSION['username'],'','');
 
 echo '<p>Hai inviato il seguente testo: <br> "<strong>'.$testo_ricevuto.'</strong>"</p>';
 echo '<p>Ha inviato il testo a <strong>'.$numeroInvi.'</strong> utenti del servizio.</p>';
