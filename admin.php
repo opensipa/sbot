@@ -47,8 +47,14 @@ include ('init.php');
                 <input name="image" type="file" size="40" />
                 <br><br>
                 <!-- Pulsante -->
-                <input name="upload" type="submit" value="Procedi con l'invio" />
+                <input name="upload" id="send_image" type="submit" value="Procedi con l'invio" />
             </form> 
+            <!-- Disable button send image after one click-->
+            <script type="text/javascript">
+                $('#send_image').click(function(){
+                $(this).prop("disabled",true);
+                });
+            </script
         </div>			
     </div>
     
