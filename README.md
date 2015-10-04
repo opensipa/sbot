@@ -52,6 +52,7 @@ Date: 04/10/2015
 *change function dbLogTextFull()
 *change sendSingle for connection with single message send
 *change send for new functionDB dbLogTextSend
+*launch 2_update.sql
 *
 * 01/10/2015
 * Add page of insert multiuser
