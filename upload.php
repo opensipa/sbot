@@ -46,12 +46,11 @@ include ('functions/functionDb.php');
               }
             } while (false);
             if ($msg == ""){
-                      echo 'Upload eseguito correttamente sul server.';
+                echo 'Upload eseguito correttamente sul server.';
                 $numeroInvi = dbCountActiveUsers();
                 echo '<p>Ha inviato l\'immagine a <strong>'.$numeroInvi.'</strong> utenti del servizio.</p>';
-                echo '<p>Ho inviato la seguente foto: <strong> '.$photo.'</strong></p>';
-                echo '<br><br>Responso dei server Telegram:<br><br>';
                 $photo= PHOTO_SEND.$_FILES['image']['name'];
+                echo '<p>Ho inviato la seguente foto: <strong> '.$photo.'</strong></p>';
                 $activeUsers = dbActiveUsers();
                     foreach ($activeUsers as $user) {
                         sendPicture($user, $photo);

@@ -111,7 +111,8 @@ function sendPicture($chat_id, $photo) {
  curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
  $output = curl_exec($ch);
  curl_close($ch);
- echo $output;
+ // echo for testing (disable for normal use)
+ //echo $output;
 }
 
 
