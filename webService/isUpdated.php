@@ -1,7 +1,7 @@
 <?php
 $outVersion = null;
 //determino la versione attuale:
-$fh = fopen('version.txt', 'r');
+$fh = fopen('webService/version.txt', 'r');
 $localVersion = fread($fh, 1024);  
 fclose($fh);
 
