@@ -1,12 +1,12 @@
 # README #
 
-Date: 04/10/2015
+Date: 05/10/2015
 
 
 ### What is this repository for? ###
 
 * Telegram Bot
-* Version: 0.12 beta 4
+* Version: 0.11.2.b
 * name: {S}bot
 
 ### How do I get set up? ###
@@ -34,20 +34,18 @@ Date: 04/10/2015
 * Don't delete the config.php and rename config.sample.php
 * For ability mcrypt at php launch in the bash: "php5enmod mcrypt" and restart Apache or Server. This is very import for login in Sbot management.
 * Use telegram_base.sql in folder sql and install in your server Mysql (launch in DB telegram the instruction sql).
-* In /etc/rc.local your server Linux insert: "php /var/www/_PATH_OF_FOLDER_SBOT/sbot/demone.php > /var/www/_PATH_OF_FOLDER_SBOT/sbot/log/sbot.log, andr restart Server linux.
+* In /etc/rc.local your server Linux insert: "php /var/www/_PATH_OF_FOLDER_SBOT/sbot/demone.php > /var/www/_PATH_OF_FOLDER_SBOT/sbot/sbotAdmin/log/sbot.log, andr restart Server linux.
 * Ok, the sbot is run and you to be working. User login: admin Password login: password
 *
 *
-* Install library for cron command:
-* Author page script cron: http://code.tutsplus.com/tutorials/managing-cron-jobs-with-php--net-19428
-* Use the command (for debian/ubuntu): "apt-get install libssh2-php" and restart apache with "/etc/init.d/apache2 restart"
-* For more details for installation visit the page: http://www.php.net/manual/en/ssh2.installation.php
-*
+
 
 ### Changelog ###
 
 *05/10/2015
+*IMPORTANT: Change folder for log --> In /etc/rc.local your server Linux insert: "php /var/www/_PATH_OF_FOLDER_SBOT/sbot/demone.php > /var/www/_PATH_OF_FOLDER_SBOT/sbot/sbotAdmin/log/sbot.log, andr restart Server linux.
 *Corret error in config.sample.php and demone.php replace the file config
+*Insert update
 *
 *04/10/2014
 *change functionDB function dbLogTextSend
