@@ -8,7 +8,7 @@
         <link rel="shortcut icon" href="img/favicon.ico" >
         <title>{S}Bot - Telegram Bot by OpenSipa</title>
         <script src="http://code.jquery.com/jquery-latest.js"></script>
-        <link href="css/stile.css" rel="stylesheet" type="text/css">
+         <link href="theme/css/stile.css" rel="stylesheet" type="text/css">
     </head>
 <body>
 <div id="container">
@@ -17,19 +17,23 @@
             <ul id="menu">
             <?php
             if (!empty($_SESSION['username'])) { 
-            echo '<li><a href="#">Pagina di gestione</a>';
-            echo '<ul>
-                <li><a href="admin.php">Invia messaggi</a></li>
-                <li><a href="user.php">Utenti attivi</a></li>
-                <li><a href="coda.php">Coda Telegram</a></li>
-                <li><a href="message.php">Messaggi utenti</a></li>
-                <li><a href="fullSend.php">Messaggi inviati</a></li>
-                </ul></li>';
-            echo '<li><a href="#">Panello Controllo</a>';
-            echo '<ul>    
-                <li><a href="changePwd.php">Cambio password</a></li>
-                <li><a href="addAdmin.php">Aggiungi utenti</a></li>
-                </ul></li>';
+            echo '<li><a href="#">Pagina di gestione</a>'
+               . '<ul>'
+               . '<li><a href="admin.php">Invia messaggi</a></li>'
+               . '<li><a href="user.php">Utenti attivi</a></li>'
+               . '<li><a href="coda.php">Coda Telegram</a></li>'
+               . '<li><a href="message.php">Messaggi utenti</a></li>'
+               . '<li><a href="fullSend.php">Messaggi inviati</a></li>'
+               . '</ul></li>';
+            echo '<li><a href="#">Panello Controllo</a>'
+                . '<ul>'    
+                . '<li><a href="changePwd.php">Cambio password</a></li>'
+                . '<li><a href="addAdmin.php">Aggiungi utenti</a></li>'
+                . '</ul></li>';
+            echo '<li><a href="#">Aggiornamenti</a>'
+                . '<ul>'    
+                . '<li><a href="webService/update.php">Controlla</a></li>'
+                . '</ul></li>';
             echo'<li><a href="help.php">Help on-line</a></li>';
             echo'<li><a href="logout.php">Logout</a></li>';
             } else {
