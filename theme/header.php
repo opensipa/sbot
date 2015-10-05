@@ -32,7 +32,7 @@
                 . '</ul></li>';
             echo '<li><a href="#">Aggiornamenti</a>'
                 . '<ul>'    
-                . '<li><a href="webService/update.php">Controlla</a></li>'
+                . '<li><a href="update.php">Controlla</a></li>'
                 . '</ul></li>';
             echo'<li><a href="help.php">Help on-line</a></li>';
             echo'<li><a href="logout.php">Logout</a></li>';
