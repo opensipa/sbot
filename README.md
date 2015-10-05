@@ -46,6 +46,9 @@ Date: 04/10/2015
 
 ### Changelog ###
 
+*05/10/2015
+*Corret error in config.sample.php and demone.php replace the file config
+*
 *04/10/2014
 *change functionDB function dbLogTextSend
 *change sendSingle.php add into dbLogTextSend ($testo_ricevuto,$_SESSION['username'],$MessageID, $utenti_messageID);
