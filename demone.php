@@ -1,8 +1,8 @@
 <?php
 /*
- * Ultimate revision 14/09/2015
+ * Ultimate revision 06/10/2015
  */
-include('config.php');
+require ('config.php');
 include('init.php');
 include('functions/function.php');
 include('functions/functionDb.php');
