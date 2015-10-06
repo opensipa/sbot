@@ -4,8 +4,8 @@
  */
 require ('config.php');
 include('init.php');
-include('functions/function.php');
-include('functions/functionDb.php');
+require('functions/function.php');
+require('functions/functionDb.php');
 
 /*
  * Function that processes incoming message
