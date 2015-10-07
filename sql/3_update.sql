@@ -8,4 +8,5 @@
 -- Apply in sequence 1_update.sql, 2_update.sql, 3_update.sql
 
 ALTER TABLE `message_send` ADD `Archive` BOOLEAN NULL DEFAULT NULL AFTER `utenti_messageID`;
+ALTER TABLE `message_send` CHANGE `utenti_messageID` `Utenti_messageID` INT(11) NULL DEFAULT NULL;
 ALTER TABLE `utenti_message` ADD `Archive` BOOLEAN NULL DEFAULT NULL AFTER `Text`;

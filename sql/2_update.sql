@@ -8,4 +8,4 @@
 -- Apply in sequence 1_update.sql, 2_update.sql
 
 ALTER TABLE `message_send` ADD `MessageID` INT(11) NULL DEFAULT NULL AFTER `Signature`;
-ALTER TABLE `message_send` ADD `utenti_messageID` INT NULL DEFAULT NULL AFTER `MessageID`;
+ALTER TABLE `message_send` ADD `Utenti_messageID` INT NULL DEFAULT NULL AFTER `MessageID`;
