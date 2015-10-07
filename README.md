@@ -36,8 +36,6 @@ Date: 05/10/2015
 * Use telegram_base.sql in folder sql and install in your server Mysql (launch in DB telegram the instruction sql).
 * In /etc/rc.local your server Linux insert: "php /var/www/_PATH_OF_FOLDER_SBOT/sbot/demone.php > /var/www/_PATH_OF_FOLDER_SBOT/sbot/sbotAdmin/log/sbot.log, andr restart Server linux.
 * Ok, the sbot is run and you to be working. User login: admin Password login: password
-*
-*
 
 
 ### Changelog ###
@@ -46,7 +44,7 @@ Date: 05/10/2015
 *IMPORTANT: Change folder for log --> In /etc/rc.local your server Linux insert: "php /var/www/_PATH_OF_FOLDER_SBOT/sbot/demone.php > /var/www/_PATH_OF_FOLDER_SBOT/sbot/sbotAdmin/log/sbot.log, andr restart Server linux.
 *Corret error in config.sample.php and demone.php replace the file config
 *Insert update
-*
+
 *04/10/2014
 *change functionDB function dbLogTextSend
 *change sendSingle.php add into dbLogTextSend ($testo_ricevuto,$_SESSION['username'],$MessageID, $utenti_messageID);
@@ -56,7 +54,7 @@ Date: 05/10/2015
 *disable button send message after one click
 *add connection single user with single messag
 *launch 2_update.sql
-*
+
 * 01/10/2015
 * Add page of insert multiuser
 * Insert in single message signature of user to send message
