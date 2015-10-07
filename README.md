@@ -40,6 +40,10 @@ Date: 05/10/2015
 
 ### Changelog ###
 
+### 07/10/2015###
+* Correct bug in scructure Db
+* launch 3_update.sql for update Db
+
 ### 05/10/2015###
 * IMPORTANT: Change folder for log --> In /etc/rc.local your server Linux insert: "php /var/www/_PATH_OF_FOLDER_SBOT/sbot/demone.php > /var/www/_PATH_OF_FOLDER_SBOT/sbot/sbotAdmin/log/sbot.log, andr restart Server linux.
 * Corret error in config.sample.php and demone.php replace the file config

@@ -33,7 +33,6 @@ if ($currentVersion > $localVersion) {
 	<div>
             <strong>Una nuova versione di {S}Bot presente: ' . $currentVersion . '</strong><br />
             <strong>Tu invece hai installato la versione: '.$localVersion.'</strong><br />
-            <a href="http//sbot.opensipa.it">Scaricala immediatamente</a>
         </div>' . PHP_EOL;
 
 	// Recupero le note di rilascio
