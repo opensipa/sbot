@@ -54,7 +54,8 @@ CREATE TABLE IF NOT EXISTS `message_send` (
   `ID` int(11) NOT NULL,
   `DataInsert` datetime DEFAULT NULL,
   `Text` varchar(2048) NOT NULL,
-  `Signature` varchar(255) DEFAULT NULL
+  `Signature` varchar(255) DEFAULT NULL,
+  `Archive` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=124 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -85,7 +86,8 @@ CREATE TABLE IF NOT EXISTS `utenti_message` (
   `FirstName` text,
   `DataInsert` datetime DEFAULT NULL,
   `Message` int(11) NOT NULL,
-  `Text` varchar(2048) NOT NULL
+  `Text` varchar(2048) NOT NULL,
+  `Archive` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=19284 DEFAULT CHARSET=utf8;
 
 --
