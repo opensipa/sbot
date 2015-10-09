@@ -1,10 +1,9 @@
--- phpMyAdmin SQL Dump
--- version 4.4.14.1
--- http://www.phpmyadmin.net
+-- Version of Strructure Oct 09, 2015
+-- DB {S}Bot
 --
 -- Host: localhost
--- Generation Time: Oct 04, 2015 at 09:25 AM
--- Server version: 5.5.44-0ubuntu0.14.04.1
+-- Generation Time: Oct 09, 2015 at 09:25 AM
+-- 
 -- PHP Version: 5.5.9-1ubuntu4.13
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -88,9 +87,17 @@ CREATE TABLE IF NOT EXISTS `utenti_message` (
   `FirstName` text,
   `DataInsert` datetime DEFAULT NULL,
   `Message` int(11) NOT NULL,
-  `Text` varchar(2048) NOT NULL,
+  `Text` varchar(2048) DEFAULT NULL,
+  `Document` blob,
+  `FileName` varchar(255) DEFAULT NULL,
+  `MimeType` varchar(50) DEFAULT NULL,
+  `FileId` varchar(250) DEFAULT NULL,
+  `FileId2` varchar(250) DEFAULT NULL,
+  `FileSize` int(11) DEFAULT NULL,
+  `Width` int(11) DEFAULT NULL,
+  `Height` int(11) DEFAULT NULL,
   `Archive` tinyint(1) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=19284 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Indexes for dumped tables

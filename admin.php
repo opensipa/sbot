@@ -27,7 +27,7 @@ include ('init.php');
         <div class="content-row">
             <h1>Per inviare un messaggio usa questo form:</h1>
             <form method="post" action="send.php" method="POST">
-                <textarea name="testo" rows="9" cols="60">Testo avviso da inviare..</textarea> <br>
+                <textarea name="testo" rows="9" cols="60"placeholder="Inserisci qui la risposta..."></textarea><br>
                 <input type="submit" id="invio" name="invia" value="Invia messaggio">
             </form>
             <!-- Disable button send after one click-->

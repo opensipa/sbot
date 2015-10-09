@@ -48,7 +48,7 @@ include ('init.php');
                        .    '<input type="submit" id="join" name="join" value="Coll."></form>'
                        .    '</td>';
                        echo '<td><form method="post" action="sendSingle.php" method="POST">'
-                       .    '<textarea name="testo" rows="1" cols="40" placeholder="Inserisci qui la risposta"></textarea>'
+                       .    '<textarea name="testo" rows="2" cols="40" placeholder="Inserisci qui la risposta.."></textarea>'
                        .    '</td>'
                        .    '<td><input type="hidden" name="id_user" value="'.$message['UserID'].'">'
                        .    '<input type="hidden" name="id_message" value="'.$message['Message'].'">'
