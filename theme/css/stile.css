@@ -101,68 +101,24 @@ div.content-colwide a { font-size:1.3em; color:#c04343; }
 div#footer { width:900px; height:auto; background:#c04343 url(./img/bg-footer.jpg) top left repeat-x; padding:3px 10px; }
 div#footer p a { font-size:1em; color:#fff; padding:3px 10px; border:0; }
 
-/* Menu a discesa per pannello di gestione */
+/* Menu a discesa per pannello di gestione -- Nuova versione */
 
 #menu {margin: 0; padding: 0;  height: 2em; border-width: 0 0 1px 0; border-style: solid; float: right;}
 #menu li { margin: 0; padding: 0; float: left; height: 3em; width: 10em; display: inline; list-style-type: none; position: relative; line-height: 3em;}
 
 #menu li a:link,
-#menu li a:visited {
-margin: 0;
-padding: 0;
-text-decoration: none;
-color: #000;
-background: transparent;
-float: left;
-width: 10em;
-text-align: center;
-font-weight: bold;
-}
-#menu li a:hover {
-background: transparent; 
-color: #c00;
-}
-
-#menu li ul {
-display: none;
-margin: 0;
-padding: 0;
-background: #f1f1f1;
-color: #000;
-border: 1px solid;
-width: 10em;
-}
-#menu li ul li {
-list-style: none;
-margin-left: 0;
-padding-left: 0;
-border-bottom: 1px solid;
-}
+#menu li a:visited {margin: 0; padding: 0; text-decoration: none; color: #000; background: transparent; float: left; width: 10em; text-align: center; font-weight: bold;}
+#menu li a:hover {background: transparent; color: #c00;}
+#menu li ul {display: none; margin: 0; padding: 0; background: #f1f1f1; color: #000; border: 1px solid; width: 10em;}
+#menu li ul li {list-style: none; margin-left: 0; padding-left: 0; border-bottom: 1px solid;}
 
 #menu li ul li a:link,
-#menu li ul li a:hover {
-display: block;
-margin: 0;
-padding: 0;
-text-align: center;
-background: transparent;
-color: #000;
-width: 10em;
-font-weight: bold;
-}
-#menu li ul li a:hover {
-background: #fff;
-color: #c00;
-}
+#menu li ul li a:hover {display: block; margin: 0; padding: 0; text-align: center; background: transparent; color: #000; width: 10em; font-weight: bold;}
+#menu li ul li a:hover {background: #fff; color: #c00;}
 
-#menu li:hover ul {
-display: block;
-position: absolute;
-top: 2em;
-left: 0;
-}
+#menu li:hover ul {display: block; position: absolute; top: 2em; left: 0;}
 
-/* Allineamento form password */
+/* Allineamento del testo per il form delle password */
 
 .form-control {
   display: block;
@@ -182,5 +138,11 @@ left: 0;
           transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
 }
 
-
-
+/* Ordinamento delle tabelle */
+#order thead tr th.headerSortUp span {background-image: url('ico/up-arrow.png');}
+#order thead tr th.headerSortDown span {background-image: url('ico/down-arrow.png');}
+#order thead {cursor: pointer;}
+#order tbody tr td.lalign {text-align: center;}  
+#order thead tr th span {padding-right: 20px; background-repeat: no-repeat; background-position: 100% 100%;}
+#order thead tr th {font-weight: bold; padding: 12px 15px; padding-left: 42px;}
+#order tbody tr td {text-align: center;padding: 8px 8px;}

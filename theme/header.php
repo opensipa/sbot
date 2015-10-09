@@ -8,7 +8,9 @@
         <link rel="shortcut icon" href="img/favicon.ico" >
         <title>{S}Bot - Telegram Bot by OpenSipa</title>
         <script src="http://code.jquery.com/jquery-latest.js"></script>
-         <link href="theme/css/stile.css" rel="stylesheet" type="text/css">
+        <script type="text/javascript" src="theme/js/tablesorter/jquery-1.10.2.min.js"></script>
+        <script type="text/javascript" src="theme/js/tablesorter/jquery.tablesorter.min.js"></script>
+        <link href="theme/css/stile.css" rel="stylesheet" type="text/css">
     </head>
 <body>
 <div id="container">

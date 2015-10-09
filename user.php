@@ -12,25 +12,34 @@ $userActive = dbCountActiveUsers();
             <div align="center">
                 <!-- Utenti attivi inseriti nel database  -->
                 <h2>Ci sono attualmente <strong> <?php echo $userActive; ?> </strong> utenti attivi in {S}BOT.</h2>
-                <table border="1" align="center">
+                <table border="1" align="center" id="order">
+                    <thead>
                     <tr>
-                        <td>ID utente</td>
-                        <td>First name</td>
-                        <td>Last name</td>
-                        <td>Date add user</td>
+                        <th><span>ID utente</span></th>
+                        <th><span>First name</span></th>
+                        <th><span>Last name</span></th>
+                        <th><span>Date add user</span></th>
                     </tr>
+                    </thead>
+                    <tbody> 
                     <?php $activeUsers = dbActiveUsersFull();
                         foreach ($activeUsers as $user) { 
-                            echo '<tr>';
+                            echo '<tr class="lalign">';
                             echo '<td>'.$user['UserID'].'</td>';
                             echo '<td>'.$user['FirstName'].'</td>';
                             echo '<td>'.$user['LastName'].'</td>';
                             echo '<td>'.$user['DataInsert'].'</td>';
                             echo '</tr>';
                         }
-                    ?>
+                    ?> 
+                    </tbody>
                 </table>
-
+                <!-- table order --> 
+                <script type="text/javascript">
+                  $(function(){
+                  $('#order').tablesorter(); 
+                  });
+                </script>
             </div>			
 	</div>
   
