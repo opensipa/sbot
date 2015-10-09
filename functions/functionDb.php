@@ -297,6 +297,44 @@ function dbLogTextFullSend()
     }
     return ($tableMessage);
 }
+
+/**
+ * Function dbLogDocumentOn
+ * Inserisce nel DB document_send i documenti lasciati dagli utenti 
+ * 
+ * @param type $chat ID dell'utente come riportato da Telegram
+ * @param type $first_name Nome proprio dell'utente
+ * @param type $message_id
+ * @param type $document_id
+ * @param type $mime_type
+ * @param type $file_name
+ * @param type $file_id
+ * @param type $file_size
+ *     
+ * @return type Array 
+ */
+
+function dbLogDocumentOn ($chat_id,$first_name_id,$message_id,$document_id,$mime_type,$file_name,$file_id,$file_size)
+{
+    try {
+        $conn=getDbConnection();
+        $sql = "select UserID from utenti_message where UserID=:UserID";
+        $stmt = $conn->prepare($sql);
+        $stmt->bindValue(':UserID',$chat,PDO::PARAM_STR);
+        $stmt->execute();
+        $sql = "insert into utenti_message(UserID, FirstName, DataInsert, Message, Text) values (:UserID, :FirstName, now(),:Message,:Text)";
+        $stmt = $conn->prepare($sql);
+        $stmt->bindValue(':UserID',$chat , PDO::PARAM_STR);
+        $stmt->bindValue(':FirstName',$first_name , PDO::PARAM_STR);
+        $stmt->bindValue(':Message',$message , PDO::PARAM_STR);
+        $stmt->bindValue(':Text',$text , PDO::PARAM_STR);
+        $stmt->execute();
+    } catch (Exception $ex) {
+        return $ex->getMessage();
+    }
+    return 0;
+}
+
 /**
  * Function dbJoinMessageSend
  * Ritorna tutti i messaggi inviati agli utenti collegato al messaggio originale
