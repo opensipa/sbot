@@ -32,7 +32,7 @@ include ('init.php');
                        echo '<td>'.$message['DataInsert'].'</td>';
                        echo '<td>'.$message['Text'].'</td>';
                        echo '<td>'
-                       .    '<form method="post" action="joinMessage.php" method="POST" target="_blank">'
+                       .    '<form method="post" action="joinMessage.php" method="POST">'
                        .    '<input type="hidden" name="id_message" value="'.$message['Message'].'">'
                        .    '<input type="submit" id="join" name="join" value="Coll."></form>'
                        .    '</td>';
