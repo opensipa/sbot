@@ -65,5 +65,5 @@ include ('functions/functionDb.php');
 	</div>			
     </div>
   
-<!-- Footer della pagina html -->
+<!-- Footer page -->
 <?php include 'theme/footer.php'; ?>

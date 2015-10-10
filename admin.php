@@ -4,10 +4,6 @@ include ('theme/header.php');
 include ('functions/function.php');
 include ('init.php');
 ?>
-<div id="top_menu">
-    <?php topMenu($menu); ?>
-</div>
-
 	<div id="content" class="clearfix">
 		<div class="content-row">
 		<h1>Il servizio risulta attivo con il seguente pid:
@@ -16,11 +12,8 @@ include ('init.php');
                     $pid = shell_exec('pidof php');
                     echo $pid;
                     ?>
-		</h1>
-                    <form action="admin.php"> 
-			<input type="submit" name="submit" value="Aggiorna">
-                    </form> 
-					
+                <form action="admin.php"><input type="submit" name="submit" value="Aggiorna"></form> 
+		</h1>					
 		</div>
 	</div>
     <div id="content" class="clearfix">
