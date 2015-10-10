@@ -12,11 +12,7 @@ include('init.php');
 	<table border="1">
             <tr>
                 <td>Data invio</td>
-            </tr>
-            <tr>
                 <td>Messaggio</td>
-            </tr>
-            <tr>
                 <td>User Send</td>
             </tr>
             <?php
@@ -26,13 +22,9 @@ include('init.php');
             $id_message=filter_input(INPUT_POST, 'id_message', FILTER_SANITIZE_STRING);
             $messageSend = dbJoinMessageSend($id_message);
             foreach ($messageSend as $message) { 
-                echo '<tr>';
+               echo '<tr>';
                    echo '<td>'.$message['DataInsert'].'</td>';
-                echo '</tr>';
-                echo '<tr>';
                    echo '<td>'.$message['Text'].'</td>';
-                echo '</tr>';
-                echo '<tr>';
                    echo '<td>'.$message['Signature'].'</td>';
                 echo '</tr>';
                     }
@@ -41,5 +33,4 @@ include('init.php');
     </div>			
 </div>
 <!-- Footer page -->
-<?php
-include('theme/footer.php');
+<?php include('theme/footer.php'); ?>

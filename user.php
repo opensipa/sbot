@@ -7,7 +7,6 @@ include ('config.php');
 include ('init.php');
 $userActive = dbCountActiveUsers();
 ?>
-
 	<div id="content" class="clearfix">
             <div align="center">
                 <!-- Utenti attivi inseriti nel database  -->

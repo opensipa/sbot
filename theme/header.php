@@ -47,10 +47,14 @@
         <?php
         if (!empty($_SESSION['username'])) { 
             $back = $_SERVER['HTTP_REFERER'];
-            echo '<div id="content" class="clearfix" align="center">';
+            echo '<center><div style="float:left; width:2%">';
             echo '<form action="'.$back.'" method="GET">'
             . '<input type="submit" value="Torna indietro" name="Submit" id="Submit">'
-            . '</form>';
-            echo '</div>';
+            . '</form></div>'
+            . '<div style="float:left; width:25%"><form action="'.$nome = basename($_SERVER['PHP_SELF'])
+            . '"><input type="submit" name="submit" value="Aggiorna"></form>';
+            echo '</div>'
+            . '</center>';
             }
         ?>
+    <br><br>

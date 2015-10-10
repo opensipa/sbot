@@ -9,10 +9,6 @@ include('init.php');
 
 <div id="content" class="clearfix">
     <div class="content-row">
-        <form action="fullSend.php"> 
-           <input type="submit" name="submit" value="Aggiorna">
-        </form> 
-	<br>
 	<table border="1">
             <?php
             /******

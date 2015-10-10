@@ -12,7 +12,6 @@ include ('init.php');
                     $pid = shell_exec('pidof php');
                     echo $pid;
                     ?>
-                <form action="admin.php"><input type="submit" name="submit" value="Aggiorna"></form> 
 		</h1>					
 		</div>
 	</div>
@@ -52,4 +51,4 @@ include ('init.php');
     </div>
     
 <!-- footer page --> 
-<?php include 'theme/footer.php'; ?>
+<?php include ('theme/footer.php'); ?>

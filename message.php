@@ -8,21 +8,10 @@ include ('init.php');
 ?>
     <div id="content" class="clearfix">
         <div class="content-row">
-            <table border="0">
-                <tr>
-                    <td>
-                        <form action="message.php"> 
-                        <input type="submit" name="submit" value="Aggiorna">
-                        </form> 
-                    </td>
-                    <td>
-                        <form action="messageExport.php"> 
-                        <input type="submit" name="submit" value="Esporta in Excel">
-                        </form>
-                    </td>
-                </tr>
-            </table> 
-                <br>
+            <form action="messageExport.php"> 
+            <input type="submit" name="submit" value="Esporta in Excel">
+            </form> 
+            <br>
             <table border="1">
                 <tr>
                     <td>First name</td>
