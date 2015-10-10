@@ -1,12 +1,12 @@
 # README #
 
-Date: 05/10/2015
+Date: 10/10/2015
 
 
 ### What is this repository for? ###
 
 * Telegram Bot
-* Version: 0.11.2.b
+* Version: 0.11.8.b
 * name: {S}bot
 
 ### How do I get set up? ###
@@ -23,6 +23,7 @@ Date: 05/10/2015
 
 * sbot.opensipa.it
 * Assistance: sbot.opensipa@gmail.com
+* Search @opensipa_bot in Telegram
 * Code by Guion Matteo e Massimo Gorla
 
 ### How to install? ###
@@ -44,6 +45,7 @@ Date: 05/10/2015
 * Insert change signature for user
 * Launch 4_update.sql for update Db
 * Sortable single column for table users
+* Bug Fix
 
 ### 07/10/2015###
 * Correct bug in scructure Db
@@ -54,7 +56,7 @@ Date: 05/10/2015
 * Corret error in config.sample.php and demone.php replace the file config
 * Insert update
 
-### 04/10/2014 ###
+### 04/10/2015###
 * change functionDB function dbLogTextSend
 * change sendSingle.php add into dbLogTextSend ($testo_ricevuto,$_SESSION['username'],$MessageID, $utenti_messageID);
 * change function dbLogTextFull()
