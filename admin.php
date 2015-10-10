@@ -46,9 +46,8 @@ include ('init.php');
                 $('#send_image').click(function(){
                 $(this).prop("disabled",true);
                 });
-            </script
-        </div>			
-    </div>
-    
+            </script>
+        </div>
+</div>   
 <!-- footer page --> 
 <?php include ('theme/footer.php'); ?>
