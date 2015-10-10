@@ -40,13 +40,7 @@ $submit = filter_input(INPUT_POST, 'Submit', FILTER_SANITIZE_STRING);
 
 if ($password==$newpassword){
 if (!empty($submit)) {
-    $conn=getDbConnection();
-    //update password in to mysql with sha-256
-    $sql="update admins set password=:password where username=:username";
-    $stmt = $conn->prepare($sql);
-    $stmt->bindValue(':username',$username, PDO::PARAM_STR);
-    $stmt->bindValue(':password',create_hash($password), PDO::PARAM_STR);    
-    $stmt->execute();
+    dbUpdatePwd($username,$password);
     echo '<div id="content" class="clearfix">';
 	  echo '<div class="content-row">';
     echo '<h2>Hai cambiato correttamente la password. </h2>';

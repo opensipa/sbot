@@ -34,9 +34,35 @@ try {
     $stmt->bindValue(':password',create_hash($password), PDO::PARAM_STR);    
     $stmt->execute();
   } catch (Exception $ex) {
+    echo $ex;
     return '1';
   }
-}  
+} 
+/**
+ * 
+ * Function dbUpdateAdmin
+ * 
+ * @param type $username username utente
+ * @param type $signature firma utente
+ * Permette l'update della firma degli utenti Amministratori 
+ *  
+ * @return int ritorna 1 su errore, altrimenti inserimento correto
+ */
+
+function dbUpdateAdmin ($username, $signature)
+{
+try {
+    $conn=getDbConnection(); 
+    $sql="update admins set signature=:signature where username=:username";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindValue(':username',$username, PDO::PARAM_STR);
+    $stmt->bindValue(':signature',$signature, PDO::PARAM_STR);
+    $stmt->execute();
+  } catch (Exception $ex) {
+    echo $ex;
+    return '1';
+  }
+}
 
 /**
  * 
@@ -66,7 +92,31 @@ function dbSelectAdmin()
     }
     return ($tableAdmin);
 }
-
+/**
+ * 
+ * Function dbUpdatePwd
+ * 
+ * @param type $username username utente
+ * @param type $password password utente
+ * @param type $signature firma utente
+ * @Permette di avere la lista degli utenti admin in Sbot
+ *   
+ * @return int ritorna 1 su errore, altrimenti crea elenco
+ */
+function dbUpdatePwd($username,$password)
+{
+    try {
+        $conn=getDbConnection();
+        //update password in to mysql with sha-256
+        $sql="update admins set password=:password where username=:username";
+        $stmt = $conn->prepare($sql);
+        $stmt->bindValue(':username',$username, PDO::PARAM_STR);
+        $stmt->bindValue(':password',create_hash($password), PDO::PARAM_STR);    
+        $stmt->execute();
+        } catch (Exception $ex) {
+        return $ex->getMessage();
+  }
+}
 /**
  * 
  * Function dbLogUserStart

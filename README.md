@@ -40,9 +40,14 @@ Date: 05/10/2015
 
 ### Changelog ###
 
+### 10/10/2015###
+* Insert change signature for user
+* Launch 4_update.sql for update Db
+* Sortable single column for table users
+
 ### 07/10/2015###
 * Correct bug in scructure Db
-* launch 3_update.sql for update Db
+* Launch 3_update.sql for update Db
 
 ### 05/10/2015###
 * IMPORTANT: Change folder for log --> In /etc/rc.local your server Linux insert: "php /var/www/_PATH_OF_FOLDER_SBOT/sbot/demone.php > /var/www/_PATH_OF_FOLDER_SBOT/sbot/sbotAdmin/log/sbot.log, and restart Server linux.

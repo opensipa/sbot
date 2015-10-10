@@ -30,7 +30,7 @@
             echo '<li><a href="#">Panello Controllo</a>'
                 . '<ul>'    
                 . '<li><a href="changePwd.php">Cambio password</a></li>'
-                . '<li><a href="addAdmin.php">Aggiungi utenti</a></li>'
+                . '<li><a href="addAdmin.php">Gestione utenza</a></li>'
                 . '</ul></li>';
             echo '<li><a href="#">Aggiornamenti</a>'
                 . '<ul>'    
