@@ -200,7 +200,6 @@ function dbActiveUsers()
     } catch (Exception $ex) {
         return $ex->getMessage();
     }
-    
     return ($active);
 }
 
@@ -265,7 +264,7 @@ function dbLogTextOn ($chat,$first_name,$message,$text)
         $stmt = $conn->prepare($sql);
         $stmt->bindValue(':UserID',$chat,PDO::PARAM_STR);
         $stmt->execute();
-        $sql = "insert into utenti_message(UserID, FirstName, DataInsert, Message, Text) values (:UserID, :FirstName, now(),:Message,:Text)";
+        $sql = "insert into utenti_message(UserID, FirstName, DataInsert, Message, Text, Archive) values (:UserID, :FirstName, now(),:Message,:Text,'1')";
         $stmt = $conn->prepare($sql);
         $stmt->bindValue(':UserID',$chat , PDO::PARAM_STR);
         $stmt->bindValue(':FirstName',$first_name , PDO::PARAM_STR);
@@ -288,7 +287,7 @@ function dbLogTextFull()
 {
     try {
         $conn=getDbConnection();
-        $sql = "select UserID, FirstName, DataInsert, Text, ID, Message from utenti_message order BY DataInsert desc";
+        $sql = "select UserID, FirstName, DataInsert, Text, ID, Message,Archive from utenti_message where Archive='1'OR Archive IS NULL order BY DataInsert desc";
         $stmt = $conn->prepare($sql);
         $stmt->execute();
         $tableMessage=array();
@@ -300,6 +299,27 @@ function dbLogTextFull()
     }
     return ($tableMessage);
 }
+
+/**
+ * Function dbLogTextUpdate
+ * Aggiorna nel DB utenti_message i messaggi che non si vuole più visualizzare
+ * @param Archive 0/1 
+ * 
+ * @return type Error 
+ */
+function dbLogTextUpdate ($ID)
+{
+    try {
+        $conn=getDbConnection();
+        $sql = "update utenti_message set Archive=0 where ID=:ID";
+        $stmt = $conn->prepare($sql);
+        $stmt->bindValue(':ID',$ID,PDO::PARAM_STR);
+        $stmt->execute();
+    } catch (Exception $ex) {
+        return ($ex->getMessage());
+    }
+    return 0;
+}   
 
 /**
  * Function dbLogTextSend

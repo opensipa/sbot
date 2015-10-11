@@ -54,7 +54,8 @@
             . '<div style="float:left; width:25%"><form action="'.$nome = basename($_SERVER['PHP_SELF'])
             . '"><input type="submit" name="submit" value="Aggiorna"></form>';
             echo '</div>'
-            . '</center>';
+            . '</center>'
+            . '<br><br>'
+            . '<hr align=”center” size=”1″ noshade>';
             }
         ?>
-    <br><br>

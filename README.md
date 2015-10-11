@@ -41,6 +41,10 @@ Date: 10/10/2015
 
 ### Changelog ###
 
+### 11/10/2015###
+* Convert date format Europe/IT
+* Bug Fix
+
 ### 10/10/2015###
 * Insert change signature for user
 * Launch 4_update.sql for update Db

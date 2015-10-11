@@ -15,7 +15,6 @@ header ("Content-Disposition: inline; filename=$filename");
         <meta name="copyright" content="Copyright 2015 © Opensipa">
         <meta name="language" content="italian">
         <meta name="email" content="opensipa[at]gmail[dot]com @gmail">
-        <link rel="shortcut icon" href="img/favicon.ico" >
         <title>{S}Bot - Telegram Bot by OpenSipa</title>
     </head>
     <body>

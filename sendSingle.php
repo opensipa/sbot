@@ -22,12 +22,20 @@ include ('functions/functionDb.php');
                  * richiama la funzione sendMessage per spedire il testo passato con post
                  * ogni chat_id una singola spedizione messaggio
                  ******/
+                if (!empty($testo_ricevuto)){
                 $testo_ricevuto_add = $testo_ricevuto.' Inviato da: '.$_SESSION['signature']; 
                 sendMessage($id_user, $testo_ricevuto_add);
                 dbLogTextSend ($testo_ricevuto,$_SESSION['username'],$id_message, $id_total);
                 ?>
                 <p>Hai inviato il seguente testo: <br> <strong><?php echo $testo_ricevuto; ?></strong></p>
                 <p>Al seguente identificativo: <br> <strong><?php echo $id_user; ?></strong></p>
+                <?php
+                } else { 
+                ?>
+                <p><strong>Non puoi inviare dei messaggi vuoti!</strong></p>
+                 <?php
+                }
+                ?>
 			</h1>
             </div>			
 	</div>
