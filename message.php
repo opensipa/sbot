@@ -5,9 +5,6 @@ include ('functions/function.php');
 include ('functions/functionDb.php');
 include ('config.php');
 include ('init.php');
-
-ini_set('display_errors','On');
-error_reporting(E_ALL);
 ?>
 <?php
 if (isset($_POST['Archivia'])) {
@@ -18,7 +15,13 @@ if (isset($_POST['Archivia'])) {
     }
 ?>
     <div id="content" class="clearfix">
-        <div class="content-row">   
+        <div align="center">
+            <form method="post" action="#" method="POST" />
+            <input type="text" name="testo">
+            <input type="submit" id="cerca" name="Cerca" value="Cerca" />
+            </form>
+        </div>
+        <div class="content-row">
             <table border="1">
                 <tr>
                     <td>Data inserimento</td>
