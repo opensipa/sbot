@@ -29,7 +29,7 @@ include ('init.php');
                 foreach ($messageUsers as $message) { 
                     echo '<tr>';
                        echo '<td>'.$message['FirstName'].'</td>';
-                       echo '<td>'.$message['DataInsert'].'</td>';
+                       echo '<td>'.(date('d/m/Y H:i:s', strtotime($message['DataInsert']))).'</td>';
                        echo '<td>'.$message['Text'].'</td>';
                        echo '<td>'
                        .    '<form method="post" action="joinMessage.php" method="POST">'

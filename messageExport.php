@@ -24,7 +24,7 @@ header ("Content-Disposition: inline; filename=$filename");
             <br>
             <table border="1">              
                 <tr>
-                    <td>First name</td>
+                    <td>Nome utente</td>
                     <td>Data inserimento</td>
                     <td>Messaggio</td
                 </tr>
@@ -36,7 +36,7 @@ header ("Content-Disposition: inline; filename=$filename");
                 foreach ($messageUsers as $message) { 
                     echo '<tr>';
                        echo '<td>'.$message['FirstName'].'</td>';
-                       echo '<td>'.$message['DataInsert'].'</td>';
+                       echo '<td>'.(date('d/m/Y H:i:s', strtotime($message['DataInsert']))).'</td>';
                        echo '<td>'.$message['Text'].'</td>';
                 }
                 ?>

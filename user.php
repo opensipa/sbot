@@ -15,9 +15,9 @@ $userActive = dbCountActiveUsers();
                     <thead>
                     <tr>
                         <th><span>ID utente</span></th>
-                        <th><span>First name</span></th>
-                        <th><span>Last name</span></th>
-                        <th><span>Date add user</span></th>
+                        <th><span>Nome</span></th>
+                        <th><span>Cognome</span></th>
+                        <th><span>Data inserimento</span></th>
                     </tr>
                     </thead>
                     <tbody> 
@@ -27,7 +27,7 @@ $userActive = dbCountActiveUsers();
                             echo '<td>'.$user['UserID'].'</td>';
                             echo '<td>'.$user['FirstName'].'</td>';
                             echo '<td>'.$user['LastName'].'</td>';
-                            echo '<td>'.$user['DataInsert'].'</td>';
+                            echo '<td>'.(date('d/m/Y', strtotime($user['DataInsert']))).'</td>';
                             echo '</tr>';
                         }
                     ?> 

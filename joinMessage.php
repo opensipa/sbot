@@ -23,7 +23,7 @@ include('init.php');
             $messageSend = dbJoinMessageSend($id_message);
             foreach ($messageSend as $message) { 
                echo '<tr>';
-                   echo '<td>'.$message['DataInsert'].'</td>';
+                   echo '<td>'.(date('d/m/Y H:i:s', strtotime($message['DataInsert']))).'</td>';
                    echo '<td>'.$message['Text'].'</td>';
                    echo '<td>'.$message['Signature'].'</td>';
                 echo '</tr>';

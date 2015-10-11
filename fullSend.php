@@ -10,25 +10,22 @@ include('init.php');
 <div id="content" class="clearfix">
     <div class="content-row">
 	<table border="1">
-            <?php
+            <tr>
+                <td>Data inserimento</td>
+                <td>Messaggio</td>
+            </tr>
+<?php
             /******
-             * questa fase cicla sugli utenti attivi inseriti nel database 
+             * questa fase cicla sui messaggi inviati agli utenti 
              ******/
-
             $messageSend = dbLogTextFullSend();
-
-            echo '<tr>';
-                   echo '<td>Data inserimento</td>';
-                   echo '<td>Messaggio</td>';
-            echo '</tr>';
-
             foreach ($messageSend as $message) { 
                 echo '<tr>';
-                   echo '<td>'.$message['DataInsert'].'</td>';
+                   echo '<td>'.(date('d/m/Y H:i:s', strtotime($message['DataInsert']))).'</td>';
                    echo '<td>'.$message['Text'].'</td>';
                 echo '</tr>';
-                    }
-             ?>      
+            }
+?>      
           </table>
     </div>			
 </div>
