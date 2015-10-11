@@ -18,19 +18,15 @@ if (isset($_POST['Archivia'])) {
     }
 ?>
     <div id="content" class="clearfix">
-        <div class="content-row">
-            <form method="post" action="message.php" method="POST">
-            <input type='submit' name='Archivia' value='Archivia' />
-            <br> <br>    
+        <div class="content-row">   
             <table border="1">
                 <tr>
                     <td>Data inserimento</td>
                     <td>Nome</td>
                     <td>Messaggio ricevuto</td>
-                    <td>Archivia</td>
-                    <td>Risp.</td>
                     <td>Messaggio</td>
-                    <td>Invia</td>
+                    <td>Risp.</td>
+                    <td>Archivia</td>
                 </tr>
                 <?php
                 /******
@@ -42,23 +38,25 @@ if (isset($_POST['Archivia'])) {
                        echo '<td>'.(date('d/m/Y H:i', strtotime($message['DataInsert']))).'</td>';
                        echo '<td>'.$message['FirstName'].'</td>';
                        echo '<td>'.$message['Text'].'</td>';
-                       echo '<td align="center">'
-                       .    '<input type="checkbox" name="update_archivia[]" value="'.$message['ID'].'" />'
-                       .    '</td>';
                        echo '<td>'
-                       .    '<form method="post" action="joinMessage.php" method="POST">'
-                       .    '<input type="hidden" name="id_message" value="'.$message['Message'].'">'
+                       .    '<form method="post" action="sendSingle.php" method="POST" />'
+                       .    '<textarea name="testo" rows="2" cols="40" placeholder="Inserisci qui la risposta.."></textarea>'
+                       .    '<input type="hidden" name="id_user" value="'.$message['UserID'].'" />'
+                       .    '<input type="hidden" name="id_message" value="'.$message['Message'].'" />'
+                       .    '<input type="hidden" name="id_total" value="'.$message['ID'].'" />'
+                       .    '<br>'
+                       .    '<input type="submit" id="invia" name="invia" value="Invia" />'
+                       .    '</form></td>';
+                        echo '<td>'
+                       .    '<form method="post" action="joinMessage.php" method="POST" />'
+                       .    '<input type="hidden" name="id_message" value="'.$message['Message'].'" />'
                        .    '<input type="submit" id="join" name="join" value="+"></form>'
                        .    '</td>';
-                       echo '<td><form method="post" action="sendSingle.php" method="POST">'
-                       .    '<textarea name="testo" rows="2" cols="40" placeholder="Inserisci qui la risposta.."></textarea>'
-                       .    '</td>'
-                       .    '<td><input type="hidden" name="id_user" value="'.$message['UserID'].'">'
-                       .    '<input type="hidden" name="id_message" value="'.$message['Message'].'">'
-                       .    '<input type="hidden" name="id_total" value="'.$message['ID'].'">'
-                       .    '<br>'
-                       .    '<input type="submit" id="invia" name="invia" value="Invia">'
-                       .    '</form></td>';
+                       echo '<td align="center">'
+                       .    '<form method="post" action="message.php" method="POST" />'
+                       .    '<input type="hidden" name="update_archivia[]" value="'.$message['ID'].'" />'
+                       .    '<input type="submit" name="Archivia" value="Archivia" />'
+                       .    '</td>';
                        echo '</tr>';
                 }
                 ?>
