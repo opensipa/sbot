@@ -355,7 +355,7 @@ function dbLogTextFullSend()
 {
     try {
         $conn=getDbConnection();
-        $sql = "select DataInsert, Text, Signature from message_send order BY DataInsert desc";
+        $sql = "select DataInsert, Text, Signature from message_send where MessageID='0' OR MessageID IS NULL order BY DataInsert desc";
         $stmt = $conn->prepare($sql);
         $stmt->execute();
         $tableMessage=array();
