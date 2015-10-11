@@ -1,12 +1,12 @@
 # README #
 
-Date: 10/10/2015
+Date: 11/10/2015
 
 
 ### What is this repository for? ###
 
 * Telegram Bot
-* Version: 0.11.8.b
+* Version: 0.12.1.b
 * name: {S}bot
 
 ### How do I get set up? ###
@@ -43,6 +43,7 @@ Date: 10/10/2015
 
 ### 11/10/2015###
 * Convert date format Europe/IT
+* Add archive message function
 * Bug Fix
 
 ### 10/10/2015###
