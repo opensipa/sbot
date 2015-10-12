@@ -289,7 +289,7 @@ function dbLogTextFull()
 {
     try {
         $conn=getDbConnection();
-        $sql = "select UserID, FirstName, DataInsert, Text, ID, Message,Archive from utenti_message where Archive='1'OR Archive IS NULL order BY DataInsert desc";
+        $sql = "select UserID, FirstName, DataInsert, Text, ID, Message,Archive from utenti_message where Archive='1' OR Archive IS NULL order BY DataInsert desc";
         $stmt = $conn->prepare($sql);
         $stmt->execute();
         $tableMessage=array();
@@ -386,7 +386,7 @@ function dbLogTextFullSend()
 {
     try {
         $conn=getDbConnection();
-        $sql = "select ID, DataInsert, Text, Signature from message_send where Archive=1 AND MessageID=0 OR Archive IS NULL AND MessageID IS NULL order BY DataInsert desc";
+        $sql = "select ID, DataInsert, Text, Signature from message_send where Archive=1 AND MessageID=0 OR Archive=1 AND MessageID IS NULL OR Archive IS NULL AND MessageID IS NULL order BY DataInsert desc";
         $stmt = $conn->prepare($sql);
         $stmt->execute();
         $tableMessage=array();
