@@ -10,7 +10,7 @@ session_start();
 
 <!-- Pagina header e functions -->
 <?php
-include ('theme/header.php');
+include('theme/header.php');
 include('config.php');
 include('init.php');
 include('functions/function.php');
@@ -40,13 +40,14 @@ if (!empty($submit)) {
 if (!empty($_SESSION['username'])) {
     header('Location: admin.php'); 
 } else {
-    echo '<div id="content" class="clearfix">';
-    echo '<div class="content-row">';
-    echo '<h1>Username o password non validi, ritenta: </h1>';
-    echo '<h2><p><a href="index.php">Torna alla pagina di Login</a></p></h2> ';
-    echo '</div></div>';
-}
 ?>
+    <div id="content" class="clearfix">
+        <div class="content-row">
+            <h1>Username o password non validi, ritenta: </h1>
+            <h2><p><a href="index.php">Torna alla pagina di Login</a></p></h2>
+        </div>
+    </div>
+<?php } ?>
 
 <!-- Footer della pagina html -->
 <?php include 'theme/footer.php'; ?>

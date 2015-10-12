@@ -332,7 +332,7 @@ function dbLogTextSend ($text, $signature,$MessageID, $Utenti_messageID)
 {
     try {
         $conn=getDbConnection();
-        $sql = "insert into message_send(DataInsert, Text, Signature, MessageID, Utenti_messageID) values (now(),:Text,:Signature,:MessageID,:Utenti_messageID)";
+        $sql = "insert into message_send(DataInsert, Text, Signature, MessageID, Utenti_messageID, Archive) values (now(),:Text,:Signature,:MessageID,:Utenti_messageID,'1')";
         $stmt = $conn->prepare($sql);
         $stmt->bindValue(':Text',$text , PDO::PARAM_STR);
         $stmt->bindValue(':Signature',$signature , PDO::PARAM_STR);
@@ -355,7 +355,7 @@ function dbLogTextFullSend()
 {
     try {
         $conn=getDbConnection();
-        $sql = "select DataInsert, Text, Signature from message_send where MessageID='0' OR MessageID IS NULL order BY DataInsert desc";
+        $sql = "select ID, DataInsert, Text, Signature from message_send where Archive='1' AND MessageID='0' OR Archive IS NULL AND MessageID IS NULL order BY DataInsert desc";
         $stmt = $conn->prepare($sql);
         $stmt->execute();
         $tableMessage=array();
@@ -368,6 +368,26 @@ function dbLogTextFullSend()
     return ($tableMessage);
 }
 
+/**
+ * Function dbLogTextUpdate
+ * Aggiorna nel DB message_send i messaggi che non si vuole più visualizzare
+ * @param Archive 0/1 
+ * 
+ * @return type Error 
+ */
+function dbLogTextUpdateSend ($ID)
+{
+    try {
+        $conn=getDbConnection();
+        $sql = "update message_send set Archive=0 where ID=:ID";
+        $stmt = $conn->prepare($sql);
+        $stmt->bindValue(':ID',$ID,PDO::PARAM_STR);
+        $stmt->execute();
+    } catch (Exception $ex) {
+        return ($ex->getMessage());
+    }
+    return 0;
+}
 /**
  * Function dbLogDocumentOn
  * Inserisce nel DB document_send i documenti lasciati dagli utenti 
