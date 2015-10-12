@@ -10,7 +10,7 @@ include ('init.php');
 if (isset($_POST['Archivia'])) {
         $selected_radio = $_POST['update_archivia'];
         foreach ($selected_radio as $value){
-        dbLogTextUpdate ($value);  
+        dbLogTextUpdate($value);  
         }
     }
 ?>
