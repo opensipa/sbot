@@ -73,6 +73,7 @@ if (isset($_POST['Archivia'])) {
             </form>	
         </div>
         <div class="content-row">
+            <br>
             <form action="messageExport.php"> 
             <input type="submit" name="esporta" value="Esporta in Excel" />
             </form>

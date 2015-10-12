@@ -58,6 +58,6 @@ if ($currentVersion > $localVersion) {
 	$outVersion.= $noteRilascio;
 } else {
 	// Comunico che va tutto bene così
-	$outVersion .= '<p><strong>Questa versione di {S}Bot &egrave; aggiornata. Non serve fare nulla.</strong><br />' . PHP_EOL;
+	$outVersion .= '<p><strong>Questa versione di {S}Bot &egrave; aggiornata. Non serve fare nulla.</strong> Stai usando la versione: '.$localVersion.'<br />' . PHP_EOL;
 }
 ?>
