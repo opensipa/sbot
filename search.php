@@ -1,33 +1,16 @@
-<?php 
-include ('theme/verification.php');
-include ('theme/header.php');
+<?php
+require_once ('theme/verification.php');
+require_once ('theme/header.php');
 include ('functions/function.php');
 include ('functions/functionDb.php');
 include ('config.php');
 include ('init.php');
+include ('functions/passwordHash.php');
 ?>
-<?php
-if (isset($_POST['Archivia'])) {
-        $selected_radio = $_POST['update_archivia'];
-        foreach ($selected_radio as $value){
-        dbLogTextUpdate($value);  
-        }
-    }
-?>
+
 <div id="content" class="clearfix">
-        <div align="center">
-            <form method="post" action="search.php" method="POST" />
-            <fieldset>
-            <legend>Funzione di ricerca dei messaggi ricevuti</legend>
-            <label><strong>La funzione di ricerca utilizza al massimo UNA PAROLA CHIAVE.</strong></label><br>
-            Recenti <input type="radio" name="messaggi" value="1" checked="checked" />
-            Archivio<input type="radio" name="messaggi" value="0"/><br>
-            <input type="text" name="testo" style="width: 400px;" />
-            <input type="submit" id="cerca" name="Cerca" value="Cerca" />
-            </fieldset>
-            </form>
-        </div>
-        <div class="content-row">
+    <div class="content-row">
+        <p><b>Risultati della ricerca:</b></p>
             <table border="1">
                 <tr>
                     <td>Data inserimento</td>
@@ -39,9 +22,20 @@ if (isset($_POST['Archivia'])) {
                 </tr>
                 <?php
                 /******
-                 * This table view the message send by single user
+                 * This table view the search message for
+                 * functione dbLogSearchFull($type, $param1, $param2, $param3)
                  ******/
-                $messageUsers = dbLogTextFull();
+                $type = filter_input(INPUT_POST, 'messaggi', FILTER_SANITIZE_STRING);
+                $testo_ricevuto = filter_input(INPUT_POST, 'testo', FILTER_SANITIZE_STRING);
+                /******
+                 * questa fase cicla sugli utenti attivi inseriti nel database e per ciascun id
+                 * richiama la funzione sendMessage per spedire il testo passato con post
+                 * ogni chat_id una singola spedizione messaggio
+                 ******/
+                if (!empty($testo_ricevuto)){
+                $param = explode(" ", $testo_ricevuto);
+                $param1 = $param[0];
+                $messageUsers = dbLogSearchFull($type, $param1);
                 foreach ($messageUsers as $message) { 
                     echo '<tr>';
                        echo '<td>'.(date('d/m/Y H:i', strtotime($message['DataInsert']))).'</td>';
@@ -67,17 +61,13 @@ if (isset($_POST['Archivia'])) {
                        .    '<input type="submit" name="Archivia" value="Archivia" />'
                        .    '</td>';
                        echo '</tr>';
+                    }
+                } else {
+                echo '<p><strong>Non ci sono risultati per il termine di ricerca utilizzato.</strong></p>';
                 }
                 ?>
             </table>
-            </form>	
         </div>
-        <div class="content-row">
-            <form action="messageExport.php"> 
-            <input type="submit" name="esporta" value="Esporta in Excel" />
-            </form>
-        </div>			
     </div>
-
 <!-- Footer page -->
 <?php include 'theme/footer.php'; ?>

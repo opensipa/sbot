@@ -281,6 +281,8 @@ function dbLogTextOn ($chat,$first_name,$message,$text)
  * Function dbLogTextFull
  * Ritorna tutti i messaggi degli utenti che hanno inviato
  * 
+ * @database utenti_message
+ * 
  * @return type Array 
  */
 function dbLogTextFull()
@@ -319,7 +321,36 @@ function dbLogTextUpdate ($ID)
         return ($ex->getMessage());
     }
     return 0;
-}   
+}  
+
+/**
+ * Function dbLogSearchFull()
+ * Search into utenti_message the key
+ * 
+ * @database utenti_message
+ * @param type $type int (0/1), param of recent/archive
+ * @param type $param1 text
+ * @param type $param2 text
+ * @param type $param3 text
+ * 
+ * @return type Array 
+ */
+function dbLogSearchFull($type, $param1)
+{
+    try {
+        $conn=getDbConnection();
+        $sql = "select UserID, FirstName, DataInsert,Text, ID, Message, Archive from utenti_message where Archive=$type AND Text Like '%$param1%' order BY DataInsert desc";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+        $tableMessage=array();
+        while ($riga=$stmt->fetch(PDO::FETCH_ASSOC)) {
+            $tableMessage[]=$riga;            
+        }
+    } catch (Exception $ex) {
+        return $ex->getMessage();
+    }
+    return ($tableMessage);
+}
 
 /**
  * Function dbLogTextSend
@@ -355,7 +386,7 @@ function dbLogTextFullSend()
 {
     try {
         $conn=getDbConnection();
-        $sql = "select ID, DataInsert, Text, Signature from message_send where Archive='1' AND MessageID='0' OR Archive IS NULL AND MessageID IS NULL order BY DataInsert desc";
+        $sql = "select ID, DataInsert, Text, Signature from message_send where Archive=1 AND MessageID=0 OR Archive IS NULL AND MessageID IS NULL order BY DataInsert desc";
         $stmt = $conn->prepare($sql);
         $stmt->execute();
         $tableMessage=array();
@@ -388,6 +419,7 @@ function dbLogTextUpdateSend ($ID)
     }
     return 0;
 }
+
 /**
  * Function dbLogDocumentOn
  * Inserisce nel DB document_send i documenti lasciati dagli utenti 
@@ -404,6 +436,10 @@ function dbLogTextUpdateSend ($ID)
  * @return type Array 
  */
 
+/*
+ * Not use this function in this moment. 
+ * Future implementations
+ * 
 function dbLogDocumentOn ($chat_id,$first_name_id,$message_id,$document_id,$mime_type,$file_name,$file_id,$file_size)
 {
     try {
@@ -424,6 +460,8 @@ function dbLogDocumentOn ($chat_id,$first_name_id,$message_id,$document_id,$mime
     }
     return 0;
 }
+ * 
+ */
 
 /**
  * Function dbJoinMessageSend

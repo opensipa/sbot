@@ -41,6 +41,10 @@ Date: 11/10/2015
 
 ### Changelog ###
 
+### 12/10/2015###
+* Now is possibile search message with function
+* Bug Fix
+
 ### 11/10/2015###
 * Convert date format Europe/IT
 * Add archive message function
