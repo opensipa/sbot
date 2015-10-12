@@ -8,9 +8,6 @@ include('init.php');
 ?>
 
 <div id="content" class="clearfix">
-	<div id="top_menu">
-		<?php topMenu($menu);?>
-	</div>
 	<div class="content-row">
 
             <h2>Ecco il responso da parte del server telegram:
