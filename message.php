@@ -16,7 +16,7 @@ if (isset($_POST['Archivia'])) {
 ?>
 <div id="content" class="clearfix">
         <div align="center">
-            <form method="post" action="search.php" method="POST" />
+            <form method="post" action="search.php" method="POST">
             <fieldset>
             <legend>Funzione di ricerca dei messaggi ricevuti</legend>
             <label><strong>La funzione di ricerca utilizza al massimo UNA PAROLA CHIAVE.</strong></label><br>
@@ -56,21 +56,20 @@ if (isset($_POST['Archivia'])) {
                        .    '<br>'
                        .    '<input type="submit" id="invia" name="invia" value="Invia" />'
                        .    '</form></td>';
-                        echo '<td>'
-                       .    '<form method="post" action="joinMessage.php" method="POST" />'
+                       echo '<td>'
+                       .    '<form method="post" action="joinMessage.php" method="POST">'
                        .    '<input type="hidden" name="id_message" value="'.$message['Message'].'" />'
-                       .    '<input type="submit" id="join" name="join" value="+"></form>'
+                       .    '<input type="submit" id="join" name="join" value="+" /></form>'
                        .    '</td>';
                        echo '<td align="center">'
-                       .    '<form method="post" action="message.php" method="POST" />'
+                       .    '<form method="post" action="message.php" method="POST">'
                        .    '<input type="hidden" name="update_archivia[]" value="'.$message['ID'].'" />'
-                       .    '<input type="submit" name="Archivia" value="Archivia" />'
+                       .    '<input type="submit" name="Archivia" value="Archivia" /></form>'
                        .    '</td>';
                        echo '</tr>';
                 }
                 ?>
             </table>
-            </form>	
         </div>
         <div class="content-row">
             <br>
