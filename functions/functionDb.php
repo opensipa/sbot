@@ -94,6 +94,31 @@ function dbSelectAdmin()
 }
 /**
  * 
+ * Function dbDisableAdmin
+ * 
+ * @param type $username username utente
+ * @param type $password password utente
+ * @param type $signature firma utente
+ * @Permette di disabilitare un admin in Sbot
+ *   
+ * @return int ritorna 1 su errore, altrimenti crea elenco
+ */
+ 
+function dbDisableAdmin($username)
+{
+    try {
+        $conn=getDbConnection();
+        $sql = "UPDATE `admins` SET `active`=0 WHERE `username`=$username";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+    } catch (Exception $ex) {
+        return ($ex->getMessage());
+    }
+    return 0;
+}  
+
+/**
+ * 
  * Function dbUpdatePwd
  * 
  * @param type $username username utente

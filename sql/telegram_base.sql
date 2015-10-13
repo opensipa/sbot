@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS `admins` (
   `username` varchar(120) NOT NULL,
   `password` varchar(120) NOT NULL,
   `signature` varchar(255) DEFAULT NULL,
-  `level` varchar(25) DEFAULT NULL,
+  `level` varchar(25) DEFAULT 'admin',
   `active` int(2) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 
@@ -56,7 +56,7 @@ CREATE TABLE IF NOT EXISTS `message_send` (
   `Signature` varchar(255) DEFAULT NULL,
   `MessageID` int(11) DEFAULT NULL,
   `Utenti_messageID` int(11) DEFAULT NULL,
-  `Archive` tinyint(1) DEFAULT NULL
+  `Archive` tinyint(1) DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -96,7 +96,7 @@ CREATE TABLE IF NOT EXISTS `utenti_message` (
   `FileSize` int(11) DEFAULT NULL,
   `Width` int(11) DEFAULT NULL,
   `Height` int(11) DEFAULT NULL,
-  `Archive` tinyint(1) DEFAULT NULL
+  `Archive` tinyint(1) DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --

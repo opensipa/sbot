@@ -70,14 +70,16 @@ if (isset($_POST['Archivia'])) {
                 }
                 ?>
             </table>
-        </div>
-        <div class="content-row">
-            <br>
-            <form action="messageExport.php"> 
-            <input type="submit" name="esporta" value="Esporta in Excel" />
-            </form>
-        </div>			
+        </div>		
     </div>
+<div id="content" class="clearfix">
+        <div class="content-row">
+        <br>
+        <form action="messageExport.php"> 
+        <input type="submit" name="esporta" value="Esporta in Excel" />
+        </form>
+    </div>
+</div>
 
 <!-- Footer page -->
 <?php include 'theme/footer.php'; ?>
