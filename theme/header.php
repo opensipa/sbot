@@ -25,7 +25,7 @@
                . '<li><a href="user.php">Utenti attivi</a></li>'
                . '<li><a href="coda.php">Coda Telegram</a></li>'
                . '<li><a href="message.php">Messaggi utenti</a></li>'
-               . '<li><a href="fullSend.php">Messaggi inviati</a></li>'
+               . '<li><a href="fullSend.php">Messaggi di Massa</a></li>'
                . '</ul></li>';
             echo '<li><a href="#">Panello Controllo</a>'
                 . '<ul>'    
@@ -37,7 +37,7 @@
                 . '<li><a href="update.php">Controlla</a></li>'
                 . '</ul></li>';
             echo'<li><a href="help.php">Help on-line</a></li>';
-            echo'<li><a href="logout.php">Logout</a></li>';
+            echo'<li><a href="logout.php">Esci '.strtoupper ($_SESSION['username']).'</a></li>';
             } else {
             echo'<li><a href="index.php">Home page {S}Bot</a></li>';
             }
