@@ -1,12 +1,12 @@
 # README #
 
-Date: 11/10/2015
+Date: 17/10/2015
 
 
 ### What is this repository for? ###
 
 * Telegram Bot
-* Version: 0.12.1.b
+* Version: 0.12.5.b
 * name: {S}bot
 
 ### How do I get set up? ###
@@ -40,6 +40,10 @@ Date: 11/10/2015
 
 
 ### Changelog ###
+
+### 17/10/2015###
+* New table style, add possibility disable user in admin page setting
+* Bug Fix
 
 ### 12/10/2015###
 * Now is possibile search message with function
