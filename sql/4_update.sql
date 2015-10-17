@@ -2,10 +2,10 @@
 -- 
 -- Questo aggiornamento è da applicare solo se avete fatto una installazione
 -- di Sbot prima del 09 ottobre 2015, altrimenti basta usare telegram_base.sql
--- Applica in sequenza 1_update.sql, 2_update.sql, 3_update.sql, 4_update.sql
+-- Applica 4_update.sql
 --
 -- Apply the patch 4_update.sql only not first installation. Or installation is antecedent at 09/10/2015
--- Apply in sequence 1_update.sql, 2_update.sql, 3_update.sql, 4_update.sql
+-- Apply 4_update.sql
 
 ALTER TABLE `utenti_message` CHANGE `Text` `Text` VARCHAR(2048) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL;
 ALTER TABLE `utenti_message` ADD `Document` BLOB NULL DEFAULT NULL AFTER `Text`;
