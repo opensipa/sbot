@@ -73,8 +73,6 @@ div ul#admin_menu li.active { float:left; padding:4px 8px; background:#c04343; m
 div ul#admin_menu li.active a { color:#fff; border-bottom:0px solid #fff; padding:4px 4px; text-decoration:none; }
 
 
-
-
 /* Contenuti - su 3 colonne - stile giornale */
 
 div#content { width:900px; height:auto; background:#fff; padding:0 10px 20px 10px; }
@@ -138,7 +136,7 @@ div#footer p a { font-size:1em; color:#fff; padding:3px 10px; border:0; }
           transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
 }
 
-/* Ordinamento delle tabelle */
+/* Ordinamento delle tabelle up/down */
 #order thead tr th.headerSortUp span {background-image: url('ico/up-arrow.png');}
 #order thead tr th.headerSortDown span {background-image: url('ico/down-arrow.png');}
 #order thead {cursor: pointer;}
@@ -146,3 +144,7 @@ div#footer p a { font-size:1em; color:#fff; padding:3px 10px; border:0; }
 #order thead tr th span {padding-right: 20px; background-repeat: no-repeat; background-position: 100% 100%;}
 #order thead tr th {font-weight: bold; padding: 12px 15px; padding-left: 42px;}
 #order tbody tr td {text-align: center;padding: 8px 8px;}
+
+/* Ordinamento delle tabelle centrate */
+#tbcenter table, td, tr, th { margin-left:auto; margin-right:auto;  border: 1px solid black; text-align: center;}
+
