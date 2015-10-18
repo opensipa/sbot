@@ -9,4 +9,4 @@
 
 ALTER TABLE `utenti_message` CHANGE `Archive` `Archive` TINYINT(1) NULL DEFAULT '1';
 ALTER TABLE `message_send` CHANGE `Archive` `Archive` TINYINT(1) NULL DEFAULT '1';
-ALTER TABLE `admins` CHANGE `level` `level` archar(25) DEFAULT 'admin';
+ALTER TABLE `admins` CHANGE `level` `level` varchar(25) DEFAULT 'admin';
