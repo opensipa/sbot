@@ -5,15 +5,15 @@ include ('functions/function.php');
 include ('init.php');
 ?>
 	<div id="content" class="clearfix">
-		<div class="content-row">
-		<h1>Il servizio risulta attivo con il seguente pid:
-                <!-- Questo comando restituisce il pid del processo che deve rimanere in ascolto utilizzato in beta version Sbot only server Linux --> 
-                    <?php
-                    $pid = shell_exec('pidof php');
-                    echo $pid;
-                    ?>
-		</h1>					
-		</div>
+            <div class="content-row">
+            <h1>Il servizio risulta attivo con il seguente pid:
+            <!-- Questo comando restituisce il pid del processo che deve rimanere in ascolto utilizzato in beta version Sbot only server Linux --> 
+                <?php
+                $pid = shell_exec('pidof php');
+                echo $pid;
+                ?>
+            </h1>					
+            </div>
 	</div>
     <div id="content" class="clearfix">
         <div class="content-row">

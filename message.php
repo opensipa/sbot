@@ -80,6 +80,5 @@ if (isset($_POST['Archivia'])) {
         </form>
     </div>
 </div>
-
 <!-- Footer page -->
-<?php include 'theme/footer.php'; ?>
+<?php include ('theme/footer.php');?>

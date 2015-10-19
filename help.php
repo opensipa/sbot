@@ -1,6 +1,7 @@
-<?php include 'theme/verification.php'; ?>
-<?php include 'theme/header.php'; ?>
-
+<?php
+include ('theme/verification.php');
+include ('theme/header.php');
+?>
 	<div id="content" class="clearfix">
 	<h2>
 	Questo link permette di mandare una mail al team di sviluppo:
@@ -8,6 +9,5 @@
 	</h2>
 	<p>Note:Ti risponderemo quanto prima.</p>		
 	</div>
-	
-<!-- footer page -->
-<?php include 'theme/footer.php'; ?>
+<!-- Footer page -->
+<?php include ('theme/footer.php');?>

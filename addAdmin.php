@@ -146,4 +146,4 @@ if (isset($_POST["Cambia"])) {
 ?>
 </div>
 <!-- Footer della pagina html -->
-<?php include 'theme/footer.php'; ?>
+<?php include ('theme/footer.php'); ?>

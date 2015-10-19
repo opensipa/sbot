@@ -6,10 +6,10 @@
 			<h1>
 <?php
 
-include("config.php");
-include("init.php");
-include("functions/function.php");
-include("functions/functionDb.php");
+include('config.php');
+include('init.php');
+include('functions/function.php');
+include('functions/functionDb.php');
 
 //Recupero il valore del testo
 $testo_ricevuto=filter_input(INPUT_POST, 'testo', FILTER_SANITIZE_STRING);
@@ -35,5 +35,5 @@ echo '<p>Devi inserire nella form il testo da inviare.</p>';
 				</h1>
 			</div>			
 	</div>
-
-<?php include 'theme/footer.php'; ?>
+<!-- Footer page -->
+<?php include ('theme/footer.php');?>

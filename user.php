@@ -41,6 +41,5 @@ $userActive = dbCountActiveUsers();
                 </script>
             </div>			
 	</div>
-  
-<!-- footer page -->  
-<?php include 'theme/footer.php'; ?>
+<!-- Footer page -->
+<?php include ('theme/footer.php');?>

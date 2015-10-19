@@ -36,4 +36,4 @@ include('init.php');
 	</div>			
 </div>
 <!-- Footer page -->
-<?php include 'theme/footer.php';
+<?php include ('theme/footer.php');?>

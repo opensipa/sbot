@@ -48,6 +48,5 @@ if (!empty($_SESSION['username'])) {
         </div>
     </div>
 <?php } ?>
-
-<!-- Footer della pagina html -->
-<?php include 'theme/footer.php'; ?>
+<!-- Footer page -->
+<?php include ('theme/footer.php');?>
