@@ -28,8 +28,8 @@ if (!empty($testo_ricevuto)){
     echo'<p>Hai inviato il seguente testo: <br> "<strong>'.$testo_ricevuto.'</strong>"</p>'
     .   '<p>Ha inviato il testo a <strong>'.$numeroInvi.'</strong> utenti del servizio.</p>';
 } else {
-    echo '<p><strong>Non hai scritto nessun testo</strong></p><br>';
-    echo '<p>Devi inserire nella form il testo da inviare.</p>';   
+    echo'<p><strong>Non hai scritto nessun testo</strong></p><br>'
+    .   '<p>Devi inserire nella form il testo da inviare.</p>';   
 }
 ?>
     </h1>
