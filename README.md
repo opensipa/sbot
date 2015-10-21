@@ -32,7 +32,7 @@ Date: 17/10/2015
 * The token is a string along the lines of 110201543:AAHdqTcvCH1vGWJxfSeofSAs0K5PALDsaw that will be required to authorize the bot and send requests to the Bot API
 * Use the server Linux with Lamp (Php versione 5.5 or heigher with support for curl and mcrypt, mysql 5.5 or heigher and apache)
 * Insert in config.sample.php the Token, user and pwd user mysql and define the path of INFO_PHOTO e SEND_PHOTO
-* Don't delete the config.php and rename config.sample.php
+* If this is your first install rename config.sample.php to config.php
 * For ability mcrypt at php launch in the bash: "php5enmod mcrypt" and restart Apache or Server. This is very import for login in Sbot management.
 * Use telegram_base.sql in folder sql and install in your server Mysql (launch in DB telegram the instruction sql).
 * In /etc/rc.local your server Linux insert: "php /var/www/_PATH_OF_FOLDER_SBOT/sbot/demone.php > /var/www/_PATH_OF_FOLDER_SBOT/sbot/sbotAdmin/log/sbot.log, andr restart Server linux.
