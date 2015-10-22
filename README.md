@@ -18,6 +18,9 @@ Date: 17/10/2015
 
 * Writing tests: Community Opensipa.it
 
+### Browsers certificate ###
+
+* Browser: Internet Explorer 8+ , Firefox, WaterFox
 
 ### Who do I talk to? ###
 
@@ -36,7 +39,7 @@ Date: 17/10/2015
 * For ability mcrypt at php launch in the bash: "php5enmod mcrypt" and restart Apache or Server. This is very important for login in Sbot management.
 * Use telegram_base.sql in folder sql and install in your server Mysql (launch in DB telegram the instruction sql).
 * In /etc/rc.local your server Linux insert: "php /var/www/_PATH_OF_FOLDER_SBOT/sbot/demone.php > /var/www/_PATH_OF_FOLDER_SBOT/sbot/sbotAdmin/log/sbot.log
-* If you want the send images to work directory upload_img must be writable
+* If you want the send images to work directory upload_img must be writable (set to 777)
 * reboot Server linux.
 * Ok, the sbot is run and you to be working. User login: admin Password login: password
 
