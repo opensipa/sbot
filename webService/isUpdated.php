@@ -9,7 +9,7 @@ fclose($fh);
 $ch = curl_init();
 
 // imposto l'URL da interrogare
-curl_setopt($ch, CURLOPT_URL, 'http://5.249.159.105/repo/getVersion.php');
+curl_setopt($ch, CURLOPT_URL, 'http://sbot.opensipa.it/repo/getVersion.php');
 
 // escludo l'header dall'output
 curl_setopt($ch, CURLOPT_HEADER, 0);
@@ -41,7 +41,7 @@ if ($currentVersion > $localVersion) {
 	$ch = curl_init();
 
 	// imposto l'URL da interrogare
-	curl_setopt($ch, CURLOPT_URL, 'http://5.249.159.105/repo/note.htm');
+	curl_setopt($ch, CURLOPT_URL, 'http://sbot.opensipa.it/repo/note.htm');
 
 	// escludo l'header dall'output
 	curl_setopt($ch, CURLOPT_HEADER, 0);
