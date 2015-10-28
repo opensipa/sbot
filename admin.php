@@ -22,12 +22,13 @@ include ('init.php');
                 <textarea name="testo" rows="9" cols="60"placeholder="Inserisci qui la risposta..."></textarea><br>
                 <input type="submit" id="invio" name="invia" value="Invia messaggio">
             </form>
-            <!-- Disable button send after one click-->
+            <!-- Disable button send after one click
             <script type="text/javascript">
                 $('#invio').click(function(){
                 $(this).prop("disabled",true);
                 });
             </script>
+            -->
         </div>
     </div>
     <div id="content" class="clearfix">
@@ -41,12 +42,13 @@ include ('init.php');
                 <!-- Pulsante -->
                 <input name="upload" id="send_image" type="submit" value="Procedi con l'invio" />
             </form> 
-            <!-- Disable button send image after one click-->
+            <!-- Disable button send image after one click
             <script type="text/javascript">
                 $('#send_image').click(function(){
                 $(this).prop("disabled",true);
                 });
             </script>
+            -->
         </div>
 </div>   
 <!-- footer page --> 
