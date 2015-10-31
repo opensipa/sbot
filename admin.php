@@ -1,20 +1,25 @@
-<?php 
-include ('theme/verification.php');
-include ('theme/header.php');
-include ('functions/function.php');
-include ('init.php');
+<?php
+include('theme/verification.php');
+include('theme/header.php');
+include('functions/function.php');
+include('functions/functionDb.php');
+include('config.php');
+include('init.php');
 ?>
-	<div id="content" class="clearfix">
-            <div class="content-row">
-            <h1>Il servizio risulta attivo con il seguente pid:
-            <!-- Questo comando restituisce il pid del processo che deve rimanere in ascolto utilizzato in beta version Sbot only server Linux --> 
-                <?php
-                $pid = shell_exec('pidof php');
-                echo $pid;
-                ?>
-            </h1>					
-            </div>
-	</div>
+    <div id="content" class="clearfix">
+            <h1>Stato del sistema:
+            <?php 
+            // inizializzo cURL
+            $output = controlTelgramState();
+            $risultato = $output[0];
+            $controllo = $output[1];
+            if( $risultato == $controllo ){ ?>
+            Il sistema sta funzionando correttamente. 
+            <?php } else { ?>
+            Il sistema non sta funzionando correttamente, <a href="coda.php">controlla la coda.</a><br>
+            <?php } ?>
+            </h1>			
+    </div>
     <div id="content" class="clearfix">
         <div class="content-row">
             <h1>Per inviare un messaggio usa questo form:</h1>
@@ -51,5 +56,5 @@ include ('init.php');
             -->
         </div>
 </div>   
-<!-- footer page --> 
-<?php include ('theme/footer.php'); ?>
+<!-- Footer page -->
+<?php include ('theme/footer.php');?>

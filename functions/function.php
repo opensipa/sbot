@@ -140,6 +140,33 @@ function printMenuItems($menu)
     }
 }
 
+function controlTelgramState()
+{
+     $ch = curl_init();
+
+            // imposto la URL della risorsa remota da scaricare
+            curl_setopt($ch, CURLOPT_URL, API_URL.'getUpdates');
+
+            // imposto che non vengano scaricati gli header
+            curl_setopt($ch, CURLOPT_HEADER, 0);
+
+            // un paio di timeout per evitare tempi troppo lunghi sul server
+            curl_setopt($handle, CURLOPT_CONNECTTIMEOUT, 5);
+            curl_setopt($handle, CURLOPT_TIMEOUT, 60); 
+            
+            // blocca l'output di curl
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); 
+            
+            // inserisco il risultato su variabile
+            $risultato = curl_exec($ch);
+            curl_close($ch);
+            
+            // output di Telegram site when the result is OK
+            $controllo = "{\"ok\":true,\"result\":[]}";
+            return (array($risultato, $controllo));
+}
+
+
 /*
 //Funzioni di prossima implementazione
 
