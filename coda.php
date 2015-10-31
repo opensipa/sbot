@@ -11,7 +11,7 @@ include('init.php');
 	<div class="content-row">
 
             <h2>
-            <?php 
+            <?php header('Refresh: 20');
             // inizializzo cURL
             $output = controlTelgramState();
             $risultato = $output[0];
