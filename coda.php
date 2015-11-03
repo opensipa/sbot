@@ -17,9 +17,9 @@ include('init.php');
             $risultato = $output[0];
             $controllo = $output[1];
             if( $risultato == $controllo ){
-              echo '<br>Il sistema sta funzionando correttamente.'; 
+              echo '<br>Non ci sono messaggi in coda. Il sistema funziona correttamente.'; 
             } else {
-                echo "<br>Il sistema non sta funzionando correttamente (controlla il demone): <br>";
+                echo "<br>Il sistema non sta funzionando correttamente (controlla il demone). Hai questi messaggi in coda: <br>";
               echo $risultato;  
             }
             ?>			

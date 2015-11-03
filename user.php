@@ -23,7 +23,7 @@ $userActive = dbCountActiveUsers();
                     <tbody> 
                     <?php $activeUsers = dbActiveUsersFull();
                         foreach ($activeUsers as $user) { 
-                            echo '<tr class="lalign">';
+                            echo '<tr class="align">';
                             echo '<td>'.$user['UserID'].'</td>';
                             echo '<td>'.$user['FirstName'].'</td>';
                             echo '<td>'.$user['LastName'].'</td>';

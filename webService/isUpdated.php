@@ -29,6 +29,7 @@ curl_close($ch);
 if ($currentVersion > $localVersion) {
 	// Comunico che esiste una nuova versione
 	$currentVersion = str_replace('_', '.', $currentVersion);
+        $localVersion = str_replace('_', '.', $localVersion);
 	$outVersion .= '
 	<div>
             <strong>Una nuova versione di {S}Bot presente: ' . $currentVersion . '</strong><br />
@@ -58,6 +59,7 @@ if ($currentVersion > $localVersion) {
 	$outVersion.= $noteRilascio;
 } else {
 	// Comunico che va tutto bene così
+        $localVersion = str_replace('_', '.', $localVersion);
 	$outVersion .= '<p><strong>Questa versione di {S}Bot &egrave; aggiornata. Non serve fare nulla.</strong> Stai usando la versione: '.$localVersion.'<br />' . PHP_EOL;
 }
 ?>

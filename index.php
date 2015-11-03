@@ -21,7 +21,7 @@
             </form>
         </div>
         <div align="center">
-            <img src="img/AGPLv3.png" alt="AGPL version 3">
+            <img src="theme/img/AGPLv3.png" alt="AGPL version 3">
             <br>
             <p align="justify">{S}Bot &egrave; una della tante iniziative proposte da OpenSiPA rilasciata gratuitamente nello spirito della massima condivisione e dello sviluppo di una P.A. digitale efficiente.</p>
         </div>

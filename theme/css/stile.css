@@ -4,7 +4,7 @@ html { font-size: 61%; font-family: helvetica, arial, verdana, sans-serif; min-h
 body { background:#2e3131; padding:0; margin:0; }
 
 blockquote {
-	background: url(img/quote.gif) no-repeat;
+	background: url(theme/img/quote.gif) no-repeat;
 	display: block;
 	margin: 0 auto;
 	font-weight: bold;
