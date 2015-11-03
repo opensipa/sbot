@@ -41,15 +41,15 @@ if ($password==$newpassword){
 if (!empty($submit)) {
     dbUpdatePwd($username,$password);
     echo '<div id="content" class="clearfix">';
-	  echo '<div class="content-row">';
-    echo '<h2>Hai cambiato correttamente la password. </h2>';
-    echo '<br>Al prossimo login effettua l\'accesso con la nuova password.';
+	echo '<div class="content-row">';
+        echo '<h2>Hai cambiato correttamente la password. </h2>';
+        echo '<br>Al prossimo login effettua l\'accesso con la nuova password.';
     echo '</div></div>';
   }
 } else  {	
-	  echo '<div id="content" class="clearfix">';
-	  echo '<div class="content-row">';
-    echo '<h2>Hai inserito in modo sbagliato la password reinserisci i dati correttamente: Ritenta!</h2>';
+    echo '<div id="content" class="clearfix">';
+	echo '<div class="content-row">';
+        echo '<h2>Hai inserito in modo sbagliato la password reinserisci i dati correttamente: Ritenta!</h2>';
     echo '</div></div>'; 
   }
 }
