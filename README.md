@@ -1,18 +1,21 @@
 # README #
 
-Date: 17/10/2015
+Date: 03/11/2015
 
 
 ### What is this repository for? ###
 
 * Telegram Bot
-* Version: 0.12.5.b
+* Version: 0.12.9.b
 * name: {S}bot
 
 ### How do I get set up? ###
 
-* Mysql + Php + JQuery + Html
+* Mysql + Php + JQuery + Html with Linux and Windows
 
+### Virtual disk with VmWare Player ###
+
+* Use the vmware player and the virtual disk. Downalod from: http://sbot.opensipa.it/
 
 ### Contribution guidelines ###
 
@@ -20,7 +23,7 @@ Date: 17/10/2015
 
 ### Browsers certificate ###
 
-* Browser: Internet Explorer 8+ , Firefox, WaterFox
+* Browser: Internet Explorer 8+ , Firefox, WaterFox, Chrome
 
 ### Who do I talk to? ###
 
@@ -31,6 +34,7 @@ Date: 17/10/2015
 
 ### How to install? ###
 
+* Linux install:
 * Create one Bot, use this guide: https://core.telegram.org/bots#botfather and generate the Token:
 * The token is a string along the lines of 110201543:AAHdqTcvCH1vGWJxfSeofSAs0K5PALDsaw that will be required to authorize the bot and send requests to the Bot API
 * Use the server Linux with Lamp (Php version 5.5 or higher with support for curl and mcrypt (apt-get install php5-mcrypt and /etc/init.d/apache2 restart), mysql 5.5 or higher and apache)
@@ -43,8 +47,14 @@ Date: 17/10/2015
 * reboot Server linux.
 * Ok, the sbot is run and you to be working. User login: admin Password login: password
 
+* Windows install:
+* For install with Windows use the guide for Linux Server, but not configure rc.local. Configure Scheduled Tasks
+
 
 ### Changelog ###
+
+### 03/11/2015###
+* Bug Fix
 
 ### 17/10/2015###
 * New table style, add possibility disable user in admin page setting
