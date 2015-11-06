@@ -15,7 +15,7 @@ Date: 03/11/2015
 
 ### Virtual disk with VmWare Player ###
 
-* Use the vmware player and the virtual disk. Downalod from: http://sbot.opensipa.it/
+* Use the vmware player and the virtual disk. Downalod from: http://sbot.opensipa.it/ the virtual machine for run {S}bot in 5 minutes
 
 ### Contribution guidelines ###
 
@@ -23,7 +23,7 @@ Date: 03/11/2015
 
 ### Browsers certificate ###
 
-* Browser: Internet Explorer 8+ , Firefox, WaterFox, Chrome
+* Browser: Internet Explorer 8+ , Firefox, WaterFox, Chrome, Safari
 
 ### Who do I talk to? ###
 
@@ -36,7 +36,7 @@ Date: 03/11/2015
 
 * Linux install:
 * Create one Bot, use this guide: https://core.telegram.org/bots#botfather and generate the Token:
-* The token is a string along the lines of 110201543:AAHdqTcvCH1vGWJxfSeofSAs0K5PALDsaw that will be required to authorize the bot and send requests to the Bot API
+* The token is a string along the lines of 110201543:AAHdqTcvCH1vGWJxfSeofSAs0K5PALD saw that will be required to authorize the bot and send requests to the Bot API
 * Use the server Linux with Lamp (Php version 5.5 or higher with support for curl and mcrypt (apt-get install php5-mcrypt and /etc/init.d/apache2 restart), mysql 5.5 or higher and apache)
 * Insert in config.sample.php the Token, user and pwd user mysql and define the path of INFO_PHOTO e SEND_PHOTO
 * If this is your first install rename config.sample.php to config.php
@@ -48,7 +48,7 @@ Date: 03/11/2015
 * Ok, the sbot is run and you to be working. User login: admin Password login: password
 
 * Windows install:
-* For install with Windows use the guide for Linux Server, but not configure rc.local. Configure Scheduled Tasks
+* For install with Windows use the guide for Linux Server, but not configure rc.local. Configure Scheduled Tasks.
 
 
 ### Changelog ###
