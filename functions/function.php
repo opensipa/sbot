@@ -70,7 +70,7 @@ function apiRequest($method, $parameters) {
 
   if ($http_code >= 500) {
     // we wouldn't want to DDOS the server if something goes wrong
-    sleep(100); //default 10
+    sleep(10); //default 10
     return false;
   } else if ($http_code != 200) {
     $response = json_decode($response, true);

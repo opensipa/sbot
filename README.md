@@ -43,7 +43,8 @@ Date: 17/11/2015
 * If this is your first install rename config.sample.php to config.php
 * For ability mcrypt at php launch in the bash: "php5enmod mcrypt" and restart Apache or Server. This is very important for login in Sbot management.
 * Use telegram_base.sql in folder sql and install in your server Mysql (launch in DB telegram the instruction sql).
-* In /etc/rc.local your server Linux insert: "php /var/www/_PATH_OF_FOLDER_SBOT/sbot/demone.php > /var/www/_PATH_OF_FOLDER_SBOT/sbot/sbotAdmin/log/sbot.log
+* In /etc/rc.local your server Linux insert: "php /var/www/_PATH_OF_FOLDER_SBOT/sbot/demone.php > /var/www/_PATH_OF_FOLDER_SBOT/sbot/sbotAdmin/log/sbot.log & exit 0" (delete "")
+* "exit 0" for force the exit
 * If you want the send images to work directory upload_img must be writable (set to 777)
 * reboot Server linux.
 * Ok, the sbot is run and you to be working. User login: admin Password login: password
@@ -56,6 +57,7 @@ Date: 17/11/2015
 
 ### 22/11/2015###
 * Notification of new posts by email. Ability to start and stop the demon. Ability to set parameters via mail interface.
+* Modify the script for start demone: "php /var/www/_PATH_OF_FOLDER_SBOT/sbot/demone.php > /var/www/_PATH_OF_FOLDER_SBOT/sbot/sbotAdmin/log/sbot.log & exit 0"
 
 ### 03/11/2015###
 * Bug Fix
