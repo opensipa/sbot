@@ -1,2 +1,0 @@
-* * * * * php scripts/test.php
-59 * * * * php -r "require_once('cron.config.php'); mail(\$adminEmail, 'PHPCron report', strftime('PHPCron on server ' . \$_SERVER['SERVER_NAME'] . ' is operating normally at %T %Z on %a %d %B %Y.'));"
