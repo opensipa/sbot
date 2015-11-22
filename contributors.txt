@@ -1,5 +1,6 @@
 
-Matteo Guion (www.guion78.com)
-Massimo Gorla
-Giampiero Marconetto
-Timothy Redaelli
+* Contributors of Code:
+* Matteo Guion (www.guion78.com)
+* Massimo Gorla
+* Timothy Redaelli
+* Giampiero Marconetto
