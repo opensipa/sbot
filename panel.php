@@ -129,12 +129,12 @@ if (!empty($submit)) {
     if (empty($error)){
         echo'<div id="content" class="clearfix">
                 <div class="content-row">
-                <h2>Hai configurato correttamente la mail</h2>
+                <h2>Hai configurato correttamente la mail. Controlla se ti &egrave; arrivato il messaggio via e-mail.</h2>
             </div></div>'; 
         } else {	
         echo'<div id="content" class="clearfix">
                 <div class="content-row">
-                <h2>Errore generato: '.$error.'</h2>
+                <h2>Errore: '.$error.'.</h2>
             </div></div>'; 
         }
     }
