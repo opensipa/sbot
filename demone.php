@@ -1,11 +1,11 @@
 <?php
 /*
- * Ultimate revision 06/10/2015
+ * Ultimate revision 15/11/2015
  */
-require ('config.php');
-include('init.php');
+require('config.php');
 require('functions/function.php');
 require('functions/functionDb.php');
+require('functions/functionInit.php');
 
 /*
  * Function that processes incoming message
@@ -98,10 +98,9 @@ function processMessage($message) {
         /*
          *  Function that stores all messages that users send through extra bot
          */
-        apiRequest("sendMessage", array('chat_id' => $chat_id, "reply_to_message_id" => $message_id, "text" => MESSAGE_NULL));
-        dbLogTextOn ($chat_id,$first_name_id,$message_id,$text); 
+        initSendAnswer($chat_id,$first_name_id,$message_id,$text);
     }
-    } else {
+  } else {
     apiRequest("sendMessage", array('chat_id' => $chat_id, "text" => MESSAGE_SCUSE));
   }
 }
@@ -123,9 +122,17 @@ while (true) {
     continue;
   }
   foreach ($updates as $update) {
-    $last_id = $update["update_id"] + 1;
-    if (isset($update["message"])) {
-      processMessage($update["message"]);
+      /*
+         * Start/Stop Demone
+       */
+    $status=dbDemoneStatus();
+    if($status=="1"){
+        $last_id = $update["update_id"] + 1;
+        if (isset($update["message"])) {
+            processMessage($update["message"]);
+            }
+    }else{
+           sleep(15); 
     }
   }
 }

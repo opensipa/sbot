@@ -35,7 +35,7 @@ include ('functions/passwordHash.php');
             .   '<select name="stato">'
             .       '<option value="1">Attiva</option>'
             .       '<option value="0">Disattiva</option>'
-            .       '</select>'
+            .   '</select>'
             .   '<input type="submit" name="Aggiorna" value="Aggiorna" />'
             .   '</form>'
             .   '</tr>';

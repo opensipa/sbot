@@ -11,19 +11,20 @@ include('init.php');
 	<div class="content-row">
 
             <h2>
-            <?php header('Refresh: 20');
+            <?php header('Refresh: 10');
             // inizializzo cURL
             $output = controlTelgramState();
             $risultato = $output[0];
             $controllo = $output[1];
             if( $risultato == $controllo ){
-                echo '<br>Non ci sono messaggi in coda. Il sistema funziona correttamente.'; 
+                echo '<br>Non ci sono messaggi in coda. Il sistema funziona correttamente.</h2>'; 
             } else {
-                echo '<br>Il sistema non st&agrave funzionando correttamente (controlla il demone). Hai questi messaggi in coda: <br>';
+                echo'<br>Il sistema non st&agrave funzionando correttamente (controlla il demone).</h2><br>'
+                .   'Hai questi messaggi in coda: <br><br>';
                 echo $risultato;  
             }
             ?>			
-            </h2> 
+            
 	</div>			
 </div>
 <!-- Footer page -->

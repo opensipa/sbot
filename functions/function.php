@@ -1,4 +1,11 @@
 <?php
+/* 
+ * Funzioni Demone
+ * 
+ * 
+ * 
+ */
+
 // Launcher Demone
 function avvio(){
     shell_exec('php ../demone.php'); // questo demone deve sempre rimanere in ascolto per far funzionare il bot
@@ -6,7 +13,7 @@ function avvio(){
   }
   
 // Funzioni di scrittura per file LOG errori
-// Write
+// Write error log
 function writeLog($message){
  // Posiziona il puntatore alla fine del file indicato
  // Se il file non esiste prova a crearlo
@@ -115,30 +122,14 @@ function sendPicture($chat_id, $photo) {
  //echo $output;
 }
 
-
 /**
- * topMenu
+ * controlTelgramState
  * 
  * disegna il menu come lista puntata
  * 
- * @param array $menu array associativo con descrizione del link => link
+ * @param array $risultato, $controllo array associativo allo stato della coda Telegram
  * 
  */
-function topMenu($menu)
-{
-    echo '<div>';
-    echo '<ul id="admin_menu">';
-    printMenuItems($menu);
-    echo '</ul>';
-    echo '</div>';
-}
-
-function printMenuItems($menu)
-{
-    foreach ($menu as $nome=>$uri) {
-    echo '<li><a href="'.$uri.'">'.$nome.'</a></li> ';
-    }
-}
 
 function controlTelgramState()
 {

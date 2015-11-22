@@ -1,7 +1,7 @@
 <?php include 'theme/header.php'; ?>
     <div id="content" class="clearfix">
         <div class="content-row">
-            <h2>Per accedere alla piattaforma di gestione di {S}bot devi fare il Login:</h2>        
+            <h2>Per accedere alla piattaforma di gestione di devi fare il Login:</h2>        
             <form id='login' action='login.php' method='post' accept-charset='UTF-8'>
             <fieldset >
             <legend>Login</legend>
@@ -23,7 +23,10 @@
         <div align="center">
             <img src="theme/img/AGPLv3.png" alt="AGPL version 3">
             <br>
-            <p align="justify">{S}Bot &egrave; una della tante iniziative proposte da OpenSiPA rilasciata gratuitamente nello spirito della massima condivisione e dello sviluppo di una P.A. digitale efficiente.</p>
+            <p align="center">NEWS</p>
+            <p align="justify">{S}Bot &egrave; rilasciato gratuitamente nello spirito della massima condivisione e dello sviluppo di una P.A. digitale efficiente.</p>
+            <p align="justify">{S}Bot &egrave; testato e sviluppato per poter funzionare su tutte le piattaforme.</p>
+            <p align="justify">Ultima versione testata da <strong>Matteo Guion.</strong></p>
         </div>
     </div>
 <!-- Footer page -->

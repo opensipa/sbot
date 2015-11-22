@@ -1,9 +1,5 @@
 <?php
 
-// TODO: 
-// Funzione che salva e carica i parametri su DB
-//
-
 /* 
  * Funzioni database
  * 
@@ -53,7 +49,7 @@ function dbChangeSignatureAdmin ($username, $signature)
 {
 try {
     $conn=getDbConnection(); 
-    $sql="update admins set signature=:signature where username=:username";
+    $sql="UPDATE admins SET signature=:signature WHERE username=:username";
     $stmt = $conn->prepare($sql);
     $stmt->bindValue(':username',$username, PDO::PARAM_STR);
     $stmt->bindValue(':signature',$signature, PDO::PARAM_STR);
@@ -79,7 +75,7 @@ function dbChangeStateAdmin ($id, $active)
 {
 try {
     $conn=getDbConnection(); 
-    $sql="update admins set active=:active where id=:id";
+    $sql="UPDATE admins SET active=:active WHERE id=:id";
     $stmt = $conn->prepare($sql);
     $stmt->bindValue(':id',$id, PDO::PARAM_STR);
     $stmt->bindValue(':active',$active, PDO::PARAM_STR);
@@ -163,8 +159,7 @@ function dbUpdatePwd($username,$password)
 {
     try {
         $conn=getDbConnection();
-        //update password in to mysql with sha-256
-        $sql="update admins set password=:password where username=:username";
+        $sql="UDPATE admins SET password=:password WHERE username=:username";
         $stmt = $conn->prepare($sql);
         $stmt->bindValue(':username',$username, PDO::PARAM_STR);
         $stmt->bindValue(':password',create_hash($password), PDO::PARAM_STR);    
@@ -195,7 +190,7 @@ function dbLogUserStart ($chat,$first_name,$last_name, $username)
         $stmt->execute();
         if ($id=$stmt->fetchColumn(0)) {
             // Se l'utente gia conosciuto cambio il suo stato mettendolo a 1
-            $sql = "update utenti set StatoUtente=1, DataInsert=now() where UserID=:UserID and StatoUtente=0";
+            $sql = "UPDATE utenti SET StatoUtente=1, DataInsert=now() where UserID=:UserID and StatoUtente=0";
             $stmt = $conn->prepare($sql);
             $stmt->bindValue(':UserID',$id , PDO::PARAM_STR);
             $stmt->execute();
@@ -225,7 +220,7 @@ function dbLogUserStop ($chat)
 {
     try {
         $conn=getDbConnection();
-        $sql = "update utenti set StatoUtente=0 where UserID=:UserID";
+        $sql = "UPDATE utenti SET StatoUtente=0 WHERE UserID=:UserID";
         $stmt = $conn->prepare($sql);
         $stmt->bindValue(':UserID',$chat,PDO::PARAM_STR);
         $stmt->execute();
@@ -265,7 +260,6 @@ function dbActiveUsers()
  * 
  * @return type Array 
  */
-
 function dbCountActiveUsers()
 {
     try {
@@ -287,7 +281,6 @@ function dbCountActiveUsers()
  * 
  * @return type Array 
  */
-
 function dbActiveUsersFull()
 {
     try {
@@ -311,7 +304,6 @@ function dbActiveUsersFull()
  * 
  * @return type Array 
  */
-
 function dbLogTextOn ($chat,$first_name,$message,$text)
 {
     try {
@@ -369,7 +361,7 @@ function dbLogTextUpdate ($ID)
 {
     try {
         $conn=getDbConnection();
-        $sql = "update utenti_message set Archive=0 where ID=:ID";
+        $sql = "UPDATE utenti_message SET Archive=0 WHERE ID=:ID";
         $stmt = $conn->prepare($sql);
         $stmt->bindValue(':ID',$ID,PDO::PARAM_STR);
         $stmt->execute();
@@ -414,7 +406,6 @@ function dbLogSearchFull($type, $param1)
  * 
  * @return type Array 
  */
-
 function dbLogTextSend ($text, $signature,$MessageID, $Utenti_messageID)
 {
     try {
@@ -462,11 +453,11 @@ function dbLogTextFullSend()
  * 
  * @return type Error 
  */
-function dbLogTextUpdateSend ($ID)
+function dbLogTextUpdateSend($ID)
 {
     try {
         $conn=getDbConnection();
-        $sql = "update message_send set Archive=0 where ID=:ID";
+        $sql = "UPDATE message_send SET Archive=0 WHERE ID=:ID";
         $stmt = $conn->prepare($sql);
         $stmt->bindValue(':ID',$ID,PDO::PARAM_STR);
         $stmt->execute();
@@ -544,6 +535,100 @@ function dbJoinMessageSend($Message)
 }
 
 /**
+ * Function dbDemoneStatus
+ * 
+ * 
+ * @return type boolean 
+ */
+function dbDemoneStatus()
+{
+    try {
+        $conn=getDbConnection();
+        $sql = "SELECT Active FROM `software_config` WHERE SoftDesc = 'Demone' AND Code = 'status'";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+        $value=$stmt->fetch(PDO::FETCH_ASSOC);
+    } catch (Exception $ex) {
+        return $ex->getMessage();
+    }
+    return ($value['Active']);
+}
+
+/**
+ * Function dbParamExtraction
+ * Ritorna tutti i valori dei parametri per il settaggio
+ * 
+ * @return type Array 
+ */
+function dbParamExtraction($function)
+{
+    try {
+        $conn=getDbConnection();
+        $sql = "SELECT Code, Param, SoftDesc, Active, Log, ID, Note FROM `software_config` WHERE $function";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+        $tableParam=array();
+        while ($riga=$stmt->fetch(PDO::FETCH_ASSOC)) {
+            $tableParam[]=$riga;            
+        }
+    } catch (Exception $ex) {
+        return $ex->getMessage();
+    }
+    return ($tableParam);
+}
+
+/**
+ * Function dbParamChange
+ * Cambia i valori dei parametri 
+ * 
+ * @return 0 
+ */
+function dbParamUpdate($ID, $software, $code, $param, $state, $user, $note)    
+{
+    try {
+        $conn=getDbConnection();
+        $sql = "UPDATE software_config SET SoftDesc=:software, Code=:code, Param=:param, Active=:state, Log=:user, Note=:note WHERE ID=:ID";
+        $stmt = $conn->prepare($sql);
+        $stmt->bindValue(':ID',$ID, PDO::PARAM_STR);
+        $stmt->bindValue(':software',$software, PDO::PARAM_STR);
+        $stmt->bindValue(':code',$code, PDO::PARAM_STR);
+        $stmt->bindValue(':param',$param, PDO::PARAM_STR);
+        $stmt->bindValue(':state',$state, PDO::PARAM_STR);
+        $stmt->bindValue(':note',$note, PDO::PARAM_STR);
+        $stmt->bindValue(':user',$user, PDO::PARAM_STR);
+        $stmt->execute();
+        } catch (Exception $ex) {
+            return $ex->getMessage();
+            }
+        return 0;
+}
+
+/**
+ * Function dbParamInsert
+ * Inserisce tutti i valori dei parametri per il settaggio
+ * 
+ * @return type Array 
+ */
+function dbParamInsert($software, $param, $valore, $attivo, $user, $note)
+{
+    try {
+        $conn=getDbConnection();
+        $sql = "insert software_config set SoftDesc=:software, Code=:param, Param=:valore, Active=:active, Note=:note, Log=:user";
+        $stmt = $conn->prepare($sql);
+        $stmt->bindValue(':software',$software, PDO::PARAM_STR);
+        $stmt->bindValue(':param',$param, PDO::PARAM_STR);
+        $stmt->bindValue(':valore',$valore, PDO::PARAM_STR);
+        $stmt->bindValue(':active',$attivo, PDO::PARAM_STR);
+        $stmt->bindValue(':user',$user, PDO::PARAM_STR);
+        $stmt->bindValue(':note',$note, PDO::PARAM_STR);
+        $stmt->execute();
+    } catch (Exception $ex) {
+        return $ex->getMessage();
+    }
+    return 0;
+}
+
+/**
  * getDbConnection
  * 
  * Funzione che tenta di aprire il database e ritorna una connessione al database funzionante, oppure un messaggio di errore
@@ -551,7 +636,6 @@ function dbJoinMessageSend($Message)
  * @return \PDO
  * @throws Exception
  */
-
 function getDbConnection() {
     // Apertura connessione al database
     // NB: Non necessita di chiusura connessione - vedi http://php.net/manual/en/pdo.connections.php

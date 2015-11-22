@@ -1,12 +1,12 @@
 # README #
 
-Date: 03/11/2015
+Date: 17/11/2015
 
 
 ### What is this repository for? ###
 
 * Telegram Bot
-* Version: 0.12.9.b
+* Version: 0.13.0.b
 * name: {S}bot
 
 ### How do I get set up? ###
@@ -19,7 +19,7 @@ Date: 03/11/2015
 
 ### Contribution guidelines ###
 
-* Writing tests: Community Opensipa.it
+* Writing tests: Community
 
 ### Browsers certificate ###
 
@@ -27,10 +27,11 @@ Date: 03/11/2015
 
 ### Who do I talk to? ###
 
-* sbot.opensipa.it
+* http://sbot.opensipa.it
 * Assistance: sbot.opensipa@gmail.com
-* Search @opensipa_bot in Telegram
-* Code by Guion Matteo e Massimo Gorla
+* Search the bot in Telegram
+* Source and Code: Guion Matteo (www.guion78.com)
+* Contributors: Giampiero Marconetto, Massimo Gorla, Timothy Redaelli
 
 ### How to install? ###
 
@@ -52,6 +53,9 @@ Date: 03/11/2015
 
 
 ### Changelog ###
+
+### 22/11/2015###
+* Notification of new posts by email. Ability to start and stop the demon. Ability to set parameters via mail interface.
 
 ### 03/11/2015###
 * Bug Fix
