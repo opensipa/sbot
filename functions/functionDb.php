@@ -587,7 +587,7 @@ function dbParamUpdate($ID, $software, $code, $param, $state, $user, $note)
 {
     try {
         $conn=getDbConnection();
-        $sql = "UPDATE software_config SET SoftDesc=:software, Code=:code, Param=:param, Active=:state, Log=:user, Note=:note WHERE ID=:ID";
+        $sql = "UPDATE software_config SET SoftDesc=:software, Code=:code, Param=:param, Active=:state, Log=:user, Note=:note, DateUpdt=now() WHERE ID=:ID";
         $stmt = $conn->prepare($sql);
         $stmt->bindValue(':ID',$ID, PDO::PARAM_STR);
         $stmt->bindValue(':software',$software, PDO::PARAM_STR);
@@ -613,7 +613,7 @@ function dbParamInsert($software, $param, $valore, $attivo, $user, $note)
 {
     try {
         $conn=getDbConnection();
-        $sql = "insert software_config set SoftDesc=:software, Code=:param, Param=:valore, Active=:active, Note=:note, Log=:user";
+        $sql = "insert software_config set SoftDesc=:software, Code=:param, Param=:valore, Active=:active, Note=:note, Log=:user, DateUpdt=now()";
         $stmt = $conn->prepare($sql);
         $stmt->bindValue(':software',$software, PDO::PARAM_STR);
         $stmt->bindValue(':param',$param, PDO::PARAM_STR);
