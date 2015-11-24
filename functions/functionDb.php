@@ -30,7 +30,7 @@ try {
     $stmt->bindValue(':password',create_hash($password), PDO::PARAM_STR);    
     $stmt->execute();
   } catch (Exception $ex) {
-    echo $ex;
+    //return error for DB
     return '1';
   }
 } 

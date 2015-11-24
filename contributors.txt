@@ -1,6 +1,6 @@
 
 * Contributors of Code:
 * Matteo Guion (www.guion78.com)
-* Massimo Gorla
-* Timothy Redaelli
-* Giampiero Marconetto
+* Massimo Gorla (Mysql connection, query)
+* Timothy Redaelli (PasswordHash function) 
+* Giampiero Marconetto (Send Mail)

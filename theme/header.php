@@ -30,7 +30,6 @@
                 . '<ul>'
                 . '<li><a href="coda.php">Coda Telegram</a></li>'
                 . '<li><a href="panel.php">Gestione Parametri</a></li>'
-                . '<li><a href="#">Pianifica invio</a></li>'
                 . '<li><a href="changePwd.php">Cambio password</a></li>'
                 . '<li><a href="addAdmin.php">Gestione utenza</a></li>'
                 . '</ul></li>';

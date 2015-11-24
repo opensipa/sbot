@@ -4,12 +4,11 @@ require ('theme/header.php');
 require ('functions/function.php');
 require ('functions/functionDb.php');
 require ('config.php');
-require ('init.php');
 include ('functions/passwordHash.php');
 ?>
 <div id="content" class="clearfix">
     <div class="content-row">
-    <h2>Utenti amministratori presenti in {S}BOT:</h2>
+    <h2>Utenti amministratori presenti nel BOT:</h2>
     <table border="1" align="left">
         <tr>
           <td>Nome Utente</td>
@@ -42,6 +41,8 @@ include ('functions/passwordHash.php');
             }
         ?>
     </table>
+    </div>
+
 <?php
 if (isset($_POST["Aggiorna"])) {
     $idUser = filter_input(INPUT_POST, 'idUser', FILTER_SANITIZE_STRING);
@@ -67,9 +68,10 @@ if (isset($_POST["Aggiorna"])) {
     }
 }
 ?>
-    </div>
+</div>
+    <div id="content" class="clearfix">
     <div class="content-row">
-    <h2>Per inserire un nuovo utente in {S}bot compila questi campi:</h2>
+    <h2>Per inserire un nuovo utente compila questi campi:</h2>
         <form id='pwd' action='addAdmin.php' method='post' accept-charset='UTF-8'>
         <fieldset>
             <legend>Inserisci nuovo utente</legend>
@@ -92,29 +94,42 @@ if (isset($_POST["Aggiungi"])) {
     $repeatePassword=filter_input(INPUT_POST, 'repeatePassword', FILTER_SANITIZE_STRING);
     $signature=filter_input(INPUT_POST, 'signature', FILTER_SANITIZE_STRING);
     $aggiungi = filter_input(INPUT_POST, 'Aggiungi', FILTER_SANITIZE_STRING);
-    //controllo se i campi sono compilati
-    if (!empty($aggiungi)) {
-        if ($repeatePassword == $password){
-        // Function to insert new user
-        if( dbInsertAdmin ($username, $password, $signature) == 1){
-            echo'<div class="content-row">'
-            .   '<h2>Hai inserito un utente gi&agrave; presente nella banca dati. Scegli una username differente.</h2>'
-            .   '</div></div>';
-          } else {
-            echo'<div class="content-row">'
-            .   '<h2>Hai inserito correttamente l\'utente: '.$username.'</h2>'
-            .   '<br>Al prossimo login puoi effettuare l\'accesso con il nuovo utente.'
-            .   '</div></div>';
+    //Array of control input for any field
+    $controllo = array($username,$password,$repeatePassword,$signature);
+    foreach($controllo as $item){
+        if(empty($item)){ 
+         $error = "Non hai compilato tutti i campi per poter inserire il nuovo utente.";   
         }
+    }         
+    if (!empty($aggiungi)) {
+        if(!empty($error)){ 
+            echo'<div class="content-row">'
+            .   '<h2>'.$error.'</h2>'
+            .   '</div>';
         } else {
-            echo '<div id="content" class="clearfix">'
-            .   '<div class="content-row">'
-            .   '<h2>Hai inserito la password in modo errato, riprova nuovamente.</h2>'
-            .   '</div></div>';
+            if ($repeatePassword == $password){
+            // Function to insert new user
+            if( dbInsertAdmin ($username, $password, $signature) == 1){
+                echo'<div class="content-row">'
+                .   '<h2>Hai inserito un utente gi&agrave; presente nella banca dati. Scegli un username differente.</h2>'
+                .   '</div>';
+            } else {
+                echo'<div class="content-row">'
+                .   '<h2>Hai inserito correttamente l\'utente: '.$username.'</h2>'
+                .   '<br>Al prossimo login puoi effettuare l\'accesso con il nuovo utente. Aggiorna la pagina per vedere le modifiche agli elenchi.'
+                .   '</div>';
+            }
+            } else {
+                echo'<div class="content-row">'
+                .   '<h2>Hai inserito la password in modo errato, riprova nuovamente.</h2>'
+                .   '</div>';
+            }
         }
     }
 }
 ?>
+</div>
+<div id="content" class="clearfix">
     <div class="content-row">
     <h2>Per cambiare la firma in {S}bot compila questo campo:</h2>
         <form id='changeSignature' action='addAdmin.php' method='post' accept-charset='UTF-8'>
@@ -132,14 +147,24 @@ if (isset($_POST["Cambia"])) {
     $signature=filter_input(INPUT_POST, 'signature', FILTER_SANITIZE_STRING);
     $cambia = filter_input(INPUT_POST, 'Cambia', FILTER_SANITIZE_STRING);
     if (!empty($cambia)) { 
+        if(empty($signature)){
+        echo'<div class="content-row">'
+            .   '<p><br><br>'
+            .   '<h2>Devi compilare il campo della firma. Non pu&ograve; essere vuoto.</h2>'
+            .   '</p></div>';    
+        } else {
         if(dbChangeSignatureAdmin ($username, $signature) == 1){
             echo'<div class="content-row">'
+            .   '<p><br><br>'
             .   '<h2>Sono accorsi degli errori, ritenta il cambio firma.</h2>'
-            .   '</div>';
+            .   '</p></div>';
           } else {
             echo '<div class="content-row">'
-            .   '<h2>Hai inserito correttamente la nuova firma: '.$signature.' per l\'utente '.$username.'</h2>'
-            .   '</div>';
+            .   '<p><br><br>'
+            .   '<h2>Hai inserito la firma: "'.$signature.'" per l\'utente '.$username.'</h2>'
+            .   '<br>Aggiorna la pagina per vedere le modifiche.'
+            .   '</p></div>';
+        }
         }
     }   
 }
