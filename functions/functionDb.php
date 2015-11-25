@@ -159,7 +159,7 @@ function dbUpdatePwd($username,$password)
 {
     try {
         $conn=getDbConnection();
-        $sql="UDPATE admins SET password=:password WHERE username=:username";
+        $sql="UPDATE admins SET password=:password WHERE username=:username";
         $stmt = $conn->prepare($sql);
         $stmt->bindValue(':username',$username, PDO::PARAM_STR);
         $stmt->bindValue(':password',create_hash($password), PDO::PARAM_STR);    
@@ -167,6 +167,7 @@ function dbUpdatePwd($username,$password)
         } catch (Exception $ex) {
         return $ex->getMessage();
   }
+  return 0;
 }
 /**
  * 
