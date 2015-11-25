@@ -15,7 +15,6 @@ include ('functions/passwordHash.php');
             <fieldset >
             <legend>Cambio password</legend>
             <input type='hidden' name='submitted' id='submitted' value='1'/>
-            <input type='hidden' name='username' id='username' value=<?php echo $_SESSION['username']?> maxlength="50" />
             <label for='password' >Nuova Password*: </label>
             <input type='password' name='password' id='password' maxlength="50" />
             <label for='newpassword' >Ripeti Password*: </label>
@@ -30,7 +29,7 @@ include ('functions/passwordHash.php');
 
 if (isset($_POST["Submit"])) {
 
-$username=filter_input(INPUT_POST, 'username', FILTER_SANITIZE_EMAIL);
+$username=$_SESSION['username'];
 $password=filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
 $newpassword=filter_input(INPUT_POST, 'newpassword', FILTER_SANITIZE_STRING);
 $submit = filter_input(INPUT_POST, 'Submit', FILTER_SANITIZE_STRING);
