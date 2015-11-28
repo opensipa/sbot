@@ -3,9 +3,9 @@ include ('theme/verification.php');
 include ('theme/header.php');
 include ('functions/function.php');
 include ('functions/functionDb.php');
-include ('functions/functionInit.php');
+include ('functions/functionfunctions/functionInit.php');
 include ('config.php');
-include ('init.php');
+include ('functions/functionInit.php');
 include ('functions/passwordHash.php');
 ?>
 <div id="content" class="clearfix">

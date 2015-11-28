@@ -3,4 +3,4 @@
 * Matteo Guion (www.guion78.com)
 * Massimo Gorla (Mysql connection, query)
 * Timothy Redaelli (PasswordHash function) 
-* Giampiero Marconetto (Send Mail)
+* Giampiero Marconetto (Send Mail, Testing)

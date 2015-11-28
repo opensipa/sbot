@@ -4,7 +4,7 @@ include('theme/header.php');
 include('functions/function.php');
 include('functions/functionDb.php');
 include('config.php');
-include('init.php');
+include('functions/functionInit.php');
 ?>
 
 <div id="content" class="clearfix">

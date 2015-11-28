@@ -4,7 +4,10 @@ include ('theme/header.php');
 include ('functions/function.php');
 include ('functions/functionDb.php');
 include ('config.php');
-include ('init.php');
+include ('functions/functionInit.php');
+?>
+<?php
+//User active
 $userActive = dbCountActiveUsers();
 ?>
 	<div id="content" class="clearfix">

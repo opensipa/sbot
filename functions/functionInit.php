@@ -110,6 +110,20 @@ function sendMail($subject, $corpo_messaggio) {
 }
 
 /**
+ * buttonDemone
+ * 
+ * gestisce i menù del demone
+ * 
+ * @param array 
+ * 
+ */
+
+function buttonDemone(){
+  $array[] = dbParamExtraction('SoftDesc = "Button" AND Active = 1'); 
+}
+
+
+/**
  * topMenu
  * 
  * disegna il menu come lista puntata
@@ -132,3 +146,11 @@ function printMenuItems($menu)
     echo '<li><a href="'.$uri.'">'.$nome.'</a></li> ';
     }
 }
+
+$menu = array(
+    'Utenti attivi in {S}BOT'=>'user.php',
+    'Coda dal sito Telegram'=>'coda.php',
+    'Messaggi degli utenti'=>'message.php',
+    'Messaggi inviati'=>'fullSend.php',
+    'Cambio password'=>'pwd.php'
+    );

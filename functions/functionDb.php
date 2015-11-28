@@ -565,7 +565,7 @@ function dbParamExtraction($function)
 {
     try {
         $conn=getDbConnection();
-        $sql = "SELECT Code, Param, SoftDesc, Active, Log, ID, Note FROM `software_config` WHERE $function";
+        $sql = "SELECT Code, Param, SoftDesc, Active, Log, ID, Note, Number FROM `software_config` WHERE $function";
         $stmt = $conn->prepare($sql);
         $stmt->execute();
         $tableParam=array();

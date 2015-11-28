@@ -6,12 +6,12 @@ Date: 17/11/2015
 ### What is this repository for? ###
 
 * Telegram Bot
-* Version: 0.13.0.b
+* Version: 0.13.1
 * name: {S}bot
 
 ### How do I get set up? ###
 
-* Mysql + Php + JQuery + Html with Linux and Windows
+* Mysql + Php + JQuery + Html with Linux or Windows
 
 ### Virtual disk with VmWare Player ###
 
@@ -30,8 +30,12 @@ Date: 17/11/2015
 * http://sbot.opensipa.it
 * Assistance: sbot.opensipa@gmail.com
 * Search the bot in Telegram
-* Source and Code: Guion Matteo (www.guion78.com)
-* Contributors: Giampiero Marconetto, Massimo Gorla, Timothy Redaelli
+* Code and conceive:
+* Guion Matteo (www.guion78.com)
+* Contributors of projects:
+* Massimo Gorla (Mysql connection, php code)
+* Timothy Redaelli (PasswordHash function) 
+* Giampiero Marconetto (Send Mail for alert, Testing - very hot testing -)
 
 ### How to install? ###
 
@@ -53,7 +57,7 @@ Date: 17/11/2015
 * Ok, the sbot is run and you to be working. User login: admin Password login: password
 
 * Windows install:
-* For install with Windows use the guide for Linux Server, but not configure rc.local. Configure Scheduled Tasks.
+* For install with Windows use the guide for Linux Server, but not configure rc.local. Configure Scheduled Tasks in Windows panel.
 
 
 ### Changelog ###
@@ -107,5 +111,3 @@ Date: 17/11/2015
 * Add page of insert multiuser
 * Insert in single message signature of user to send message
 * Update table admins and send_message (use 1_update.sql)
-
-

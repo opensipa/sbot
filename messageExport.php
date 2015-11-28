@@ -1,9 +1,11 @@
 <?php 
 include ('theme/verification.php');
 include ('config.php');
-include ('init.php');
+include ('functions/functionInit.php');
 include ('functions/function.php');
 include ('functions/functionDb.php');
+
+//Config export
 $filename="sheet.xls";
 header ("Content-Type: application/vnd.ms-excel");
 header ("Content-Disposition: inline; filename=$filename");
@@ -15,7 +17,7 @@ header ("Content-Disposition: inline; filename=$filename");
         <meta name="copyright" content="Copyright 2015 © Opensipa">
         <meta name="language" content="italian">
         <meta name="email" content="opensipa[at]gmail[dot]com @gmail">
-        <title>{S}Bot - Telegram Bot by OpenSipa</title>
+        <title>Telegram Bot</title>
     </head>
     <body>
     <div id="content" class="clearfix">
@@ -25,7 +27,7 @@ header ("Content-Disposition: inline; filename=$filename");
                 <tr>
                     <td>Nome utente</td>
                     <td>Data inserimento</td>
-                    <td>Messaggio</td
+                    <td>Messaggio ricevuto</td
                 </tr>
                 <?php
                 /******

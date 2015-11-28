@@ -12,7 +12,7 @@ session_start();
 <?php
 include('theme/header.php');
 include('config.php');
-include('init.php');
+include('functions/functionInit.php');
 include('functions/function.php');
 include('functions/functionDb.php');
 include('functions/passwordHash.php');
