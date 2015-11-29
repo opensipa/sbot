@@ -33,7 +33,7 @@ Date: 17/11/2015
 * Code and conceive:
 * Guion Matteo (www.guion78.com)
 * Contributors of projects:
-* Massimo Gorla (Mysql connection, php code)
+* Massimo Gorla (Mysql connection, Login, Php)
 * Timothy Redaelli (PasswordHash function) 
 * Giampiero Marconetto (Send Mail for alert, Testing - very hot testing -)
 
