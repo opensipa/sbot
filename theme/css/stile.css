@@ -13,7 +13,8 @@ blockquote {
 
 /* Elementi personalizzati
    Questi elementi servono a collocare correttamente 
-   gli elementi principali all'interno della gabbia strutturale */
+   gli elementi principali all'interno della gabbia strutturale 
+*/
 
 img { vertical-align:bottom; border:0; }
 
@@ -48,7 +49,8 @@ div#container { width: 920px; margin: 40px auto; background: #fff; border-top:3p
 
 /* Intestazione
    L'intestazione e' composta da un'unica riga e un'unica colonna 
-   contiene sia il titolo che il menu di navigazione */
+   contiene sia il titolo che il menu di navigazione 
+*/
 
 div#header { width:900px; height:80px; background:#fff; position:relative; padding-left:20px; }
 div#header h1 { font-size:1em; text-transform:uppercase; color:#bebebe; font-weight:normal; padding-top:21px; }
@@ -136,7 +138,7 @@ div#footer p a { font-size:1em; color:#fff; padding:3px 10px; border:0; }
           transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
 }
 
-/* Ordinamento delle tabelle up/down */
+/* Ordinamento delle tabelle up-down */
 #order thead tr th.headerSortUp span {background-image: url('ico/up-arrow.png');}
 #order thead tr th.headerSortDown span {background-image: url('ico/down-arrow.png');}
 #order thead {cursor: pointer;}
@@ -147,4 +149,6 @@ div#footer p a { font-size:1em; color:#fff; padding:3px 10px; border:0; }
 
 /* Ordinamento delle tabelle centrate */
 #tbcenter table, td, tr, th { margin-left:auto; margin-right:auto;  border: 1px solid black; text-align: center;}
+
+
 

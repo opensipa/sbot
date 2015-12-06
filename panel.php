@@ -3,7 +3,6 @@ include ('theme/verification.php');
 include ('theme/header.php');
 include ('functions/function.php');
 include ('functions/functionDb.php');
-include ('functions/functionfunctions/functionInit.php');
 include ('config.php');
 include ('functions/functionInit.php');
 include ('functions/passwordHash.php');
@@ -30,8 +29,8 @@ include ('functions/passwordHash.php');
 </div>
 
 <?php
-// Form for insert the variable into table
 
+// Form for insert the variable into table
 if (isset($_POST["Inserisci"])) {
     $state = filter_input(INPUT_POST, 'state', FILTER_SANITIZE_STRING);
     $username = $_SESSION['username'];
@@ -44,29 +43,28 @@ if (isset($_POST["Inserisci"])) {
 if (!empty($submit)) {
     dbParamInsert($software, $code, $param, $state, $username, $note);
     header( "refresh:5;url=panel.php" );   
-    echo '<div id="content" class="clearfix">';
-    echo'<div class="content-row">'
-        .   '<strong>Hai inserito correttamente il nuovo parametro</strong>'
-        .   '</div></div>';
+    echo'<div id="content" class="clearfix">
+        <div class="content-row">
+        <strong>Hai inserito correttamente il nuovo parametro</strong>
+        </div></div>';
 } else  {	
-    echo '<div id="content" class="clearfix">';
-	echo '<div class="content-row">';
-        echo '<h2>Hai inserito in modo sbagliato il parametro, ritenta!</h2>';
-    echo '</div></div>'; 
+    echo'<div id="content" class="clearfix">
+        <div class="content-row">
+        <h2>Hai inserito in modo sbagliato il parametro, ritenta!</h2>
+        </div></div>'; 
   }
 }
 ?>
 
 <?php
-// Form for view the table for update setting variable
 
+// Form for view the table for update setting variable
 if (isset($_POST["Valori"])) {
     $ID = filter_input(INPUT_POST, 'ID', FILTER_SANITIZE_STRING);
     $extractParam = dbParamExtraction('ID = '.$ID);
 //Variable extract: Code, Param, SoftDesc, Active, Log, ID
     foreach ($extractParam as $extract) {
-    echo '
-        <div id="content" class="clearfix">
+    echo'<div id="content" class="clearfix">
         <div class="content-row">
         <h2>Modifica i parametri:</h2>
         <form id="changesetting" action="panel.php" method="post" accept-charset="UTF-8">
@@ -95,7 +93,6 @@ if (isset($_POST["Valori"])) {
     }
 }
 // Change the variable
-
 if (isset($_POST["Cambia"])) {
     $software = filter_input(INPUT_POST, 'software', FILTER_SANITIZE_STRING);
     $code = filter_input(INPUT_POST, 'code', FILTER_SANITIZE_STRING);
@@ -111,12 +108,14 @@ if (!empty($submit)) {
     echo'<div id="content" class="clearfix">
             <div class="content-row">
             <h2>Hai aggiornato correttamente i valori</h2>
-        </div></div>'; 
+            </div>
+        </div>'; 
 } else  {	
     echo'<div id="content" class="clearfix">
             <div class="content-row">
             <h2>Hai inserito in modo sbagliato il parametro, ritenta!</h2>
-        </div></div>'; 
+            </div>
+        </div>'; 
   }
 }
 ?>
@@ -130,24 +129,25 @@ if (!empty($submit)) {
         echo'<div id="content" class="clearfix">
                 <div class="content-row">
                 <h2>Hai configurato correttamente la mail. Controlla se ti &egrave; arrivato il messaggio via e-mail.</h2>
-            </div></div>'; 
+                </div>
+            </div>'; 
         } else {	
         echo'<div id="content" class="clearfix">
                 <div class="content-row">
                 <h2>Errore: '.$error.'.</h2>
-            </div></div>'; 
+                </div>
+            </div>'; 
         }
     }
 }
 ?>
-
 <!-- Table for view the variable of bot -->
 <div id="content" class="clearfix">
     <div class="content-row">
         <form method="post" action="panel.php">
         <div align="center">  
         <button type='submit' name='Valori' value='Valori' />Modifica i valori dei parametri</button>
-        <button type='submit' name='Test' value='Test '/>Test di configurazione Mail</button>
+        <button type='submit' name='Test' value='Test' />Test di configurazione Mail</button>
         </div>
         <br>
         <table border="1" align="center" id="order"> 

@@ -1,10 +1,150 @@
 <?php
 
+/**
+ * ############################################
+ * Funzione database per la gestione del demone
+ * ############################################
+ */
+
+/**
+ * Function dbDemoneStatus
+ * 
+ * 
+ * @return type boolean 
+ */
+function dbDemoneStatus()
+{
+    try {
+        $conn=getDbConnection();
+        $sql = "SELECT Active FROM `software_config` WHERE SoftDesc = 'Demone' AND Code = 'status'";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+        $value=$stmt->fetch(PDO::FETCH_ASSOC);
+    } catch (Exception $ex) {
+        return $ex->getMessage();
+    }
+    return ($value['Active']);
+}
+
+/**
+ * Function dbDemoneKeyboard
+ * 
+ * 
+ * @return type boolean 
+ */
+function dbDemoneKeyboard()
+{
+    try {
+        $conn=getDbConnection();
+        $sql = "SELECT Active FROM `software_config_button` WHERE SoftDesc = 'Demone' AND Code = 'status'";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+        $arrayButton=$stmt->fetch(PDO::FETCH_ASSOC);
+    } catch (Exception $ex) {
+        return $ex->getMessage();
+    }
+    return ($arrayButton['____']);
+}
+
+/**
+ * Function dbButtonExtraction
+ * Ritorna tutti i valori dei parametri per il settaggio
+ * 
+ * @return type Array 
+ */
+function dbButtonExtraction($value)
+{
+    try {
+        $conn=getDbConnection();
+        $sql = "SELECT ID, SoftDesc, Param, Number, Titolo, Active, Log, DateUpdt FROM `software_config_button` WHERE $value ORDER BY Number";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+        $tableButton=array();
+        while ($riga=$stmt->fetch(PDO::FETCH_ASSOC)) {
+            $tableButton[]=$riga;            
+        }
+    } catch (Exception $ex) {
+        return $ex->getMessage();
+    }
+    return ($tableButton);
+}
+
+/**
+ * Function dbButtonChange
+ * Cambia i valori dei parametri 
+ * 
+ * @return 0 
+ */
+function dbButtonUpdate($ID, $software, $param, $number, $state, $user, $titolo)    
+{
+    try {
+        $conn=getDbConnection();
+        $sql = "UPDATE software_config_button SET SoftDesc=:software, Param=:param, Number=:number, Active=:state, Log=:user, Titolo=:titolo, DateUpdt=now() WHERE ID=:ID";
+        $stmt = $conn->prepare($sql);
+        $stmt->bindValue(':ID',$ID, PDO::PARAM_INT);
+        $stmt->bindValue(':software',$software, PDO::PARAM_STR);
+        $stmt->bindValue(':param',$param, PDO::PARAM_STR);
+        $stmt->bindValue(':number',$number, PDO::PARAM_INT);
+        $stmt->bindValue(':state',$state, PDO::PARAM_STR);
+        $stmt->bindValue(':titolo',$titolo, PDO::PARAM_STR);
+        $stmt->bindValue(':user',$user, PDO::PARAM_STR);
+        $stmt->execute();
+        } catch (Exception $ex) {
+            return $ex->getMessage();
+            }
+        return 0;
+}
+
+/**
+ * Function dbButtonInsert
+ * Inserisce tutti i valori dei parametri per il settaggio
+ * 
+ * @return type Array 
+ */
+
+function dbButtonInsert($software, $number, $param, $valore, $active, $user)
+{
+    try {
+        $conn=getDbConnection();
+        $sql = "insert software_config_button SET SoftDesc=:software, Number=:number, Param=:param, Active=:active, Titolo=:titolo, Log=:user, DateUpdt=now()";
+        $stmt = $conn->prepare($sql);
+        $stmt->bindValue(':software',$software, PDO::PARAM_STR);
+        $stmt->bindValue(':number',$number, PDO::PARAM_INT);
+        $stmt->bindValue(':param',$param, PDO::PARAM_STR);
+        $stmt->bindValue(':active',$active, PDO::PARAM_INT);
+        $stmt->bindValue(':titolo',$titolo, PDO::PARAM_STR);
+        $stmt->bindValue(':user',$user, PDO::PARAM_STR);
+        $stmt->execute();
+    } catch (Exception $ex) {
+        return $ex->getMessage();
+    }
+    return 0;
+}
+
+/**
+ * Function dbButtonDelete
+ * Cambia i valori dei parametri 
+ * 
+ * @return 0 
+ */
+function dbButtonDelete($ID)    
+{
+    try {
+        $conn=getDbConnection();
+        $sql = "delete from software_config_button WHERE ID=:ID";
+        $stmt = $conn->prepare($sql);
+        $stmt->bindValue(':ID',$ID, PDO::PARAM_INT);
+        $stmt->execute();
+        } catch (Exception $ex) {
+            return $ex->getMessage();
+            }
+        return 0;
+}
+
 /* 
- * Funzioni database
- * 
- * 
- * 
+ * ##########################################
+ * Funzioni database per gestione del sistema
+ * ##########################################
  */
 
 /**
@@ -533,26 +673,6 @@ function dbJoinMessageSend($Message)
         return $ex->getMessage();
     }
     return ($tableJoinMessage);
-}
-
-/**
- * Function dbDemoneStatus
- * 
- * 
- * @return type boolean 
- */
-function dbDemoneStatus()
-{
-    try {
-        $conn=getDbConnection();
-        $sql = "SELECT Active FROM `software_config` WHERE SoftDesc = 'Demone' AND Code = 'status'";
-        $stmt = $conn->prepare($sql);
-        $stmt->execute();
-        $value=$stmt->fetch(PDO::FETCH_ASSOC);
-    } catch (Exception $ex) {
-        return $ex->getMessage();
-    }
-    return ($value['Active']);
 }
 
 /**

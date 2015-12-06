@@ -3,8 +3,8 @@ include('theme/verification.php');
 include('theme/header.php');
 include('functions/function.php');
 include('functions/functionDb.php');
-include('config.php');
 include('functions/functionInit.php');
+include('config.php');
 ?>
     <div id="content" class="clearfix">
             <h1>Stato del sistema:

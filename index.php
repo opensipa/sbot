@@ -16,7 +16,7 @@
             <input type='password' class="form-control" name='password' id='password' placeholder="Inserisci la password" maxlength="50" />
             </div>
             <br>
-            <input type='submit' name='Submit' value='Submit' />
+            <input type='submit' name='Submit' value='Accedi' />
             </fieldset>
             </form>
         </div>
@@ -26,7 +26,6 @@
             <p align="center">NEWS</p>
             <p align="justify">{S}Bot &egrave; rilasciato gratuitamente nello spirito della massima condivisione e dello sviluppo di una P.A. digitale efficiente.</p>
             <p align="justify">{S}Bot &egrave; testato e sviluppato per poter funzionare su tutte le piattaforme.</p>
-            <p align="justify">Ultima versione testata da <strong>Matteo Guion.</strong></p>
         </div>
     </div>
 <!-- Footer page -->

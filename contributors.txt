@@ -4,3 +4,7 @@
 * Massimo Gorla (Mysql connection, query)
 * Timothy Redaelli (PasswordHash function) 
 * Giampiero Marconetto (Send Mail, Testing)
+*
+* Attributions:
+* File IsUpdated (Code of Avcp-xml Provincia di Cremona)
+

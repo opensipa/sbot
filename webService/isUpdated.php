@@ -1,4 +1,9 @@
 <?php
+/*
+ * Code from Avcp-Xml AGPL3 of Provincia di Cremona
+ * Provincia di Cremona - U.R.P. e Servizi Interni
+ */
+
 $outVersion = null;
 //determino la versione attuale:
 $fh = fopen('webService/version.txt', 'r');

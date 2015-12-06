@@ -44,10 +44,9 @@ function sendMail($subject, $corpo_messaggio) {
     $nomedestinatario  = "";
     $serversmtp = "";
     $port = "";
-    $secure = ""; // puoi settare tsl, ssl ecc
-    $username = "";      // utente server SMTP autenticato
-    $password = "";    // password server SMTP autenticato
-    
+    $secure = "";       // puoi settare tsl, ssl ecc
+    $username = "";     // utente server SMTP autenticato
+    $password = "";     // password server SMTP autenticato
     //extract to Db the setting parameter
     $tableParm = dbParamExtraction('SoftDesc = "Mail" AND Active = 1');
     foreach ($tableParm as $param) {
@@ -62,32 +61,21 @@ function sendMail($subject, $corpo_messaggio) {
         if ($param['Code'] == "password"){$password = $param['Param'];}
     }
     //control parameter also skeep
-    if (empty($mittente)){ 
-        return "Errore di configurazione per il mittente";
-    }
-    if (empty($destinatario)){ 
-        return "Errore di configurazione per il destinatario";
-    }
-    if ($serversmtp == ""){ 
-        return "Errore di configurazione per il server smtp";
-    }
-    if (empty($port)){ 
-        return "Errore di configurazione per la porta";
-    }
-    if (empty($username)){ 
-        return "Errore di configurazione per nome utente";
-    }
-    if (empty($password)){ 
-        return "Errore di configurazione per la password";
+    if (empty($mittente)){return "Errore di configurazione per il mittente";}
+    if (empty($destinatario)){return "Errore di configurazione per il destinatario";}
+    if (empty($serversmtp)){return "Errore di configurazione per il server smtp";}
+    if (empty($port)){return "Errore di configurazione per la porta";}
+    if (empty($username)){return "Errore di configurazione per nome utente";}
+    if (empty($password)){return "Errore di configurazione per la password";
     } else {   
     // Ok for setting
     $messaggio = new PHPMailer;
     $messaggio->IsSMTP(); 
-
-    //Enable SMTP debugging
-    // 0 = off (for production use)
-    // 1 = client messages
-    // 2 = client and server messages
+    /* Enable SMTP debugging
+     * 0 = off (for production use)
+     * 1 = client messages
+     * 2 = client and server messages
+     */
     $messaggio->SMTPDebug = 0;
     $messaggio->SMTPAuth = true;     // abilita autenticazione SMTP
     $messaggio->SMTPKeepAlive = "true";
@@ -119,7 +107,7 @@ function sendMail($subject, $corpo_messaggio) {
  */
 
 function buttonDemone(){
-  $array[] = dbParamExtraction('SoftDesc = "Button" AND Active = 1'); 
+  $buttonArray[] = dbParamExtraction('SoftDesc = "Button" AND Active = 1'); 
 }
 
 
