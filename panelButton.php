@@ -73,10 +73,16 @@ if (isset($_POST["Valori"])) {
                 <label for="param" >Testo*: </label>
                 <textarea class="form-control" type="param" name="param" id="param" maxlength="400">'.$extract['Param'].'</textarea>
                 <label for="param" >Tipo operazione del pulsante*: </label>
-                <select class="form-control" name="type">
-                <option value="Normal">Normale</option>
-                <option value="Function">Funzione</option>
-                </select>
+                <select class="form-control" name="type">';
+                if ($extract['Type']== "Normal"){
+                echo '<option value="Normal">Normale</option>
+                      <option value="Function">Funzione</option>';
+                }else{   
+                 echo '<option value="Function">Funzione</option>
+                       <option value="Normal">Normale</option>';
+                }
+                echo 
+                '</select>
                 <label for="active" >Stato*: </label>
                 <select class="form-control" name="active">
                 <option value="1">Attivo</option>

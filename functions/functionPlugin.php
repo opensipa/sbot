@@ -16,6 +16,8 @@ function Launcher($chat_id,$reply_markup,$param){
         return $functionParam[0]($functionParam);
     } else {
        writeLog("La funzione".$functionParam." non esiste.");
+       sendMail("C'è un errore nella funzione ",$functionParam[0]);
+       return "Chiedo scusa per l'errore, ho già avvisato il mio gestore.";
     }
 }
 
