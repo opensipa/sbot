@@ -1,20 +1,25 @@
 <?php
 /*
- * Ultimate revision 15/11/2015
+ * Ultimate revision 09/01/2016
  */
-require('config.php');
-require('functions/function.php');
-require('functions/functionDb.php');
-require('functions/functionInit.php');
+require_once ('config.php');
+require_once ('functions/function.php');
+require_once ('functions/functionDb.php');
+require_once ('functions/functionInit.php');
+require_once ('functions/functionPlugin.php');
 
 /*
  * Function that processes incoming message
  */
 function processMessage($message) {
-  // Variable
-  $conn=getDbConnection(); //connection to DB
+  // Variable for demone
   $message_id = $message['message_id'];
   $chat_id = $message['chat']['id'];
+  $text = $message['text'];
+  //Keyword
+  $key = createKeyboard();
+  $num0 = $key[0];
+  $reply_markup = $key[1];
   /*
    * Control the empty fields in incoming message
    */
@@ -33,54 +38,24 @@ function processMessage($message) {
   } else {
       $username_id='';
   } 
+  /**
+   * Controll Message of Text
+   */
+
   if (isset($message['text'])) {
    /*
    * The very function of process messag
-   */
-    $text = $message['text'];
+   */   
     if (strpos($text, "/start") === 0) {
-      apiRequest("sendMessage", array('chat_id' => $chat_id, "text" => MESSAGE_BENVENUTO, 'reply_markup' => array(
-        'keyboard' => array(array('Help', 'Social Media', 'Forum', 'Credit')),
-        'one_time_keyboard' => false,                    
-        'resize_keyboard' => true)));
+      apiRequest("sendMessage", array('chat_id' => $chat_id, "text" => $num0, 'reply_markup' => $reply_markup));
       /*
        * Log the user in DB. If the user is already activated only you change their status in active also.
        */
-     dbLogUserStart ($chat_id,$first_name_id,$last_name_id, $username_id);
-     /* 
-      * Possibility to send logo/image when the user enter for first time (optinal)
-      * Function: SendPicture($chat_id, INFO_PHOTO ); 
-      */
-     
-     /*
-      * Menù Help
-      */ 
-    } else if ($text === "Help") {
-        apiRequest("sendMessage", array('chat_id' => $chat_id, "text" => MESSAGE_HELP, 'reply_markup' => array(
-        'keyboard' => array(array('Info', 'Comandi', 'Contatti', 'Exit')),
-        'one_time_keyboard' => false,                    
-        'resize_keyboard' => true)));
-    } else if ($text === "Info" || $text === "Informazioni" || $text === "/informazioni") {
-        apiRequest("sendMessage", array('chat_id' => $chat_id, "text" => MESSAGE_INFO, "disable_web_page_preview" => true));
-    } else if ($text === "Comandi" ) {
-        apiRequest("sendMessage", array('chat_id' => $chat_id, "text" => MESSAGE_COMANDI, "disable_web_page_preview" => true));
-    } else if ($text === "Contatti" ) {
-        apiRequest("sendMessage", array('chat_id' => $chat_id, "text" => MESSAGE_CONTATTI, "disable_web_page_preview" => true));
-    }  else if ($text === "Exit") {
-    /*
-     * Return to menù home page
-     */
-      apiRequest("sendMessage", array('chat_id' => $chat_id, "text" => 'Sei tornato al menu\' in Home.', 'reply_markup' => array(
-        'keyboard' => array(array('Help', 'Social Media', 'Forum', 'Credit')),
-        'one_time_keyboard' => false,
-        'force_reply_keyboard' => true,                    
-        'resize_keyboard' => true)));
-    }  else if ($text === "Social Media") {
-        apiRequest("sendMessage", array('chat_id' => $chat_id, "text" => MESSAGE_SOCIAL, "disable_web_page_preview" => true));
-    }  else if ($text === "Forum") {
-        apiRequest("sendMessage", array('chat_id' => $chat_id, "text" => MESSAGE_FORUM, "disable_web_page_preview" => true));
-    }  else if ($text === "Credit") {
-        apiRequest("sendMessage", array('chat_id' => $chat_id, "text" => MESSAGE_CREDIT, "disable_web_page_preview" => true));
+      dbLogUserStart ($chat_id,$first_name_id,$last_name_id, $username_id);
+      /* 
+       * Possibility to send logo/image when the user enter for first time (optinal)
+       * Function: SendPicture($chat_id, INFO_PHOTO ); 
+       */
     } else if ($text === "/stop") {
     /*
      * Here inserted disabling user from the DB (not cleared but only put off)
@@ -88,22 +63,39 @@ function processMessage($message) {
         apiRequest("sendMessage", array('chat_id' => $chat_id, "text" => MESSAGE_EXIT));
         dbLogUserStop ($chat_id);
     } else if (strpos($text, "Stop") === 0) {
-    /*
-     * For ecception 
-     * Here inserted disabling user from the DB (not cleared but only put off)
-     */
+        /*
+         * For ecception 
+         * Here inserted disabling user from the DB (not cleared but only put off)
+         */
         apiRequest("sendMessage", array('chat_id' => $chat_id, "text" => MESSAGE_EXIT));
         dbLogUserStop ($chat_id);
     } else {
+        $responceKey = dbDemoneKeyboard("Titolo = '". $text ."'");
+        $textControl = $text; //Copy of variable for more control exit to cicle
+        foreach ($responceKey as $responceKeyFinal){
+            //Insert her for control this is a function, not a button. Implement this control with if function
+            if ($responceKeyFinal['Type'] === 'Function'){
+                //Launch function
+                $functionPersonal = Launcher($chat_id,$reply_markup, $responceKeyFinal['Param']);
+                apiRequest("sendMessage", array('chat_id' => $chat_id, "text" =>  $functionPersonal, 'reply_markup' => $reply_markup));
+                $textControl = "";
+                break; //Exit cicle
+            } else if ($textControl === $responceKeyFinal['Titolo']){
+            $responceFinal = html_entity_decode($responceKeyFinal['Param']);
+            $responceFinal = str_replace ("&#39;","'" ,$responceFinal);
+            apiRequest("sendMessage", array('chat_id' => $chat_id, "text" => $responceFinal, 'reply_markup' => $reply_markup));
+            $textControl = "";
+            break; //Exit cicle
+            }  
+      }
+    } if ($textControl != "") {
         /*
          *  Function that stores all messages that users send through extra bot
          */
         initSendAnswer($chat_id,$first_name_id,$message_id,$text);
-    }
-  } else {
-    apiRequest("sendMessage", array('chat_id' => $chat_id, "text" => MESSAGE_SCUSE));
-  }
-}
+    } 
+    }//End controll Message of Text
+} //End function processMessage
 
 $last_id = null;
 while (true) {

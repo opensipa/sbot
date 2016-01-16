@@ -17,7 +17,7 @@ require_once ('phpmailer/PHPMailerAutoload.php');
  *
  * 
  * @param $chat_id,$first_name_id,$message_id,$text, 
- * Permette l'inserimento in Sbot di messaggi non conmtemplati e invio mail di avviso 
+ * Permette l'inserimento in Sbot di messaggi non conmtemplati in altre funzioni e invio mail di avviso 
  *  
  * @return anything
  */
@@ -25,7 +25,7 @@ require_once ('phpmailer/PHPMailerAutoload.php');
 function initSendAnswer($chat_id,$first_name_id,$message_id,$text){
 apiRequest("sendMessage", array('chat_id' => $chat_id, "reply_to_message_id" => $message_id, "text" => MESSAGE_NULL));
 dbLogTextOn($chat_id,$first_name_id,$message_id,$text); 
-sendMail("Hai ricevuto un messaggio","testo: ".$text);
+sendMail("Hai ricevuto un messaggio nel Bot","Da: ".$first_name_id." - Testo del messaggio: ".$text);
 }
 
 /**
@@ -48,7 +48,7 @@ function sendMail($subject, $corpo_messaggio) {
     $username = "";     // utente server SMTP autenticato
     $password = "";     // password server SMTP autenticato
     //extract to Db the setting parameter
-    $tableParm = dbParamExtraction('SoftDesc = "Mail" AND Active = 1');
+    $tableParm = dbParamExtraction('SoftDesc = "Mail" AND Active = "1"');
     foreach ($tableParm as $param) {
         if ($param['Code'] == "mittente"){$mittente = $param['Param'];}
         if ($param['Code'] == "nomemittente"){$nomemittente = $param['Param'];}

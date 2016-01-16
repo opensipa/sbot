@@ -9,7 +9,6 @@ include('functions/functionInit.php');
 
 <div id="content" class="clearfix">
 	<div class="content-row">
-
             <h2>
             <?php header('Refresh: 20');
             // inizializzo cURL

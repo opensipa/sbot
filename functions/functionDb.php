@@ -26,25 +26,86 @@ function dbDemoneStatus()
     return ($value['Active']);
 }
 
+/* 
+ * ###########################################
+ * Funzioni database per gestione tastiera Bot
+ * ###########################################
+ */
+
 /**
  * Function dbDemoneKeyboard
  * 
  * 
- * @return type boolean 
+ * @return Titolo, Param, Type.
+ * @return type string
+ * 
  */
-function dbDemoneKeyboard()
+function dbDemoneKeyboard($value)
 {
     try {
         $conn=getDbConnection();
-        $sql = "SELECT Active FROM `software_config_button` WHERE SoftDesc = 'Demone' AND Code = 'status'";
+        $sql = "SELECT Titolo, Param, Type FROM `software_config_button` WHERE $value AND Active=1 ORDER BY Number";
         $stmt = $conn->prepare($sql);
+        $stmt->bindValue(':value',$value, PDO::PARAM_STR);
         $stmt->execute();
-        $arrayButton=$stmt->fetch(PDO::FETCH_ASSOC);
+        $tableButton=array();
+        while ($riga=$stmt->fetch(PDO::FETCH_ASSOC)) {
+            $tableButton[]=$riga;            
+        }
     } catch (Exception $ex) {
         return $ex->getMessage();
     }
-    return ($arrayButton['____']);
+    return ($tableButton);
 }
+
+/**
+ * Function dbDemoneCountKeyboard
+ * 
+ * 
+ * @return type boolean 
+ */
+
+function dbDemoneCountKeyboard()
+{
+    try {
+        $conn=getDbConnection();
+        $sql = "Select Count(Titolo) FROM `software_config_button` WHERE Active=1";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+        $number=$stmt->fetch(PDO::FETCH_ASSOC);
+    } catch (Exception $ex) {
+        return $ex->getMessage();
+    }
+    return $number;
+}
+
+/**
+ * Function dbDemoneNumberKeyboard
+ * 
+ * 
+ * @return type boolean 
+ */
+
+function dbDemoneNumberKeyboard()
+{
+    try {
+        $conn=getDbConnection();
+        $sql = "SELECT MAX(Number) AS numero FROM `software_config_button` where Active = 1";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+        $maxNumber=$stmt->fetch(PDO::FETCH_ASSOC);
+    } catch (Exception $ex) {
+        return $ex->getMessage();
+    }
+    return $maxNumber;
+}
+
+
+/* 
+ * ##########################################
+ * Funzioni database per gestione bottoni
+ * ##########################################
+ */
 
 /**
  * Function dbButtonExtraction
@@ -56,7 +117,7 @@ function dbButtonExtraction($value)
 {
     try {
         $conn=getDbConnection();
-        $sql = "SELECT ID, SoftDesc, Param, Number, Titolo, Active, Log, DateUpdt FROM `software_config_button` WHERE $value ORDER BY Number";
+        $sql = "SELECT ID, SoftDesc, Param, Number, Type, Titolo, Active, Log, DateUpdt FROM `software_config_button` WHERE $value ORDER BY Number";
         $stmt = $conn->prepare($sql);
         $stmt->execute();
         $tableButton=array();
@@ -75,20 +136,23 @@ function dbButtonExtraction($value)
  * 
  * @return 0 
  */
-function dbButtonUpdate($ID, $software, $param, $number, $state, $user, $titolo)    
+
+function dbButtonUpdate($ID, $software, $param, $tipo, $number, $state, $user, $titolo)    
 {
     try {
         $conn=getDbConnection();
-        $sql = "UPDATE software_config_button SET SoftDesc=:software, Param=:param, Number=:number, Active=:state, Log=:user, Titolo=:titolo, DateUpdt=now() WHERE ID=:ID";
-        $stmt = $conn->prepare($sql);
+        $sql = "UPDATE software_config_button SET SoftDesc=:software, Param=:param, Type=:tipo, Number=:number, Active=:state, Log=:user, Titolo=:titolo, DateUpdt=now() WHERE ID=:ID";      
+        $stmt = $conn->prepare($sql);        
         $stmt->bindValue(':ID',$ID, PDO::PARAM_INT);
         $stmt->bindValue(':software',$software, PDO::PARAM_STR);
         $stmt->bindValue(':param',$param, PDO::PARAM_STR);
+        $stmt->bindValue(':tipo',$tipo, PDO::PARAM_STR);
         $stmt->bindValue(':number',$number, PDO::PARAM_INT);
         $stmt->bindValue(':state',$state, PDO::PARAM_STR);
         $stmt->bindValue(':titolo',$titolo, PDO::PARAM_STR);
         $stmt->bindValue(':user',$user, PDO::PARAM_STR);
         $stmt->execute();
+
         } catch (Exception $ex) {
             return $ex->getMessage();
             }
@@ -102,16 +166,17 @@ function dbButtonUpdate($ID, $software, $param, $number, $state, $user, $titolo)
  * @return type Array 
  */
 
-function dbButtonInsert($software, $number, $param, $valore, $active, $user)
+function dbButtonInsert($software, $param, $tipo, $number, $active, $user, $titolo)
 {
     try {
         $conn=getDbConnection();
-        $sql = "insert software_config_button SET SoftDesc=:software, Number=:number, Param=:param, Active=:active, Titolo=:titolo, Log=:user, DateUpdt=now()";
+        $sql = "insert software_config_button SET SoftDesc=:software, Param=:param, Type=:tipo, Number=:number, Active=:active, Log=:user, Titolo=:titolo, DateUpdt=now()";
         $stmt = $conn->prepare($sql);
         $stmt->bindValue(':software',$software, PDO::PARAM_STR);
-        $stmt->bindValue(':number',$number, PDO::PARAM_INT);
         $stmt->bindValue(':param',$param, PDO::PARAM_STR);
-        $stmt->bindValue(':active',$active, PDO::PARAM_INT);
+        $stmt->bindValue(':tipo',$tipo, PDO::PARAM_STR);
+        $stmt->bindValue(':number',$number, PDO::PARAM_INT);
+        $stmt->bindValue(':active',$active, PDO::PARAM_STR);
         $stmt->bindValue(':titolo',$titolo, PDO::PARAM_STR);
         $stmt->bindValue(':user',$user, PDO::PARAM_STR);
         $stmt->execute();
@@ -123,7 +188,8 @@ function dbButtonInsert($software, $number, $param, $valore, $active, $user)
 
 /**
  * Function dbButtonDelete
- * Cambia i valori dei parametri 
+ * Use this function for delete record of button
+ * (dont't use in this moment - future implementations)
  * 
  * @return 0 
  */

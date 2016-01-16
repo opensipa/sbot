@@ -7,57 +7,7 @@ include ('config.php');
 include ('functions/functionInit.php');
 include ('functions/passwordHash.php');
 ?>
-<div id="content" class="clearfix">
-    <div class="content-row">
-    <h2>Per inserire nuovi parametri di gestione, compila questi campi:</h2>
-        <form id='setting' action='panel.php' method='post' accept-charset='UTF-8'>
-            <fieldset >
-            <legend>Settaggi</legend>
-            <input type='hidden' name='state' id='state' value='1'/>
-            <label for='software' >Software*: </label>
-            <input type='software' name='software' id='software' maxlength="50" />
-            <label for='code' >Variabile*: </label>
-            <input type='code' name='code' id='code' maxlength="20" />
-            <label for='param' >Valore*: </label>
-            <input type='param' name='param' id='param' maxlength="50" />
-            <label for='note' >Note: </label>
-            <input type='note' name='note' id='note' maxlength="200" />
-            <input type='submit' name='Inserisci' value='Inserisci' />
-            </fieldset>
-        </form>
-    </div>
-</div>
-
 <?php
-
-// Form for insert the variable into table
-if (isset($_POST["Inserisci"])) {
-    $state = filter_input(INPUT_POST, 'state', FILTER_SANITIZE_STRING);
-    $username = $_SESSION['username'];
-    $software = filter_input(INPUT_POST, 'software', FILTER_SANITIZE_STRING);
-    $code = filter_input(INPUT_POST, 'code', FILTER_SANITIZE_STRING);
-    $param = filter_input(INPUT_POST, 'param', FILTER_SANITIZE_STRING);
-    $note = filter_input(INPUT_POST, 'note', FILTER_SANITIZE_STRING);
-    $submit = filter_input(INPUT_POST, 'Inserisci', FILTER_SANITIZE_STRING);
-
-if (!empty($submit)) {
-    dbParamInsert($software, $code, $param, $state, $username, $note);
-    header( "refresh:5;url=panel.php" );   
-    echo'<div id="content" class="clearfix">
-        <div class="content-row">
-        <strong>Hai inserito correttamente il nuovo parametro</strong>
-        </div></div>';
-} else  {	
-    echo'<div id="content" class="clearfix">
-        <div class="content-row">
-        <h2>Hai inserito in modo sbagliato il parametro, ritenta!</h2>
-        </div></div>'; 
-  }
-}
-?>
-
-<?php
-
 // Form for view the table for update setting variable
 if (isset($_POST["Valori"])) {
     $ID = filter_input(INPUT_POST, 'ID', FILTER_SANITIZE_STRING);
@@ -65,30 +15,30 @@ if (isset($_POST["Valori"])) {
 //Variable extract: Code, Param, SoftDesc, Active, Log, ID
     foreach ($extractParam as $extract) {
     echo'<div id="content" class="clearfix">
-        <div class="content-row">
-        <h2>Modifica i parametri:</h2>
         <form id="changesetting" action="panel.php" method="post" accept-charset="UTF-8">
-            <fieldset >
-            <legend>Aggiorna i Settaggi</legend>
+            <fieldset>
+            <legend>Aggiorna i settaggi/paramentri:</legend>
+            <div class="form-group">
             <label for="software" >Software*: </label>
-            <input type="software" name="software" id="software" value="'.$extract['SoftDesc'].'" maxlength="50" />
+            <input class="form-control" type="software" name="software" id="software" value="'.$extract['SoftDesc'].'" maxlength="50" />
             <label for="code" >Variabile*: </label>
-            <input type="code" name="code" id="code" value="'.$extract['Code'].'" maxlength="20" />
+            <input class="form-control" type="code" name="code" id="code" value="'.$extract['Code'].'" maxlength="20" />
             <label for="param" >Valore*: </label>
-            <input type="param" name="param" id="param" value="'.$extract['Param'].'" maxlength="50" />
+            <input class="form-control" type="param" name="param" id="param" value="'.$extract['Param'].'" maxlength="50" />
             <label for="note" >Note: </label>
-            <input type="note" name="note" id="note" value="'.$extract['Note'].'" maxlength="200" />
+            <input class="form-control" type="note" name="note" id="note" value="'.$extract['Note'].'" maxlength="200" />
             <label for="active" >Stato*: </label>
-            <select name="active">
+            <select class="form-control" name="active">
             <option value="1">Attivo</option>
             <option value="0">Disattivo</option>
             </select>
-            <input type="hidden" name="ID" id="ID" value="'.$extract['ID'].'" />
+            <input class="form-control" type="hidden" name="ID" id="ID" value="'.$extract['ID'].'" />
             <br>
-            <input type="submit" name="Cambia" value="Cambia" />
+            <input class="form-control" type="submit" name="Cambia" value="Cambia" />
+            </div>
             </fieldset>
         </form>
-        </div></div>
+        </div>
         ';
     }
 }

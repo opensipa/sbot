@@ -27,17 +27,9 @@ define('PHOTO_SEND', "@/var/www/html/opensipa/upload_img/");            //qui se
  * Variabili per personalizzazione messaggi
  * Variables for customizing messages
  */
-define('MESSAGE_INFO', 'Opensipa, la comunita\' dei Sistemisti Informatici della Pubblica Amministrazione. Visita il sito www.opensipa.it');
-define('MESSAGE_SOCIAL', 'Twitter: https://twitter.com/opensipa'."\r\n".'Facebook: http://www.facebook.com/opensipa'."\r\n".'Linkedin: https://www.linkedin.com/grp/home?gid=5187218'."\r\n".'GPlus: https://plus.google.com/+OpensipaItalia');
-define('MESSAGE_FORUM', 'Il forum della comunita\' si trova su forum.opensipa.it');
-define('MESSAGE_CREDIT', 'Progetto realizzato dalla comunita\' Opensipa.');
 define('MESSAGE_NULL', 'Questo bot non puo\' rispondere a questa domanda. Ma ogni segnalazione che fai verra\' registrata sul server.');
-define('MESSAGE_SCUSE', 'Per ora posso solo utilizzare alcuni comandi. Mi spiace.');
-define('MESSAGE_EXIT', 'Non riceverai piu\' news da Opensipa, usa /start per riattivarle.');
-define('MESSAGE_BENVENUTO', 'Benvenuto nel Bot della comunita\' Opensipa.');
-define('MESSAGE_COMANDI', 'Puoi usare direttamente i pulsanti delle tastire o scrivere /start per avviare nel news automatiche, /stop per fermare le news, /informazioni per accedere alle informazioni. Per ora non ci sono altri comandi.');
-define('MESSAGE_CONTATTI', 'Puoi scrivere una mail a: opensipa@gmail.com');
-define('MESSAGE_HELP', 'Sei entrato nella sotto sezione Help.');
+define('MESSAGE_EXIT', 'Non riceverai piu\' news da questo Bot, usa /start per riattivarle.');
+
 
 /*
  * Variabili per invio messaggi, link, foto, da usare solo per messaggi benvenuto o in opzioni particolari
