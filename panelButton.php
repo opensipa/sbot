@@ -139,8 +139,6 @@ if (isset($_POST["Inserisci"])) {
     $active = filter_input(INPUT_POST, 'state', FILTER_SANITIZE_NUMBER_INT);
     $user = $_SESSION['username'];
     $submit = filter_input(INPUT_POST, 'Inserisci', FILTER_SANITIZE_STRING);
-    echo $software, $param, $tipo, $number, $active, $user, $titolo;
-
 if (!empty($submit)) {
     dbButtonInsert($software, $param, $tipo, $number, $active, $user, $titolo);
         echo'<div id="content" class="clearfix">
