@@ -1,12 +1,12 @@
 # README #
 
-Date: 17/11/2015
+Date: 16/01/2016
 
 
 ### What is this repository for? ###
 
 * Telegram Bot
-* Version: 0.13.1
+* Version: 0.20.0
 * name: {S}bot
 
 ### How do I get set up? ###
@@ -61,6 +61,10 @@ Date: 17/11/2015
 
 
 ### Changelog ###
+
+### 16/01/2016###
+* New version change the config file and demone. This versione permit the change buttonBot with web page.
+
 
 ### 22/11/2015###
 * Notification of new posts by email. Ability to start and stop the demon. Ability to set parameters via mail interface.
