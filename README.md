@@ -42,7 +42,7 @@ Date: 16/01/2016
 * Linux install:
 * Create one Bot, use this guide: https://core.telegram.org/bots#botfather and generate the Token:
 * The token is a string along the lines of 110201543:AAHdqTcvCH1vGWJxfSeofSAs0K5PALD saw that will be required to authorize the bot and send requests to the Bot API
-* Use the server Linux with Lamp (Php version 5.5 or higher with support for curl and mcrypt (apt-get install php5-mcrypt and /etc/init.d/apache2 restart), mysql 5.5 or higher and apache)
+* Use the server Linux with Lamp (Php version 5.5 or higher with support for curl and mcrypt (apt-get install php5-mcrypt, apt-get install php5-curl and /etc/init.d/apache2 restart), mysql 5.5 or higher and apache)
 * Insert in config.sample.php the Token, user and pwd user mysql and define the path of INFO_PHOTO e SEND_PHOTO
 * If this is your first install rename config.sample.php to config.php
 * For ability mcrypt at php launch in the bash: "php5enmod mcrypt" and restart Apache or Server. This is very important for login in Sbot management.
