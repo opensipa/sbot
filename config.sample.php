@@ -41,6 +41,6 @@ define('MESSAGE_SEND','Ti avvisiamo che martedi\' 22 settembre 2015 e\' stata ri
  * Variabili per settaggio funzione di upload foto
  * Variables for setting function of upload photos
  */
-define('DIMENSION','48000');
-define('PIXEL', '300');
+define('DIMENSION','160000');
+define('PIXEL', '800');
 

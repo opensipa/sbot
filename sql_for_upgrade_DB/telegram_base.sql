@@ -238,7 +238,7 @@ INSERT INTO `software_config` (`ID`, `SoftDesc`, `Code`, `Param`, `Number`, `Not
 (7, 'Mail', 'password', 'yyyyyyy', NULL, NULL, 0, 'admin', NULL),
 (8, 'Mail', 'port', '587', NULL, '', 0, 'admin', NULL),
 (9, 'Mail', 'secure', 'tsl', NULL, NULL, 0, 'admin', NULL),
-(10, 'Demone', 'status', '--', NULL, 'start=1 / stop=0', 1, 'admin', NULL);  
+(10, 'Demone', 'status', '--', NULL, 'start=1 / stop=0', 1, 'admin', NULL),  
 (11, 'Demone', 'nomebot', 'Bot di Test', NULL, 'Nome del bot che stai gestendo', 1, 'admin', NULL);
   
   
