@@ -211,9 +211,9 @@ INSERT INTO `admins` (`id`, `username`, `password`, `signature`, `level`, `activ
 --
 
 INSERT INTO `software_config_button` (`ID`, `Type`, `SoftDesc`, `Number`, `Titolo`, `Param`, `Active`, `Log`, `DateUpdt`) VALUES
-(1, 'Normal', 'Hello', 0, 'Benvenuto nel Bot. Utilizzando il Bot acconsenti al trattamento dei tuoi dati personali secondo quanto disposto dal D.Lgs 196/2003.', 'Benvenuto', 1, 'admin', '2016-01-09 17:26:11'), 
-(2, 'Normal', 'Button', 1, 'Puoi scegliere tra /PrevisioniDomani o  /MeteoOggi', 'Meteo', 1, 'admin', '2016-01-09 17:26:11'),
-(3, 'Normal', 'Button', 2, '/News', 'News', 1, 'admin', '2016-01-09 17:26:11'),
+(1, 'Normal', 'Hello', 0, 'Benvenuto', 'Benvenuto nel Bot. Utilizzando il Bot acconsenti al trattamento dei tuoi dati personali secondo quanto disposto dal D.Lgs 196/2003.', 1, 'admin', '2016-01-09 17:26:11'), 
+(2, 'Normal', 'Button', 1, 'Meteo', 'Puoi scegliere tra /PrevisioniDomani o  /MeteoOggi', 1, 'admin', '2016-01-09 17:26:11'),
+(3, 'Normal', 'Button', 2, 'News', '/News', 1, 'admin', '2016-01-09 17:26:11'),
 (4, 'Normal', 'Button', 3, 'Button1', 'Button1', 1, 'admin', '2016-01-09 17:26:11'),
 (5, 'Normal', 'Button', 4, 'Button1', 'Button1', 1, 'admin', '2016-01-09 17:26:11'),
 (6, 'Normal', 'Button', 5, 'Button1', 'Button1', 1, 'admin', '2016-01-09 17:26:11'),
