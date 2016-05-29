@@ -30,7 +30,9 @@ $userActive = dbCountActiveUsers();
                             echo '<td>'.$user['UserID'].'</td>';
                             echo '<td>'.$user['FirstName'].'</td>';
                             echo '<td>'.$user['LastName'].'</td>';
-                            echo '<td>'.(date('d/m/Y', strtotime($user['DataInsert']))).'</td>';
+                            echo '<td>'.$user['LastName'].'</td>';
+                            $insert = $user['insertDate'];
+                            echo '<td>'.$insert.'</td>';
                             echo '</tr>';
                         }
                     ?> 

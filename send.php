@@ -15,18 +15,24 @@ include('functions/functionDb.php');
 $testo_ricevuto=filter_input(INPUT_POST, 'testo', FILTER_SANITIZE_STRING);
 if (!empty($testo_ricevuto)){
 /******
- * questa fase cicla sugli utenti attivi inseriti nel database e per ciascun id
+ * Questa fase cicla sugli utenti attivi inseriti nel database e per ciascun id
  * richiama la funzione sendMessage per spedire il testo passato con post
- * ogni chat_id una singola spedizione messaggio
+ * ogni chat_id una singola spedizione messaggio.
+ * Altrimenti invia il messaggio al channel
  ******/
     $activeUsers = dbActiveUsers();
     foreach ($activeUsers as $user) {
-        sendMessage($user, $testo_ricevuto);
+        //Control for channel
+        if (strpos($user, "@") === FALSE) {
+            sendMessage($user, $testo_ricevuto);
+        } else {
+            sendMessageChannel($user, $testo_ricevuto);
+        }  
     }
     $numeroInvi = dbCountActiveUsers();
     dbLogTextSend ($testo_ricevuto,$_SESSION['username'],'','');
     echo'<p>Hai inviato il seguente testo: <br> "<strong>'.$testo_ricevuto.'</strong>"</p>'
-    .   '<p>Ha inviato il testo a <strong>'.$numeroInvi.'</strong> utenti del servizio.</p>';
+    .   '<p>Hai inviato il testo a <strong>'.$numeroInvi.'</strong> utenti del servizio.</p>';
 } else {
     echo'<p><strong>Non hai scritto nessun testo</strong></p>'
     .   '<p>Devi inserire nella form il testo da inviare.</p>';   

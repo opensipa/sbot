@@ -78,7 +78,7 @@ CREATE TABLE `software_config_button` (
   `SoftDesc` varchar(50) DEFAULT NULL,
   `Number` int(2) DEFAULT NULL,
   `Titolo` varchar(25) DEFAULT NULL,
-  `Param` varchar(400) DEFAULT NULL,
+  `Param` varchar(1000) DEFAULT NULL,
   `Active` tinyint(1) NOT NULL DEFAULT '1',
   `Log` varchar(50) DEFAULT NULL,
   `DateUpdt` datetime DEFAULT NULL
@@ -91,7 +91,7 @@ CREATE TABLE `software_config_button` (
 --
 
 CREATE TABLE `utenti` (
-  `UserID` int(11) NOT NULL,
+  `UserID` varchar(200) NOT NULL,
   `FirstName` text CHARACTER SET latin1,
   `LastName` text CHARACTER SET latin1,
   `Username` text CHARACTER SET latin1,

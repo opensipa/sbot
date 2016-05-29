@@ -70,3 +70,56 @@ for($i=0; $i<=$nodo->length-1; $i++){
   }
 return $risultato;
 }
+
+/*
+ * 
+ * For extract txt from http://freetexthost.com/
+ * 
+ */
+function Estrai($link){
+  $linkNew = $link[1];
+  $txt = file_get_contents($linkNew);
+  $txt_i = "[inizio]";
+  $txt_f = "[fine]";
+  $off = "0";
+  $letto = scrape($txt,$txt_i,$txt_f,$off);
+  $letto = str_replace("[inizio]","" ,$letto);
+  $letto = str_replace("<br />","" ,$letto);
+  return $letto;
+}
+
+function scrape($testo,$txt_inizio,$txt_fine,$offset){
+    $inizio = strpos($testo,$txt_inizio);
+    $fine = strpos($testo,$txt_fine,$inizio);
+    $darestituire = substr($testo,$inizio,$fine-$inizio+$offset);
+    return $darestituire;
+}
+
+function FunzionePrevisioniMeteo($funzionePersonalizzata)
+{
+    $startDate = time();
+    $gg = $funzionePersonalizzata[3];
+    $data = date('Y-m-d', strtotime('+'.$gg.' day', $startDate));
+    //$data = date("Y-m-d", time());  
+    /*
+    * http://cdn4.3bmeteo.com/images/png_2014/2016-01-18_6_regione6_verdi.jpg
+    * http://cdn4.3bmeteo.com/images/png_2014/2016-01-18_12_regione6_verdi.jpg
+    * http://cdn4.3bmeteo.com/images/png_2014/2016-01-18_18_regione6_verdi.jpg
+    * http://cdn4.3bmeteo.com/images/png_2014/2016-01-18_24_regione6_verdi.jpg            
+    */ 
+    $link = "http://cdn4.3bmeteo.com/images/png_2014/"."$data"."_".$funzionePersonalizzata[1]."_"."$funzionePersonalizzata[2]";
+    
+    //$value[] = "!(" .$link .")";
+    /* $value[]="[Previsione alle ore " .$funzionePersonalizzata[1] ."](".$link .")";
+    *  c$value[]="SI";
+    */    
+    return $link;
+}
+
+
+/*
+ * 
+ * FINE FUNZIONI DI DEFAULT
+ * 
+ * 
+ */

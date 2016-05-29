@@ -6,7 +6,6 @@ include ('functions/functionInit.php');
 include ('functions/function.php');
 include ('functions/functionDb.php');
 ?>
-
     <div id="content" class="clearfix">
         <div class="content-row">
             <h2>
@@ -15,7 +14,7 @@ include ('functions/functionDb.php');
 
             do {
               if (is_uploaded_file($_FILES['image']['tmp_name'])) {
-                // Controllo che il file non superi i 40 KB
+                // Controllo che il file non superi i tot. KB
                 if ($_FILES['image']['size'] > DIMENSION) {
                   $msg = "<p>Il file non deve superare i ".DIMENSION." KB!!</p>";
                   break;
@@ -57,7 +56,6 @@ include ('functions/functionDb.php');
                     }
             } else {
                 echo 'Accorso il seguente errore: '.$msg;
-                echo '<p><a href="admin.php">Torna al pannello di Gestione</a></p>';
             }
             ?>
 

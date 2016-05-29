@@ -6,10 +6,9 @@ include('functions/functionInit.php');
 include('functions/function.php');
 include('functions/functionDb.php');
 ?>
-
-	<div id="content" class="clearfix">
-            <div class="content-row">
-			<h1>
+    <div id="content" class="clearfix">
+        <div class="content-row">
+	<h1>
                 <?php
                 //Ricevo il testo e id utente a cui inviare il messaggio da message.php
                 $testo_ricevuto = filter_input(INPUT_POST, 'testo', FILTER_SANITIZE_STRING);

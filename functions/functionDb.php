@@ -26,6 +26,26 @@ function dbDemoneStatus()
     return ($value['Active']);
 }
 
+/**
+ * Function dbDemName
+ * Ritorna il nome del Bot che stai gestendo
+ * 
+ * @return type Array 
+ */
+function dbDemName()
+{
+    try {
+        $conn=getDbConnection();
+        $sql = "SELECT Param FROM `software_config` WHERE Code = 'nomebot' AND SoftDesc = 'Demone'";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+        $name=$stmt->fetch(PDO::FETCH_ASSOC);
+    } catch (Exception $ex) {
+        return $ex->getMessage();
+    }
+    return ($name[Param]);
+}
+
 /* 
  * ###########################################
  * Funzioni database per gestione tastiera Bot
@@ -99,7 +119,6 @@ function dbDemoneNumberKeyboard()
     }
     return $maxNumber;
 }
-
 
 /* 
  * ##########################################
@@ -492,7 +511,7 @@ function dbActiveUsersFull()
 {
     try {
         $conn=getDbConnection();
-        $sql = "select UserID, FirstName, LastName, DataInsert from utenti where StatoUtente=1 order BY FirstName";
+        $sql = "select UserID, FirstName, LastName, DATE_FORMAT(DataInsert,'%d/%m/%Y') as insertDate from utenti where StatoUtente=1 order BY DataInsert";
         $stmt = $conn->prepare($sql);
         $stmt->execute();
         $tableUser=array();

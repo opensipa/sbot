@@ -13,9 +13,13 @@ include('config.php');
             $output = controlTelgramState();
             $risultato = $output[0];
             $controllo = $output[1];
+            $name = dbDemName(); 
             if( $risultato == $controllo ){ ?>
-            Il sistema sta funzionando correttamente. 
-            <?php } else { ?>
+                Il sistema funziona correttamente.<br> 
+            <?php
+            if(isset($name)){echo'Stai usando: '.$name;} 
+            } else { 
+            ?>
             Il sistema non sta funzionando correttamente, <a href="coda.php">controlla la coda.</a><br>
             <?php } ?>
             </h1>			
@@ -28,7 +32,7 @@ include('config.php');
             <form method="post" action="send.php" method="POST">
                 <textarea name="testo" rows="15" cols="80"placeholder="Inserisci qui la risposta..."></textarea><br>
                 <br>
-                <input class="form-control" type="submit" id="invio" name="invia" value="Invia messaggio">
+                <input type="submit" id="invio" name="invia" value="Invia messaggio">
             </form>
             <!-- Disable button send after one click
             <script type="text/javascript">
@@ -52,7 +56,7 @@ include('config.php');
                 <input class="form-control" name="image" type="file" size="40" />
                 <br><br><br>
                 <!-- Pulsante -->
-                <input class="form-control" name="upload" id="send_image" type="submit" value="Procedi con l'invio" />
+                <input name="upload" id="send_image" type="submit" value="Procedi con l'invio" />
             </form> 
             <!-- Disable button send image after one click
             <script type="text/javascript">
