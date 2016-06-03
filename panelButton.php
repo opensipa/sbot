@@ -32,15 +32,15 @@ if (isset($_POST["New"])) { ?>
                 <div class="form-group">
                 <input type='hidden' name='state' id='state' value='1'/>
                 <label for="software" >Descrizione (Button per i bottoni, o altro)*: </label>
-                <input class="form-control" type="software" name="software" id="software" />
+                <input class="form-control" type="software" name="software" id="software" required="1"/>
                 <label for="number">Ordine*: </label>
-                <input class="form-control" type="number" name="number" id="number" maxlength="2" />
-                <label for="titolo" >Nome del bottone: </label>
-                <input class="form-control" type="titolo" name="titolo" id="titolo" maxlength="50">
+                <input class="form-control" type="number" name="number" id="number" maxlength="2" required="1"/>
+                <label for="titolo" >Nome del bottone*: </label>
+                <input class="form-control" type="titolo" name="titolo" id="titolo" maxlength="50" required="1">
                 <label for="param" >Testo*: </label>
-                <textarea class="form-control" type="param" name="param" id="param" maxlength="400"></textarea>
+                <textarea class="form-control" type="param" name="param" id="param" maxlength="1000"required="1"></textarea>
                 <label for="param" >Tipo operazione del pulsante*: </label>
-                <select class="form-control" name="type">
+                <select class="form-control" name="type" required="1">
                 <option value="Normal">Normale</option>
                 <option value="Function">Funzione</option>
                 </select>

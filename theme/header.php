@@ -10,6 +10,7 @@
         <script src="http://code.jquery.com/jquery-latest.js"></script>
         <script type="text/javascript" src="theme/js/tablesorter/jquery-1.10.2.min.js"></script>
         <script type="text/javascript" src="theme/js/tablesorter/jquery.tablesorter.min.js"></script>
+        <script type="text/javascript" src="theme/js/calendar/ts_picker.js"></script>
         <link href="theme/css/stile.css" rel="stylesheet" type="text/css">
     </head>
 <body>
@@ -19,12 +20,16 @@
             <ul id="menu">
             <?php
             if (!empty($_SESSION['username'])) { 
-            echo'<li><a href="#">Pagina di gestione</a>'
+            echo'<li><a href="#">Gestione</a>'
                 . '<ul>'
                 . '<li><a href="admin.php">Invia messaggi</a></li>'
                 . '<li><a href="message.php">Messaggi di utenti</a></li>'
                 . '<li><a href="fullSend.php">Messaggi di massa</a></li>'
                 . '<li><a href="user.php">Utenti attivi</a></li>'
+                . '</ul></li>';
+            echo'<li><a href="#">Pianifica Invio</a>'
+                . '<ul>'
+                . '<li><a href="crontabInsert.php">Inserisci</a></li>'
                 . '</ul></li>';
             echo'<li><a href="#">Pannello Controllo</a>'
                 . '<ul>'

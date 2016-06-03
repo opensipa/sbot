@@ -20,6 +20,7 @@ $userActive = dbCountActiveUsers();
                         <th><span>ID utente</span></th>
                         <th><span>Nome</span></th>
                         <th><span>Cognome</span></th>
+                        <th><span>Username</span></th>
                         <th><span>Data inserimento</span></th>
                     </tr>
                     </thead>
@@ -30,7 +31,7 @@ $userActive = dbCountActiveUsers();
                             echo '<td>'.$user['UserID'].'</td>';
                             echo '<td>'.$user['FirstName'].'</td>';
                             echo '<td>'.$user['LastName'].'</td>';
-                            echo '<td>'.$user['LastName'].'</td>';
+                            echo '<td>'.$user['Username'].'</td>';
                             $insert = $user['insertDate'];
                             echo '<td>'.$insert.'</td>';
                             echo '</tr>';

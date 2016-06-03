@@ -150,7 +150,7 @@ function dbButtonExtraction($value)
 }
 
 /**
- * Function dbButtonChange
+ * Function dbButtonUpdate
  * Cambia i valori dei parametri 
  * 
  * @return 0 
@@ -217,6 +217,106 @@ function dbButtonDelete($ID)
     try {
         $conn=getDbConnection();
         $sql = "delete from software_config_button WHERE ID=:ID";
+        $stmt = $conn->prepare($sql);
+        $stmt->bindValue(':ID',$ID, PDO::PARAM_INT);
+        $stmt->execute();
+        } catch (Exception $ex) {
+            return $ex->getMessage();
+            }
+        return 0;
+}
+
+/* 
+ * ##########################################
+ * Funzioni database per gestione degli scheduler
+ * ##########################################
+ */
+
+/**
+ * Function dbSchedulerExtraction
+ * Ritorna tutti i valori dei parametri per il settaggio
+ * 
+ * @return type Array 
+ */
+function dbSchedulerExtraction($value)
+{
+    try {
+        $conn=getDbConnection();
+        $sql = "SELECT ID, DataInsert, DataScheduler, Repeater, NumberRepeat, HowOften, Text, Note, Signature, SingleUserID, AlreadySent, Counter FROM `message_scheduler` WHERE $value ORDER BY DataScheduler DESC";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+        $tableButton=array();
+        while ($riga=$stmt->fetch(PDO::FETCH_ASSOC)) {
+            $tableButton[]=$riga;            
+        }
+    } catch (Exception $ex) {
+        return $ex->getMessage();
+    }
+    return ($tableButton);
+}
+
+/**
+ * Function dbSchedulerUpdate
+ * Cambia i valori dei parametri 
+ * 
+ * @return 0 
+ */
+
+function dbSchedulerUpdate($ID, $date, $signature, $text, $note)    
+{
+    try {
+        $conn=getDbConnection();
+        $sql = "UPDATE message_scheduler SET DataScheduler=:date, Text=:text, Note=:note, Signature=:signature, AlreadySent=1 WHERE ID=:ID";      
+        $stmt = $conn->prepare($sql);        
+        $stmt->bindValue(':ID',$ID, PDO::PARAM_INT);
+        $stmt->bindValue(':date',date('Y-m-d H:i:s', strtotime ($date)), PDO::PARAM_STR);
+        $stmt->bindValue(':text',$text, PDO::PARAM_STR);
+        $stmt->bindValue(':note',$note, PDO::PARAM_STR);
+        $stmt->bindValue(':signature',$signature, PDO::PARAM_STR);
+        $stmt->execute();
+
+        } catch (Exception $ex) {
+            return $ex->getMessage();
+            }
+        return 0;
+}
+
+/**
+ * Function dbButtonInsert
+ * Inserisce tutti i valori dei parametri per il settaggio
+ * 
+ * @return type Array 
+ */
+
+function dbSchedulerInsert($date, $signature, $text, $note)
+{
+    try {
+        $conn=getDbConnection();
+        $sql = "INSERT message_scheduler SET DataInsert=now(), DataScheduler=:date, Text=:text, Note=:note, Signature=:signature, AlreadySent=1";
+        $stmt = $conn->prepare($sql);
+        $stmt->bindValue(':date',date('Y-m-d H:i:s', strtotime ($date)), PDO::PARAM_STR);
+        $stmt->bindValue(':text',$text, PDO::PARAM_STR);
+        $stmt->bindValue(':note',$note, PDO::PARAM_STR);
+        $stmt->bindValue(':signature',$signature, PDO::PARAM_STR);
+        $stmt->execute();
+    } catch (Exception $ex) {
+        return $ex->getMessage();
+    }
+    return 0;
+}
+
+/**
+ * Function dbSchedulerDelete
+ * Use this function for delete record of scheduler
+ * (dont't use in this moment - future implementations)
+ * 
+ * @return 0 
+ */
+function dbSchedulerDelete($ID)    
+{
+    try {
+        $conn=getDbConnection();
+        $sql = "DELETE from message_scheduler WHERE ID=:ID";
         $stmt = $conn->prepare($sql);
         $stmt->bindValue(':ID',$ID, PDO::PARAM_INT);
         $stmt->execute();
@@ -511,7 +611,7 @@ function dbActiveUsersFull()
 {
     try {
         $conn=getDbConnection();
-        $sql = "select UserID, FirstName, LastName, DATE_FORMAT(DataInsert,'%d/%m/%Y') as insertDate from utenti where StatoUtente=1 order BY DataInsert";
+        $sql = "select UserID, FirstName, LastName, Username, DATE_FORMAT(DataInsert,'%d/%m/%Y') as insertDate from utenti where StatoUtente=1 order BY DataInsert";
         $stmt = $conn->prepare($sql);
         $stmt->execute();
         $tableUser=array();

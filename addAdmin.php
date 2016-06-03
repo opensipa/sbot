@@ -76,14 +76,14 @@ if (isset($_POST["Aggiorna"])) {
         <fieldset>
             <legend>Inserisci nuovo utente</legend>
             <label for='username' >Username*: </label>
-            <input type='username' name='username' id='username' maxlength="50" />
+            <input type='username' name='username' id='username' maxlength="50" required="1"/>
             <label for='password' >Password*: </label>
-            <input type='password' name='password' id='password' maxlength="50" />
+            <input type='password' name='password' id='password' maxlength="50" required="1"/>
             <label for='password' >Ripeti Password*: </label>
-            <input type='password' name='repeatePassword' id='repeatePassword' maxlength="50" />
+            <input type='password' name='repeatePassword' id='repeatePassword' maxlength="50" required="1"/>
             <label for='signature' >Firma*: </label>
             <input type='signature' name='signature' id='signature' maxlength="50" />
-            <p align="center"><input type='submit' name='Aggiungi' value='Aggiungi nuovo utente' /></p>
+            <p align="center"><input type='submit' name='Aggiungi' value='Aggiungi nuovo utente' required="1"/></p>
         </fieldset>
 	</form>
     </div>

@@ -30,7 +30,7 @@ include('config.php');
             <legend>Inserisci qui il messaggio che vuoi spedire a tutti:</legend>
             <div class="form-group">
             <form method="post" action="send.php" method="POST">
-                <textarea name="testo" rows="15" cols="80"placeholder="Inserisci qui la risposta..."></textarea><br>
+                <textarea name="testo" rows="15" cols="80" placeholder="Inserisci qui il messaggio da inviare ..." required="1"></textarea><br>
                 <br>
                 <input type="submit" id="invio" name="invia" value="Invia messaggio">
             </form>
