@@ -65,13 +65,14 @@ Date: 03/06/2016
 ### 03/06/2016###
 * New version permit the scheduler send.
 * In Linux server create a crontab for launcher this script:
-*
-* #!/bin/bash
-* 
+* ##
+* ##
+* #!/bin/bash 
 * # Questo script serve per richiamare il componente crontab.php
 * # di sbot e deve essere utilizzato solo per lanciare il crontab
 * /usr/bin/php -f /var/www/html/sbot/sbotAdmin/crontab.php > /dev/null 2>&1
 *
+* ##
 * In Windows Server create a scheduled task from control pannel
 
 ### 30/05/2016###
