@@ -282,7 +282,7 @@ function dbSchedulerUpdate($ID, $date, $signature, $text, $note)
 }
 
 /**
- * Function dbButtonInsert
+ * Function dbSchedulerInsert
  * Inserisce tutti i valori dei parametri per il settaggio
  * 
  * @return type Array 
@@ -320,6 +320,28 @@ function dbSchedulerDelete($ID)
         $stmt = $conn->prepare($sql);
         $stmt->bindValue(':ID',$ID, PDO::PARAM_INT);
         $stmt->execute();
+        } catch (Exception $ex) {
+            return $ex->getMessage();
+            }
+        return 0;
+}
+
+/**
+ * Function dbSchedulerUpdate
+ * Cambia i valori dei parametri 
+ * 
+ * @return 0 
+ */
+
+function dbCronUpdate($ID)    
+{
+    try {
+        $conn=getDbConnection();
+        $sql = "UPDATE message_scheduler SET AlreadySent=0 WHERE ID=:ID";      
+        $stmt = $conn->prepare($sql);        
+        $stmt->bindValue(':ID',$ID, PDO::PARAM_INT);
+        $stmt->execute();
+
         } catch (Exception $ex) {
             return $ex->getMessage();
             }

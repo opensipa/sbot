@@ -6,7 +6,7 @@ Date: 03/06/2016
 ### What is this repository for? ###
 
 * Telegram Bot
-* Version: 0.40.0
+* Version: 0.40.1
 * name: {S}bot
 
 ### How do I get set up? ###
@@ -62,6 +62,9 @@ Date: 03/06/2016
 
 ### Changelog ###
 
+### 04/06/2016###
+* Bug fix.
+
 ### 03/06/2016###
 * New version permit the scheduler send.
 * In Linux server create a crontab for launcher this script:
@@ -70,7 +73,7 @@ Date: 03/06/2016
 * #!/bin/bash 
 * # Questo script serve per richiamare il componente crontab.php
 * # di sbot e deve essere utilizzato solo per lanciare il crontab
-* /usr/bin/php -f /var/www/html/sbot/sbotAdmin/crontab.php > /dev/null 2>&1
+* /usr/bin/php -f /var/www/html/sbot/crontab.php > /dev/null 2>&1
 *
 * ##
 * In Windows Server create a scheduled task from control pannel
