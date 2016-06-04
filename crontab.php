@@ -4,18 +4,19 @@ include ('functions/functionDb.php');
 include ('config.php');
 include ('functions/functionInit.php');
 include ('functions/passwordHash.php');
+$bad = "Request has failed with error 403: Bot was blocked by the user";
 ?>
 <?php
-$messageSchedulation = dbSchedulerExtraction();
+$messageSchedulation = dbSchedulerExtraction("ID is not null");
 // format Date: 2016-05-07 21:30:00 
 $currentSend = date("Y-m-d H:i:s"); 
 $currentDate = strtotime($currentSend);
 
 foreach ($messageSchedulation as $program){
-  $schedulazione = strtotime($program[DataScheduler]);
-  $numCron = $program[ID];
-  $sent = $program[AlreadySent];
-  $testo_ricevuto = $program[Text];
+  $schedulazione = strtotime($program['DataScheduler']);
+  $numCron = $program['ID'];
+  $sent = $program['AlreadySent'];
+  $testo_ricevuto = $program['Text'];
     //Se cron attivo allora ha valore 1
     if ($schedulazione < $currentDate && $sent==1){
       //disattivo subito il cron per non avere ripetizioni
@@ -25,7 +26,7 @@ foreach ($messageSchedulation as $program){
         foreach ($activeUsers as $user) {
           //Control for channel
           if (strpos($user, "@") === FALSE) {
-              sendMessage($user, $testo_ricevuto);
+              $responce = sendMessage($user, $testo_ricevuto);
           } else {
               sendMessageChannel($user, $testo_ricevuto);
           }  
