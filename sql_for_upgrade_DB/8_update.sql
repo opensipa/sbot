@@ -1,15 +1,15 @@
--- Aggiornamento del 29 maggio 2016 da applicare ad una installazione già presente
+-- Aggiornamento del 04 giugno 2016 da applicare ad una installazione già presente
 -- 
 -- Questo aggiornamento è da applicare solo se avete fatto una installazione
--- di Sbot prima del 29 maggio 2016, altrimenti basta usare telegram_base.sql
+-- di Sbot prima del 04 giugno 2016, altrimenti basta usare telegram_base.sql
 -- Applica 8_update.sql
 --
--- Apply the patch 8_update.sql only not first installation. Or installation is antecedent at 29/05/2016
+-- Apply the patch 8_update.sql only not first installation. Or installation is antecedent at 04/06/2016
 -- Apply 8_update.sql
 
 
 --
--- Sbot version 0.20
+-- Sbot version 0.30
 --
 
 -- phpMyAdmin SQL Dump

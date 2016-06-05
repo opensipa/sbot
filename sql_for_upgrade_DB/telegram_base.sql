@@ -1,8 +1,17 @@
--- Version of Structure Jan 16, 2016
--- DB {S}Bot version 0.20
+-- Version of Structure Jan 05, 2016
+-- DB {S}Bot version 0.41.0
 --
 -- phpMyAdmin SQL Dump
--- version 16/1/2016
+-- version 05/06/2016
+
+-- phpMyAdmin SQL Dump
+-- version 4.5.1
+-- http://www.phpmyadmin.net
+--
+-- Host: localhost
+-- Generation Time: Jun 05, 2016 at 12:03 PM
+-- Server version: 5.5.49-0ubuntu0.14.04.1
+-- PHP Version: 5.5.9-1ubuntu4.17
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -30,6 +39,34 @@ CREATE TABLE `admins` (
   `signature` varchar(255) DEFAULT NULL,
   `level` varchar(25) DEFAULT 'admin',
   `active` int(2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `admins`
+--
+
+INSERT INTO `admins` (`id`, `username`, `password`, `signature`, `level`, `active`) VALUES
+(1, 'admin', 'sha256:1000:T2vvAPNGbltVdfnLi3hveiuCi/4Chp5w:u/U7a9WppkzD2213syyhruPMTFHSguCI', 'Il Team del Bot', 'admin', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `message_scheduler`
+--
+
+CREATE TABLE `message_scheduler` (
+  `ID` int(11) NOT NULL,
+  `DataInsert` datetime DEFAULT NULL,
+  `DataScheduler` datetime DEFAULT NULL,
+  `Repeater` tinyint(1) DEFAULT NULL COMMENT 'Ripetizioni Si/No',
+  `NumberRepeat` int(1) DEFAULT NULL COMMENT 'Max 9 ripetizioni',
+  `HowOften` int(2) DEFAULT NULL COMMENT 'Intervallo ripetizione',
+  `Text` varchar(2048) DEFAULT NULL,
+  `Note` varchar(2048) DEFAULT NULL,
+  `Signature` varchar(255) DEFAULT NULL,
+  `SingleUserID` int(11) DEFAULT NULL,
+  `AlreadySent` tinyint(1) DEFAULT '1',
+  `Counter` int(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -66,6 +103,23 @@ CREATE TABLE `software_config` (
   `DateUpdt` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `software_config`
+--
+
+INSERT INTO `software_config` (`ID`, `SoftDesc`, `Code`, `Param`, `Number`, `Note`, `Active`, `Log`, `DateUpdt`) VALUES
+(1, 'Mail', 'mittente', 'xxxxxx@gmail.com', NULL, 'Mail di invio comunicazioni', 0, 'admin', NULL),
+(2, 'Mail', 'nomemittente', 'nome', NULL, NULL, 0, 'admin', NULL),
+(3, 'Mail', 'destinatario', 'yyyyyyy@gmail.com', NULL, NULL, 0, 'admin', NULL),
+(4, 'Mail', 'nomedestinatario', 'nome', NULL, 'Nome del destinatario a cui inviare mail', 0, 'admin', NULL),
+(5, 'Mail', 'serversmtp', 'smtp.gmail.com', NULL, NULL, 0, 'admin', NULL),
+(6, 'Mail', 'username', 'xxxxxx', NULL, NULL, 0, 'admin', NULL),
+(7, 'Mail', 'password', 'yyyyyyy', NULL, NULL, 0, 'admin', NULL),
+(8, 'Mail', 'port', '587', NULL, '', 0, 'admin', NULL),
+(9, 'Mail', 'secure', 'tsl', NULL, NULL, 0, 'admin', NULL),
+(10, 'Demone', 'status', '--', NULL, 'start=1 / stop=0', 1, 'admin', NULL),
+(11, 'Demone', 'nomebot', 'Bot di Test', NULL, 'Nome del bot che stai gestendo', 1, 'admin', NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -83,6 +137,24 @@ CREATE TABLE `software_config_button` (
   `Log` varchar(50) DEFAULT NULL,
   `DateUpdt` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `software_config_button`
+--
+
+INSERT INTO `software_config_button` (`ID`, `Type`, `SoftDesc`, `Number`, `Titolo`, `Param`, `Active`, `Log`, `DateUpdt`) VALUES
+(1, 'Normal', 'Hello', 0, 'Benvenuto', 'Benvenuto nel Bot. Utilizzando il Bot acconsenti al trattamento dei tuoi dati personali secondo quanto disposto dal D.Lgs 196/2003.', 1, 'admin', '2016-01-09 17:26:11'),
+(2, 'Normal', 'Button', 1, 'Meteo', 'Puoi scegliere tra /PrevisioniDomani o  /MeteoOggi', 1, 'admin', '2016-01-09 17:26:11'),
+(3, 'Normal', 'Button', 2, 'News', '/News', 1, 'admin', '2016-01-09 17:26:11'),
+(4, 'Normal', 'Button', 3, 'Button1', 'Button1', 1, 'admin', '2016-01-09 17:26:11'),
+(5, 'Normal', 'Button', 4, 'Button1', 'Button1', 1, 'admin', '2016-01-09 17:26:11'),
+(6, 'Normal', 'Button', 5, 'Button1', 'Button1', 1, 'admin', '2016-01-09 17:26:11'),
+(7, 'Normal', 'Button', 6, 'Button1', 'Button1', 1, 'admin', '2016-01-09 17:26:11'),
+(8, 'Normal', 'Button', 7, 'Button1', 'Button1', 1, 'admin', '2016-01-09 17:26:11'),
+(9, 'Normal', 'Button', 8, 'Button1', 'Button1', 1, 'admin', '2016-01-09 17:26:11'),
+(17, 'Normal', 'Meteo', 51, '/PrevisioniDomani', 'link1', 1, 'matteo', NULL),
+(18, 'Normal', 'Meteo', 52, '/MeteoOggi', 'link2', 1, 'matteo', NULL),
+(19, 'Function', 'Notizie', 80, '/News', 'Read|http://link/rss/link_rss', 1, 'admin', NULL);
 
 -- --------------------------------------------------------
 
@@ -135,6 +207,12 @@ ALTER TABLE `admins`
   ADD UNIQUE KEY `username` (`username`);
 
 --
+-- Indexes for table `message_scheduler`
+--
+ALTER TABLE `message_scheduler`
+  ADD PRIMARY KEY (`ID`);
+
+--
 -- Indexes for table `message_send`
 --
 ALTER TABLE `message_send`
@@ -175,6 +253,11 @@ ALTER TABLE `utenti_message`
 ALTER TABLE `admins`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 --
+-- AUTO_INCREMENT for table `message_scheduler`
+--
+ALTER TABLE `message_scheduler`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT for table `message_send`
 --
 ALTER TABLE `message_send`
@@ -194,54 +277,7 @@ ALTER TABLE `software_config_button`
 --
 ALTER TABLE `utenti_message`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=172;
-  
-  
---
--- Dumping data for table `admins`
---
--- default user:admin  default_password:password
---
-
-INSERT INTO `admins` (`id`, `username`, `password`, `signature`, `level`, `active`) VALUES
-(1, 'admin', 'sha256:1000:T2vvAPNGbltVdfnLi3hveiuCi/4Chp5w:u/U7a9WppkzD2213syyhruPMTFHSguCI', 'Il Team del Bot', 'admin', 1);
-  
-
---
--- Dumping data for table `software_config_button`
---
-
-INSERT INTO `software_config_button` (`ID`, `Type`, `SoftDesc`, `Number`, `Titolo`, `Param`, `Active`, `Log`, `DateUpdt`) VALUES
-(1, 'Normal', 'Hello', 0, 'Benvenuto', 'Benvenuto nel Bot. Utilizzando il Bot acconsenti al trattamento dei tuoi dati personali secondo quanto disposto dal D.Lgs 196/2003.', 1, 'admin', '2016-01-09 17:26:11'), 
-(2, 'Normal', 'Button', 1, 'Meteo', 'Puoi scegliere tra /PrevisioniDomani o  /MeteoOggi', 1, 'admin', '2016-01-09 17:26:11'),
-(3, 'Normal', 'Button', 2, 'News', '/News', 1, 'admin', '2016-01-09 17:26:11'),
-(4, 'Normal', 'Button', 3, 'Button1', 'Button1', 1, 'admin', '2016-01-09 17:26:11'),
-(5, 'Normal', 'Button', 4, 'Button1', 'Button1', 1, 'admin', '2016-01-09 17:26:11'),
-(6, 'Normal', 'Button', 5, 'Button1', 'Button1', 1, 'admin', '2016-01-09 17:26:11'),
-(7, 'Normal', 'Button', 6, 'Button1', 'Button1', 1, 'admin', '2016-01-09 17:26:11'),
-(8, 'Normal', 'Button', 7, 'Button1', 'Button1', 1, 'admin', '2016-01-09 17:26:11'),
-(9, 'Normal', 'Button', 8, 'Button1', 'Button1', 1, 'admin', '2016-01-09 17:26:11'),
-(17, 'Normal', 'Meteo', 51, '/PrevisioniDomani', 'link1', 1, 'matteo', NULL),
-(18, 'Normal', 'Meteo', 52, '/MeteoOggi', 'link2', 1, 'matteo', NULL),
-(19, 'Function', 'Notizie', 80, '/News', 'Read|http://link/rss/link_rss', 1, 'admin', NULL);
-
---
--- Dumping data for table `software_config`
---
-
-INSERT INTO `software_config` (`ID`, `SoftDesc`, `Code`, `Param`, `Number`, `Note`, `Active`, `Log`, `DateUpdt`) VALUES
-(1, 'Mail', 'mittente', 'xxxxxx@gmail.com', NULL, 'Mail di invio comunicazioni', 0, 'admin', NULL),
-(2, 'Mail', 'nomemittente', 'nome', NULL, NULL, 0, 'admin', NULL),
-(3, 'Mail', 'destinatario', 'yyyyyyy@gmail.com', NULL, NULL, 0, 'admin', NULL),
-(4, 'Mail', 'nomedestinatario', 'nome', NULL, 'Nome del destinatario a cui inviare mail', 0, 'admin', NULL),
-(5, 'Mail', 'serversmtp', 'smtp.gmail.com', NULL, NULL, 0, 'admin', NULL),
-(6, 'Mail', 'username', 'xxxxxx', NULL, NULL, 0, 'admin', NULL),
-(7, 'Mail', 'password', 'yyyyyyy', NULL, NULL, 0, 'admin', NULL),
-(8, 'Mail', 'port', '587', NULL, '', 0, 'admin', NULL),
-(9, 'Mail', 'secure', 'tsl', NULL, NULL, 0, 'admin', NULL),
-(10, 'Demone', 'status', '--', NULL, 'start=1 / stop=0', 1, 'admin', NULL),  
-(11, 'Demone', 'nomebot', 'Bot di Test', NULL, 'Nome del bot che stai gestendo', 1, 'admin', NULL);
-  
-  
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
