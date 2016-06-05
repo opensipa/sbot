@@ -51,7 +51,6 @@ function processMessage($message) {
   $key = createKeyboard();
   $num0 = $key[0];
   $reply_markup = $key[1];
-  
   /*
    * Control the empty fields in incoming message
    */
@@ -73,7 +72,6 @@ function processMessage($message) {
   /**
    * Controll Message of Text
    */
-
   if (isset($message['text'])) {
    /*
    * The very function of process messag
@@ -186,6 +184,10 @@ function apiRequest($method, $parameters) {
     if ($http_code == 401) {
       throw new Exception('Invalid access token provided');
     }
+    // This error "403": Request has failed with error 403: Bot was blocked by the user - Delete user from Sbot for block
+    if ($http_code == 403) {
+        dbLogUserStop ($parameters['chat_id']);
+    }
     return false;
   } else {
     $response = json_decode($response, true);
@@ -292,14 +294,17 @@ function controlTelgramState(){
  * This Function is not terminate
  * Control the stop bot from users
  * 
-  * 
+ *
+ * 
+ * @return type
+ */ 
  
-function controlUserState()
+function controlUserState($indirizzo)
 {
     $ch = curl_init();
     // Set URL della risorsa remota da scaricare
     // New variable for send Photo
-    $url = API_URL.'getUpdates';
+    $url = $indirizzo; //API_URL.'getUpdates';
     $handle = curl_init($url);
     curl_setopt($ch, CURLOPT_URL, $url);
     // imposto che non vengano scaricati gli header
@@ -313,10 +318,11 @@ function controlUserState()
     $risultato = curl_exec($ch);
     curl_close($ch);
     // output di Telegram site when the result is OK
-    $controllo = "{\"ok\":false,\"error_code\":403,\"description\":\"[Error]: Bot was kicked from a chat\"}";
+    //$controllo = "{\"ok\":false,\"error_code\":403,\"description\":\"[Error]: Bot was kicked from a chat\"}";
+    $controllo = "Request has failed with error 403: Bot was blocked by the user";
     return (array($risultato, $controllo));
 }
-*/
+
 
 /*
  * 

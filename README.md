@@ -6,7 +6,7 @@ Date: 03/06/2016
 ### What is this repository for? ###
 
 * Telegram Bot
-* Version: 0.40.1
+* Version: 0.41.0
 * name: {S}bot
 
 ### How do I get set up? ###
@@ -62,8 +62,11 @@ Date: 03/06/2016
 
 ### Changelog ###
 
+### 05/06/2016###
+* This version control this error: [Error : 403 : Bot was blocked by the user]. In this case the user is delete from Sbot.
+
 ### 04/06/2016###
-* Bug fix.
+* Bug fix for version 0.40.
 
 ### 03/06/2016###
 * New version permit the scheduler send.
