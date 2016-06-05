@@ -1,12 +1,12 @@
 # README #
 
-Date: 03/06/2016
+Date: 05/06/2016
 
 
 ### What is this repository for? ###
 
 * Telegram Bot
-* Version: 0.41.0
+* Version: 0.42.0
 * name: {S}bot
 
 ### How do I get set up? ###
