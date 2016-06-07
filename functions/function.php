@@ -213,7 +213,7 @@ function sendMessage($user_id, $message) {
     $key = createKeyboard();
     $reply_markup = $key[1];
     //Funzione di Send Message 
-    apiRequest("sendMessage", array('chat_id' => $user_id, "text" => $message, 'reply_markup' => $reply_markup));
+    apiRequest("sendMessage", array('chat_id' => $user_id, 'text' => $message, 'reply_markup' => $reply_markup));
 }
 
 /*
@@ -226,7 +226,7 @@ function sendMessageChannel($user_id, $message) {
     $message = html_entity_decode($message);
     $message = str_replace ("&#39;","'" ,$message);
     //Funzione di Send Message to Channel 
-    apiRequest("sendMessage", array('chat_id' => "$user_id", "text" => $message));
+    apiRequest("sendMessage", array('chat_id' => "$user_id", 'text' => $message));
 }
 
 /*
