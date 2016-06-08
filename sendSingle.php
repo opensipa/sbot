@@ -11,7 +11,7 @@ include('functions/functionDb.php');
 	<h1>
                 <?php
                 //Ricevo il testo e id utente a cui inviare il messaggio da message.php
-                $testo_ricevuto = filter_input(INPUT_POST, 'testo', FILTER_SANITIZE_STRING);
+                $testo_ricevuto = filter_input(INPUT_POST, 'testo', FILTER_DEFAULT);
                 $id_user = filter_input(INPUT_POST, 'id_user', FILTER_SANITIZE_STRING);
                 $id_message = filter_input(INPUT_POST, 'id_message', FILTER_SANITIZE_STRING);
                 $id_total = filter_input(INPUT_POST, 'id_total', FILTER_SANITIZE_STRING);

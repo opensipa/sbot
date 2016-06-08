@@ -208,12 +208,12 @@ function apiRequest($method, $parameters) {
  */
 function sendMessage($user_id, $message) {
     //Correzione dei caratteri utf-8 particolari ed inoltre apici
-    $message = html_entity_decode($message);
+    //Funzione deprecata -> $message = html_entity_decode($message);
     $message = str_replace ("&#39;","'" ,$message);
     $key = createKeyboard();
     $reply_markup = $key[1];
     //Funzione di Send Message 
-    apiRequest("sendMessage", array('chat_id' => $user_id, 'text' => $message, 'reply_markup' => $reply_markup));
+    apiRequest("sendMessage", array('chat_id' => $user_id, 'text' => $message, 'parse_mode' => 'HTML', 'reply_markup' => $reply_markup));
 }
 
 /*
@@ -223,10 +223,10 @@ function sendMessage($user_id, $message) {
  */
 function sendMessageChannel($user_id, $message) {
     //Correzione dei caratteri utf-8 particolari ed inoltre apici
-    $message = html_entity_decode($message);
+    //Funzione deprecata -> $message = html_entity_decode($message);
     $message = str_replace ("&#39;","'" ,$message);
     //Funzione di Send Message to Channel 
-    apiRequest("sendMessage", array('chat_id' => "$user_id", 'text' => $message));
+    apiRequest("sendMessage", array('chat_id' => "$user_id", 'parse_mode' => 'HTML', 'text' => $message));
 }
 
 /*

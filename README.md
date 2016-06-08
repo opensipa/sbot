@@ -6,7 +6,7 @@ Date: 05/06/2016
 ### What is this repository for? ###
 
 * Telegram Bot
-* Version: 0.42.0
+* Version: 0.45.0
 * name: {S}bot
 
 ### How do I get set up? ###
@@ -61,6 +61,14 @@ Date: 05/06/2016
 
 
 ### Changelog ###
+
+### 08/06/2016###
+* Use the code html for send message in {S}Bot
+* <b>bold</b>, <strong>bold</strong>
+* <i>italic</i>, <em>italic</em>
+* <a href="URL">inline URL</a>
+* <code>inline fixed-width code</code>
+* <pre>pre-formatted fixed-width code block</pre>
 
 ### 05/06/2016###
 * This version control this error: [Error : 403 : Bot was blocked by the user]. In this case the user is delete from Sbot.

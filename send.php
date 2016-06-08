@@ -12,7 +12,7 @@ include('functions/functionDb.php');
 <?php
 
 //Recupero il valore del testo
-$testo_ricevuto=filter_input(INPUT_POST, 'testo', FILTER_SANITIZE_STRING);
+$testo_ricevuto=filter_input(INPUT_POST, 'testo', FILTER_DEFAULT);
 if (!empty($testo_ricevuto)){
 /******
  * Questa fase cicla sugli utenti attivi inseriti nel database e per ciascun id

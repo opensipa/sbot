@@ -8,7 +8,7 @@ include('functions/functionInit.php');
 ?>
 <?php
 if (isset($_POST['Archivia'])) {
-        $selected_radio = $_POST['update_archivia'];
+        $selected_radio = filter_input(INPUT_POST, 'update_archivia', FILTER_DEFAULT);
         foreach ($selected_radio as $value){
         dbLogTextUpdateSend ($value);  
         }
