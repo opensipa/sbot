@@ -223,10 +223,10 @@ function sendMessage($user_id, $message) {
  */
 function sendMessageChannel($user_id, $message) {
     //Correzione dei caratteri utf-8 particolari ed inoltre apici
-    //Funzione deprecata -> $message = html_entity_decode($message);
+    $message = html_entity_decode($message);
     $message = str_replace ("&#39;","'" ,$message);
     //Funzione di Send Message to Channel 
-    apiRequest("sendMessage", array('chat_id' => "$user_id", 'parse_mode' => 'HTML', 'text' => $message));
+    apiRequest("sendMessage", array('chat_id' => "$user_id", 'text' => $message));
 }
 
 /*
