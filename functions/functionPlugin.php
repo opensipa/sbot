@@ -58,9 +58,13 @@ $xmldom->load($linkNew);
 //recupera il nodo rappresentato da <item>
 $nodo = $xmldom->getElementsByTagName("item");
 $risultato = "";
-//scorre tutti i nodi <item> della pagina
-//for($i=0; $i<=$nodo->length-1; $i++){
+// Scorre tutti i nodi <item> della pagina
+// Limita a 7 il blocco di estrazione
 for($i=0; $i<=$nodo->length-1; $i++){
+     $conteggio = $conteggio + 1;
+    if ($conteggio>8){
+        break;
+    } else {
     // Estraggo il contenuto dei singoli tag del nodo <item>
     $titolo = $nodo->item($i)->getElementsByTagName("title")->item(0)->childNodes->item(0)->nodeValue;
     $collegamento = $nodo->item($i)->getElementsByTagName("link")->item(0)->childNodes->item(0)->nodeValue;
