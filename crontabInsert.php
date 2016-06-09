@@ -45,7 +45,7 @@ if (isset($_POST["Inserisci"])) {
     $AlreadySent = filter_input(INPUT_POST, 'alreadysent', FILTER_SANITIZE_STRING);
     $Signature = filter_input(INPUT_POST, 'signature', FILTER_SANITIZE_STRING);
     $Note = filter_input(INPUT_POST, 'note', FILTER_SANITIZE_STRING);
-    $Testo = filter_input(INPUT_POST, 'testo', FILTER_SANITIZE_STRING);
+    $Testo = filter_input(INPUT_POST, 'testo', FILTER_DEFAULT);
     $Date = filter_input(INPUT_POST, 'data1', FILTER_SANITIZE_STRING);
     $submit = filter_input(INPUT_POST, 'Inserisci', FILTER_SANITIZE_STRING);
 if (!empty($submit)) {
