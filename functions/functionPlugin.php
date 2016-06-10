@@ -22,7 +22,7 @@ function Launcher($chat_id,$reply_markup,$param){
 }
 
 /*
- * Function ore
+ * Function ore()
  * return time now
  * 
 */
@@ -33,7 +33,7 @@ function ore(){
 }
 
 /*
- * Function Read
+ * Function Read($link)
  * return string
  * 
 */
@@ -50,7 +50,6 @@ Utilizza le funzioni dell'XML DOM di PHP.
 $xmldom = new DOMDocument();
 // carica il contenuto del feed presente al link indicato
 // rss type http://messaggeroveneto.gelocal.it/rss/cmlink/rss-messaggero-veneto-udine-cronaca-1.9271567
-// param in position 1
 $linkNew = $link[1];
 $xmldom->load($linkNew);
 //recupera il nodo rappresentato da <item>
@@ -66,7 +65,7 @@ for($i=0; $i<=$nodo->length-1; $i++){
         // Estraggo il contenuto dei singoli tag del nodo <item>
         $titolo = $nodo->item($i)->getElementsByTagName("title")->item(0)->childNodes->item(0)->nodeValue;
         $collegamento = $nodo->item($i)->getElementsByTagName("link")->item(0)->childNodes->item(0)->nodeValue;
-        // Not used
+        // Not used:
         // $descrizione = $nodo->item($i)->getElementsByTagName("description")->item(0)->childNodes->item(0)->nodeValue;
         $risultato .= $titolo."\r\n".$collegamento."\r\n\r\n";
         }
@@ -75,18 +74,18 @@ return $risultato;
 }
 
 /*
- * 
+ * Fuction Estrai($link)
  * For extract txt from http://freetexthost.com/
  * 
  */
 function Estrai($link){
   $linkNew = $link[1];
   $txt = file_get_contents($linkNew);
-  $txt_i = "[inizio]";
+  $txt_i = "<div id=\"contentsinner\">";
   $txt_f = "[fine]";
   $off = "0";
   $letto = scrape($txt,$txt_i,$txt_f,$off);
-  $letto = str_replace("[inizio]","" ,$letto);
+  $letto = str_replace("<div id=\"contentsinner\">","" ,$letto);
   $letto = str_replace("<br />","" ,$letto);
   return $letto;
 }
@@ -94,28 +93,27 @@ function Estrai($link){
 function scrape($testo,$txt_inizio,$txt_fine,$offset){
     $inizio = strpos($testo,$txt_inizio);
     $fine = strpos($testo,$txt_fine,$inizio);
-    $darestituire = substr($testo,$inizio,$fine-$inizio+$offset);
-    return $darestituire;
+    $daRestituire = substr($testo,$inizio,$fine-$inizio+$offset);
+    return $daRestituire;
 }
 
-function FunzionePrevisioniMeteo($funzionePersonalizzata)
-{
+/*
+ * Fuction FunzionePrevisioniMeteo($funzionePersonalizzata)
+ * Previsioni Meteo da 3B Meteo
+ * 
+ */
+
+function FunzionePrevisioniMeteo($funzionePersonalizzata){
     $startDate = time();
     $gg = $funzionePersonalizzata[3];
-    $data = date('Y-m-d', strtotime('+'.$gg.' day', $startDate));
-    //$data = date("Y-m-d", time());  
+    $data = date('Y-m-d', strtotime('+'.$gg.' day', $startDate)); 
     /*
     * http://cdn4.3bmeteo.com/images/png_2014/2016-01-18_6_regione6_verdi.jpg
     * http://cdn4.3bmeteo.com/images/png_2014/2016-01-18_12_regione6_verdi.jpg
     * http://cdn4.3bmeteo.com/images/png_2014/2016-01-18_18_regione6_verdi.jpg
     * http://cdn4.3bmeteo.com/images/png_2014/2016-01-18_24_regione6_verdi.jpg            
     */ 
-    $link = "http://cdn4.3bmeteo.com/images/png_2014/"."$data"."_".$funzionePersonalizzata[1]."_"."$funzionePersonalizzata[2]";
-    
-    //$value[] = "!(" .$link .")";
-    /* $value[]="[Previsione alle ore " .$funzionePersonalizzata[1] ."](".$link .")";
-    *  c$value[]="SI";
-    */    
+    $link = "http://cdn4.3bmeteo.com/images/png_2014/"."$data"."_".$funzionePersonalizzata[1]."_"."$funzionePersonalizzata[2]";  
     return $link;
 }
 
@@ -123,6 +121,5 @@ function FunzionePrevisioniMeteo($funzionePersonalizzata)
 /*
  * 
  * FINE FUNZIONI DI DEFAULT
- * 
  * 
  */
