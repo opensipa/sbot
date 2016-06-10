@@ -76,6 +76,7 @@ return $risultato;
 /*
  * Fuction FreeHost($link)
  * For extract txt from http://freetexthost.com/
+ * Insert in to fine message: [fine]
  * 
  */
 function FreeHost($link){
@@ -84,13 +85,13 @@ function FreeHost($link){
   $txt_i = "<div id=\"contentsinner\">";
   $txt_f = "[fine]";
   $off = "0";
-  $letto = scrape($txt,$txt_i,$txt_f,$off);
+  $letto = scrapeFreeHost($txt,$txt_i,$txt_f,$off);
   $letto = str_replace("<div id=\"contentsinner\">","" ,$letto);
   $letto = str_replace("<br />","" ,$letto);
   return $letto;
 }
 
-function scrape($testo,$txt_inizio,$txt_fine,$offset){
+function scrapeFreeHost($testo,$txt_inizio,$txt_fine,$offset){
     $inizio = strpos($testo,$txt_inizio);
     $fine = strpos($testo,$txt_fine,$inizio);
     $daRestituire = substr($testo,$inizio,$fine-$inizio+$offset);
