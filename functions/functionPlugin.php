@@ -118,6 +118,44 @@ function FunzionePrevisioniMeteo($funzionePersonalizzata){
     return $link;
 }
 
+/*
+ * Fuction Oroscopo($link)
+ * Oroscopo da: http://www.oggi.it/oroscopo/oroscopo-di-oggi/
+ * 
+ */
+
+function Oroscopo($link){
+    $linkNew = $link[1];
+    $txt = file_get_contents($linkNew);
+    $txt_i = "<h2 class=\"entry-title\">";
+    $txt_f = "horoscope-links";
+    $off = "0";
+    // To Clean Text-HTML and convet character
+    $letto = scrape($txt,$txt_i,$txt_f,$off);
+    $letto = str_replace("&#8217;","'" ,$letto);
+    $letto = str_replace("&#249;","u'" ,$letto);
+    $letto = str_replace("&#232;","e'" ,$letto);
+    $letto = str_replace("&#224;","a'" ,$letto);
+    $letto = str_replace("&#242;","o'" ,$letto);
+    $letto = str_replace("&#233;","e'" ,$letto);
+    $letto = str_replace("&#236;","i'" ,$letto);
+    $letto = str_replace("&#8230;","..." ,$letto);
+    $letto = str_replace("&#8220;","\"" ,$letto);
+    $letto = str_replace("&#8221;","\"" ,$letto);
+    $letto = str_replace("&#160;"," " ,$letto);
+    $letto = str_replace("&","" ,$letto);
+    $letto = strip_tags($letto);
+    return $letto;
+}
+
+function scrape($testo,$txt_inizio,$txt_fine,$offset){
+    $inizio = strpos($testo,$txt_inizio);
+    $inizio = $inizio+25;
+    $fine = strpos($testo,$txt_fine,$inizio);
+    $fine = $fine-33;
+    $darestituire = substr($testo,$inizio,$fine-$inizio+$offset);
+    return $darestituire;
+}
 
 /*
  * 
