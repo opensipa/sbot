@@ -74,11 +74,11 @@ return $risultato;
 }
 
 /*
- * Fuction Estrai($link)
+ * Fuction FreeHost($link)
  * For extract txt from http://freetexthost.com/
  * 
  */
-function Estrai($link){
+function FreeHost($link){
   $linkNew = $link[1];
   $txt = file_get_contents($linkNew);
   $txt_i = "<div id=\"contentsinner\">";
