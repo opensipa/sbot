@@ -118,9 +118,9 @@ INSERT INTO `software_config` (`ID`, `SoftDesc`, `Code`, `Param`, `Number`, `Not
 (8, 'Mail', 'port', '587', NULL, '', 0, 'admin', NULL),
 (9, 'Mail', 'secure', 'tsl', NULL, NULL, 0, 'admin', NULL),
 (10, 'Demone', 'status', '--', NULL, 'start=1 / stop=0', 1, 'admin', NULL),
-(11, 'Demone', 'nomebot', 'Bot di Test', NULL, 'Nome del bot che stai gestendo', 1, 'admin', NULL);
-(12, 'Google', 'key', 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx', NULL, 'Key per le Api Google - https://console.developers.google.com', '0', 'admin', '2016-06-11 00:00:00')
-(13, 'Message', 'waiting', 'Attendere prego ...', NULL, 'Messaggio di attesa in caso di elaborazione.', '1', 'admin', '2016-06-11 00:00:00'); 
+(11, 'Demone', 'nomebot', 'Bot di Test', NULL, 'Nome del bot che stai gestendo', 1, 'admin', NULL),
+(12, 'Google', 'key', 'xxxxxxxxxxxxxxxxxxxxxxx', NULL, 'Key per le Api Google - https://console.developers.google.com', 0, 'admin', NULL),
+(13, 'Message', 'waiting', 'Attendere prego ...', NULL, 'Messaggio di attesa in caso di elaborazione.', 1, 'admin', NULL); 
 
 
 -- --------------------------------------------------------

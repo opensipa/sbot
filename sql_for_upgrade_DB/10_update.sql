@@ -41,6 +41,6 @@ SET time_zone = "+00:00";
 --
 
 INSERT INTO `software_config` (`ID`, `SoftDesc`, `Code`, `Param`, `Number`, `Note`, `Active`, `Log`, `DateUpdt`) VALUES
-(NULL, 'Demone', 'nomebot', 'BOT_NAME', NULL, 'Nome del bot che stai gestendo', 1, 'admin', '2016-06-11 00:00:00'); 
-(NULL, 'Google', 'key', 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx', NULL, 'Key per le Api Google - https://console.developers.google.com', '0', 'admin', '2016-06-11 00:00:00')
+(NULL, 'Demone', 'nomebot', 'BOT_NAME', NULL, 'Nome del bot che stai gestendo', 1, 'admin', '2016-06-11 00:00:00'), 
+(NULL, 'Google', 'key', 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx', NULL, 'Key per le Api Google - https://console.developers.google.com', '0', 'admin', '2016-06-11 00:00:00'),
 (NULL, 'Message', 'waiting', 'Attendere prego ...', NULL, 'Messaggio di attesa in caso di elaborazione.', '1', 'admin', '2016-06-11 00:00:00'); 
