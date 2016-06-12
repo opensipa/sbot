@@ -17,7 +17,7 @@ include('config.php');
             if( $risultato == $controllo ){ ?>
                 Il sistema funziona correttamente.<br> 
             <?php
-            if(isset($name)){echo'Stai usando: '.$name;} 
+            if(isset($name)){echo'Stai usando: '.$name[Param];} 
             } else { 
             ?>
             Il sistema non sta funzionando correttamente, <a href="coda.php">controlla la coda.</a><br>

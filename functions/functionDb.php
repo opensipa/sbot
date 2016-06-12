@@ -43,7 +43,7 @@ function dbDemName()
     } catch (Exception $ex) {
         return $ex->getMessage();
     }
-    return ($name[Param]);
+    return $name;
 }
 
 /* 
