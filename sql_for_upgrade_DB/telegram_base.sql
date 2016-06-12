@@ -1,8 +1,8 @@
 -- Version of Structure Jan 05, 2016
--- DB {S}Bot version 0.41.0
+-- DB {S}Bot version 0.50.0
 --
 -- phpMyAdmin SQL Dump
--- version 05/06/2016
+-- version 12/06/2016
 
 -- phpMyAdmin SQL Dump
 -- version 4.5.1
@@ -119,6 +119,9 @@ INSERT INTO `software_config` (`ID`, `SoftDesc`, `Code`, `Param`, `Number`, `Not
 (9, 'Mail', 'secure', 'tsl', NULL, NULL, 0, 'admin', NULL),
 (10, 'Demone', 'status', '--', NULL, 'start=1 / stop=0', 1, 'admin', NULL),
 (11, 'Demone', 'nomebot', 'Bot di Test', NULL, 'Nome del bot che stai gestendo', 1, 'admin', NULL);
+(12, 'Google', 'key', 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx', NULL, 'Key per le Api Google - https://console.developers.google.com', '0', 'admin', '2016-06-11 00:00:00')
+(13, 'Message', 'waiting', 'Attendere prego ...', NULL, 'Messaggio di attesa in caso di elaborazione.', '1', 'admin', '2016-06-11 00:00:00'); 
+
 
 -- --------------------------------------------------------
 
