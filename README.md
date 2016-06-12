@@ -1,12 +1,12 @@
 # README #
 
-Date: 05/06/2016
+Date: 12/06/2016
 
 
 ### What is this repository for? ###
 
 * Telegram Bot
-* Version: 0.45.1
+* Version: 0.50.0
 * name: {S}bot
 
 ### How do I get set up? ###
@@ -61,6 +61,9 @@ Date: 05/06/2016
 
 
 ### Changelog ###
+
+### 12/06/2016###
+* Implements the short link for send news ecc. 
 
 ### 08/06/2016###
 * Use the code html for send message in {S}Bot
