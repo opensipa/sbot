@@ -7,6 +7,7 @@ require_once ('functions/function.php');
 require_once ('functions/functionDb.php');
 require_once ('functions/functionInit.php');
 require_once ('functions/functionPlugin.php');
+require_once ('functions/functionGoogle.php');
 
 $last_id = null;
 while (true) {

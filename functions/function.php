@@ -106,11 +106,24 @@ function processMessage($message) {
         foreach ($responceKey as $responceKeyFinal){
             //Insert her for control this is a function, not a button. Implement this control with if function
             if ($responceKeyFinal['Type'] === 'Function'){
-                //Launch function
-                $functionPersonal = Launcher($chat_id,$reply_markup, $responceKeyFinal['Param']);
-                apiRequest("sendMessage", array('chat_id' => $chat_id, "text" =>  $functionPersonal, 'reply_markup' => $reply_markup));
-                $textControl = "";
-                break; //Exit cicle
+                //Launch function with messagge time wait
+                $tableParm = dbParamExtraction('SoftDesc = "Message" AND Active = "1"');
+                foreach ($tableParm as $param) {
+                if ($param['Code'] == "waiting"){
+                    $message = $param['Param'];}
+                }
+                if($message != ''){
+                    apiRequest("sendMessage", array('chat_id' => $chat_id, "text" =>  $message, 'reply_markup' => $reply_markup));
+                    $functionPersonal = Launcher($chat_id,$reply_markup, $responceKeyFinal['Param']);  
+                    apiRequest("sendMessage", array('chat_id' => $chat_id, "text" =>  $functionPersonal, 'reply_markup' => $reply_markup));
+                    $textControl = "";
+                    break; //Exit cicle
+                } else {
+                    $functionPersonal = Launcher($chat_id,$reply_markup, $responceKeyFinal['Param']);  
+                    apiRequest("sendMessage", array('chat_id' => $chat_id, "text" =>  $functionPersonal, 'reply_markup' => $reply_markup));
+                    $textControl = "";
+                    break; //Exit cicle
+                }
             } else if ($textControl === $responceKeyFinal['Titolo']){
             //QUESTO DIVENTA UN ARRAY NON UNA RIGA SOLA QUINDI SERVE UN FOREACH
             $responceFinal = html_entity_decode($responceKeyFinal['Param']);

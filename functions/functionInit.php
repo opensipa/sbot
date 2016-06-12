@@ -1,11 +1,12 @@
 <?php
 /* 
- * Funzioni comuni a più funzioni
+ * Funzioni comuni a più Servizi
  * 
  * 
  */
 
 require_once ('phpmailer/PHPMailerAutoload.php');
+require_once ('functionGoogle.php');
 
 /**
  * 
@@ -110,6 +111,35 @@ function buttonDemone(){
   $buttonArray[] = dbParamExtraction('SoftDesc = "Button" AND Active = 1'); 
 }
 
+/*
+ * Fuction initShort($link)
+ * return Short Link from Google
+ * Use the Api Google and Key Google
+ * 
+ * Return link not short (not key found)
+ * Return short link if key found
+ * 
+ */
+
+function initShort($link){
+    if (class_exists('GoogleUrlApi')) {
+        // Create instance with key
+        // Extract Google API key
+        $tableParm = dbParamExtraction('SoftDesc = "Google" AND Active = "1"');
+        foreach ($tableParm as $param) {
+        if ($param['Code'] == "key"){$GOOGLE_KEY = $param['Param'];}
+        }
+        if($GOOGLE_KEY != ''){
+            $googleShort = new GoogleURLAPI($GOOGLE_KEY);
+            // Test: Shorten a URL
+            $shortDWName = $googleShort->shorten($link);
+            // Returns http://goo.gl/i002
+            return $shortDWName;
+        } else {
+            return $link;
+        }
+    }
+}
 
 /**
  * topMenu

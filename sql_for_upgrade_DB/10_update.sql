@@ -1,10 +1,10 @@
--- Aggiornamento del 09 giugno 2016 da applicare ad una installazione già presente
+-- Aggiornamento del 12 giugno 2016 da applicare ad una installazione già presente
 -- 
 -- Questo aggiornamento è da applicare solo se avete fatto una installazione
--- di Sbot prima del 09 giugno 2016, altrimenti basta usare telegram_base.sql
+-- di Sbot prima del 12 giugno 2016, altrimenti basta usare telegram_base.sql
 -- Applica 10_update.sql
 --
--- Apply the patch 10_update.sql only not first installation. Or installation is antecedent at 09/06/2016
+-- Apply the patch 10_update.sql only not first installation. Or installation is antecedent at 12/06/2016
 -- Apply 10_update.sql
 
 
@@ -41,4 +41,6 @@ SET time_zone = "+00:00";
 --
 
 INSERT INTO `software_config` (`ID`, `SoftDesc`, `Code`, `Param`, `Number`, `Note`, `Active`, `Log`, `DateUpdt`) VALUES
-(11, 'Demone', 'nomebot', 'Nome', NULL, 'Nome del bot che stai gestendo', 1, 'admin', NULL);  
+(NULL, 'Demone', 'nomebot', 'BOT_NAME', NULL, 'Nome del bot che stai gestendo', 1, 'admin', '2016-06-11 00:00:00'); 
+(NULL, 'Google', 'key', 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx', NULL, 'Key per le Api Google - https://console.developers.google.com', '0', 'admin', '2016-06-11 00:00:00')
+(NULL, 'Message', 'waiting', 'Attendere prego ...', NULL, 'Messaggio di attesa in caso di elaborazione.', '1', 'admin', '2016-06-11 00:00:00'); 

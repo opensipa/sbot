@@ -20,9 +20,9 @@ if (isset($_POST["Valori"])) {
             <legend>Aggiorna i settaggi/paramentri:</legend>
             <div class="form-group">
             <label for="software" >Software*: </label>
-            <input class="form-control" type="software" name="software" id="software" value="'.$extract['SoftDesc'].'" maxlength="50" />
+            <input class="form-control" type="software" name="software" id="software" value="'.$extract['SoftDesc'].'" readonly />
             <label for="code" >Variabile*: </label>
-            <input class="form-control" type="code" name="code" id="code" value="'.$extract['Code'].'" maxlength="20" />
+            <input class="form-control" type="code" name="code" id="code" value="'.$extract['Code'].'" readonly />
             <label for="param" >Valore*: </label>
             <input class="form-control" type="param" name="param" id="param" value="'.$extract['Param'].'" maxlength="50" />
             <label for="note" >Note: </label>
@@ -34,7 +34,7 @@ if (isset($_POST["Valori"])) {
             </select>
             <input class="form-control" type="hidden" name="ID" id="ID" value="'.$extract['ID'].'" />
             <br>
-            <input class="form-control" type="submit" name="Cambia" value="Cambia" />
+            <input type="submit" name="Cambia" value="Cambia" />
             </div>
             </fieldset>
         </form>

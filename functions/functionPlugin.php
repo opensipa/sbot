@@ -59,15 +59,17 @@ $risultato = "";
 // Limita a 7 il blocco di estrazione
 for($i=0; $i<=$nodo->length-1; $i++){
      $conteggio = $conteggio + 1;
-    if ($conteggio>8){
+    if ($conteggio>14){
         break;
     } else {
         // Estraggo il contenuto dei singoli tag del nodo <item>
         $titolo = $nodo->item($i)->getElementsByTagName("title")->item(0)->childNodes->item(0)->nodeValue;
         $collegamento = $nodo->item($i)->getElementsByTagName("link")->item(0)->childNodes->item(0)->nodeValue;
+        //Short link create
+        $shortURL = initShort($collegamento);
         // Not used:
         // $descrizione = $nodo->item($i)->getElementsByTagName("description")->item(0)->childNodes->item(0)->nodeValue;
-        $risultato .= $titolo."\r\n".$collegamento."\r\n\r\n";
+        $risultato .= $titolo."\r\n".$shortURL."\r\n\r\n";
         }
     } 
 return $risultato;
@@ -109,10 +111,11 @@ function FunzionePrevisioniMeteo($funzionePersonalizzata){
     $gg = $funzionePersonalizzata[3];
     $data = date('Y-m-d', strtotime('+'.$gg.' day', $startDate)); 
     /*
-    * http://cdn4.3bmeteo.com/images/png_2014/2016-01-18_6_regione6_verdi.jpg
-    * http://cdn4.3bmeteo.com/images/png_2014/2016-01-18_12_regione6_verdi.jpg
-    * http://cdn4.3bmeteo.com/images/png_2014/2016-01-18_18_regione6_verdi.jpg
-    * http://cdn4.3bmeteo.com/images/png_2014/2016-01-18_24_regione6_verdi.jpg            
+     * Example link:
+     * http://cdn4.3bmeteo.com/images/png_2014/2016-01-18_6_regione6_verdi.jpg
+     * http://cdn4.3bmeteo.com/images/png_2014/2016-01-18_12_regione6_verdi.jpg
+     * http://cdn4.3bmeteo.com/images/png_2014/2016-01-18_18_regione6_verdi.jpg
+     * http://cdn4.3bmeteo.com/images/png_2014/2016-01-18_24_regione6_verdi.jpg            
     */ 
     $link = "http://cdn4.3bmeteo.com/images/png_2014/"."$data"."_".$funzionePersonalizzata[1]."_"."$funzionePersonalizzata[2]";  
     return $link;
@@ -121,6 +124,7 @@ function FunzionePrevisioniMeteo($funzionePersonalizzata){
 /*
  * Fuction Oroscopo($link)
  * Oroscopo da: http://www.oggi.it/oroscopo/oroscopo-di-oggi/
+ * Valido solo per questo sito
  * 
  */
 
@@ -131,7 +135,7 @@ function Oroscopo($link){
     $txt_f = "horoscope-links";
     $off = "0";
     // To Clean Text-HTML and convet character
-    $letto = scrape($txt,$txt_i,$txt_f,$off);
+    $letto = scrapeOroscopo($txt,$txt_i,$txt_f,$off);
     $letto = str_replace("&#8217;","'" ,$letto);
     $letto = str_replace("&#249;","u'" ,$letto);
     $letto = str_replace("&#232;","e'" ,$letto);
@@ -148,7 +152,7 @@ function Oroscopo($link){
     return $letto;
 }
 
-function scrape($testo,$txt_inizio,$txt_fine,$offset){
+function scrapeOroscopo($testo,$txt_inizio,$txt_fine,$offset){
     $inizio = strpos($testo,$txt_inizio);
     $inizio = $inizio+25;
     $fine = strpos($testo,$txt_fine,$inizio);
@@ -156,6 +160,7 @@ function scrape($testo,$txt_inizio,$txt_fine,$offset){
     $darestituire = substr($testo,$inizio,$fine-$inizio+$offset);
     return $darestituire;
 }
+
 
 /*
  * 

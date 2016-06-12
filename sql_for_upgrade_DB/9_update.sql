@@ -5,7 +5,7 @@
 -- Applica 9_update.sql
 --
 -- Apply the patch 9_update.sql only not first installation. Or installation is antecedent at 05/06/2016
--- Apply 8_update.sql
+-- Apply 9_update.sql
 
 
 --

@@ -6,7 +6,7 @@ Date: 05/06/2016
 ### What is this repository for? ###
 
 * Telegram Bot
-* Version: 0.45.0
+* Version: 0.45.1
 * name: {S}bot
 
 ### How do I get set up? ###
