@@ -67,6 +67,7 @@ Date: 12/06/2016
 
 ### 08/06/2016###
 * Use the code html for send message in {S}Bot
+* For more details: https://core.telegram.org/bots/api#formatting-options
 * <b>bold</b>, <strong>bold</strong>
 * <i>italic</i>, <em>italic</em>
 * <a href="URL">inline URL</a>
