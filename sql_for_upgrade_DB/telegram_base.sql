@@ -1,8 +1,8 @@
--- Version of Structure Jan 05, 2016
--- DB {S}Bot version 0.50.0
+-- Version of Structure Jan 19, 2016
+-- DB {S}Bot version 0.51.0
 --
 -- phpMyAdmin SQL Dump
--- version 12/06/2016
+-- version 19/06/2016
 
 -- phpMyAdmin SQL Dump
 -- version 4.5.1
@@ -95,7 +95,7 @@ CREATE TABLE `software_config` (
   `ID` int(11) NOT NULL,
   `SoftDesc` varchar(50) DEFAULT NULL,
   `Code` varchar(20) DEFAULT NULL,
-  `Param` varchar(50) DEFAULT NULL,
+  `Param` varchar(300) DEFAULT NULL,
   `Number` int(2) DEFAULT NULL,
   `Note` varchar(200) DEFAULT NULL,
   `Active` tinyint(1) NOT NULL DEFAULT '1',
@@ -120,11 +120,12 @@ INSERT INTO `software_config` (`ID`, `SoftDesc`, `Code`, `Param`, `Number`, `Not
 (10, 'Demone', 'status', '--', NULL, 'start=1 / stop=0', 1, 'admin', NULL),
 (11, 'Demone', 'nomebot', 'Bot di Test', NULL, 'Nome del bot che stai gestendo', 1, 'admin', NULL),
 (12, 'Google', 'key', 'xxxxxxxxxxxxxxxxxxxxxxx', NULL, 'Key per le Api Google - https://console.developers.google.com', 0, 'admin', NULL),
-(13, 'Message', 'waiting', 'Attendere prego ...', NULL, 'Messaggio di attesa in caso di elaborazione.', 1, 'admin', NULL); 
-
+(13, 'Message', 'waiting', 'Attendere prego ...', NULL, 'Messaggio di attesa in caso di elaborazione.', 1, 'admin', NULL),
+(14, 'Search', 'url', 'http://www.google.it/search?hl=it&ie=UTF-8&q=', NULL, 'Puoi scegliere tra http://www.google.it/search?hl=it&ie=UTF-8&q= oppure http://www.google.com/search?as_sitesearch=www.SITO_INTERNET.COM&as_q=', '1', 'admin', NULL),
+(15, 'Search', 'text', 'Tento la ricerca con Google:', NULL, 'Messaggio di testo pre URL che invio in caso di mancata risposta del Bot', '1', 'admin', NULL),
+(16, 'Message', 'exit', 'Questo bot non riesce a rispondere alla domanda.', NULL, 'Messaggio di scuse quando il Bot non sa rispondere', '1', 'admin', NULL);
 
 -- --------------------------------------------------------
-
 --
 -- Table structure for table `software_config_button`
 --

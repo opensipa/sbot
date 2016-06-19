@@ -24,7 +24,7 @@ if (isset($_POST["Valori"])) {
             <label for="code" >Variabile*: </label>
             <input class="form-control" type="code" name="code" id="code" value="'.$extract['Code'].'" readonly />
             <label for="param" >Valore*: </label>
-            <input class="form-control" type="param" name="param" id="param" value="'.$extract['Param'].'" maxlength="50" />
+            <input class="form-control" type="param" name="param" id="param" value="'.$extract['Param'].'" maxlength="300" />
             <label for="note" >Note: </label>
             <input class="form-control" type="note" name="note" id="note" value="'.$extract['Note'].'" maxlength="200" />
             <label for="active" >Stato*: </label>

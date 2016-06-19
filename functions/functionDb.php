@@ -892,7 +892,7 @@ function dbParamExtraction($function)
 {
     try {
         $conn=getDbConnection();
-        $sql = "SELECT Code, Param, SoftDesc, Active, Log, ID, Note, Number FROM `software_config` WHERE $function";
+        $sql = "SELECT Code, Param, SoftDesc, Active, Log, ID, Note, Number FROM `software_config` WHERE $function ORDER BY SoftDesc, Code";
         $stmt = $conn->prepare($sql);
         $stmt->execute();
         $tableParam=array();

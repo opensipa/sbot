@@ -109,8 +109,8 @@ function processMessage($message) {
                 //Launch function with messagge time wait
                 $tableParm = dbParamExtraction('SoftDesc = "Message" AND Active = "1"');
                 foreach ($tableParm as $param) {
-                if ($param['Code'] == "waiting"){
-                    $message = $param['Param'];}
+                    if ($param['Code'] == "waiting"){
+                        $message = $param['Param'];}
                 }
                 if($message != ''){
                     apiRequest("sendMessage", array('chat_id' => $chat_id, "text" =>  $message, 'reply_markup' => $reply_markup));

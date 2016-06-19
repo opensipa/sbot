@@ -24,9 +24,33 @@ require_once ('functionGoogle.php');
  */
 
 function initSendAnswer($chat_id,$first_name_id,$message_id,$text){
-apiRequest("sendMessage", array('chat_id' => $chat_id, "reply_to_message_id" => $message_id, "text" => MESSAGE_NULL));
-dbLogTextOn($chat_id,$first_name_id,$message_id,$text); 
-sendMail("Hai ricevuto un messaggio nel Bot","Da: ".$first_name_id." - Testo del messaggio: ".$text);
+    // Extract param for message responce
+    $tableParmExit = dbParamExtraction('SoftDesc = "Message" AND Active = "1"');
+    foreach ($tableParmExit as $param) {
+        if ($param['Code'] == "exit"){
+            $messageExit = $param['Param'];
+        }  
+    }
+    if($messageExit != ''){
+    apiRequest("sendMessage", array('chat_id' => $chat_id, "reply_to_message_id" => $message_id, "text" => $messageExit));
+    }
+    dbLogTextOn($chat_id,$first_name_id,$message_id,$text);
+    sendMail("Hai ricevuto un messaggio nel Bot","Da: ".$first_name_id." - Testo del messaggio: ".$text);
+    // Extract param for message responce
+    $tableParmSearch = dbParamExtraction('SoftDesc = "Search" AND Active = "1"');
+        foreach ($tableParmSearch as $param) {
+            if ($param['Code'] == "url"){
+                $link = $param['Param'];
+            }
+            if ($param['Code'] == "text"){
+                $linkText = $param['Param'];
+            }   
+        }
+        if($link != '' & $linkText != ''){
+            $text = str_replace(" ","+" ,$text);
+            $messagePrivate = $linkText . $link . $text;
+            apiRequest("sendMessage", array('chat_id' => $chat_id, "text" => $messagePrivate));
+        }
 }
 
 /**

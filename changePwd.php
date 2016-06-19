@@ -10,16 +10,16 @@ include ('functions/passwordHash.php');
 
 <div id="content" class="clearfix">
     <h2>Per cambiare la password di <strong> <?php echo $_SESSION['username'] ?> </strong> in {S}bot compila questi campi:</h2>
-        <form id='pwd' action='changePwd.php' method='post' accept-charset='UTF-8'>
+        <form id="pwd" action="changePwd.php" method="post" accept-charset="UTF-8">
             <fieldset >
             <legend>Cambio password</legend>
             <div class="form-group">
-            <input class="form-control" type='hidden' name='submitted' id='submitted' value='1'/>
-            <label for='password' >Nuova Password*: </label>
-            <input class="form-control" type='password' name='password' id='password' maxlength="50" />
-            <label for='newpassword' >Ripeti Password*: </label>
-            <input class="form-control" type='password' name='newpassword' id='newpassword' maxlength="50" />
-            <input type='submit' name='Submit' value='Submit' />
+            <input class="form-control" type="hidden" name="submitted" id="submitted" value="1"/>
+            <label for="password" >Nuova Password*: </label>
+            <input class="form-control" type="password" name="password" id="password" maxlength="50" />
+            <label for="newpassword" >Ripeti Password*: </label>
+            <input class="form-control" type="password" name="newpassword" id="newpassword" maxlength="50" />
+            <input type="submit" name="Submit" value="Submit" />
             </div>
             </fieldset>
         </form>

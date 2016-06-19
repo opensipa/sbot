@@ -27,7 +27,6 @@ define('PHOTO_SEND', "@/var/www/html/sbot/upload_img/");            //qui serve 
  * Variabili per personalizzazione messaggi
  * Variables for customizing messages
  */
-define('MESSAGE_NULL', 'Questo bot non puo\' rispondere a questa domanda. Ma ogni segnalazione che fai verra\' registrata sul server.');
 define('MESSAGE_EXIT', 'Non riceverai piu\' news da questo Bot, usa /start per riattivarle.');
 
 /*

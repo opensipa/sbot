@@ -1,12 +1,12 @@
 # README #
 
-Date: 12/06/2016
+Date: 19/06/2016
 
 
 ### What is this repository for? ###
 
 * Telegram Bot
-* Version: 0.50.0
+* Version: 0.51.0
 * name: {S}bot
 
 ### How do I get set up? ###
@@ -62,8 +62,15 @@ Date: 12/06/2016
 
 ### Changelog ###
 
+### 19/06/2016###
+* New parameter for message exit and search with Google or my site if user not found responce.
+* In config.php file deprecate variable: define('MESSAGE_NULL')
+* Launch 11_update.sql
+* BugFix and clean a code
+
 ### 12/06/2016###
 * Implements the short link for send news ecc. 
+* Launch 10_update.sql
 
 ### 08/06/2016###
 * Use the code html for send message in {S}Bot

@@ -142,7 +142,7 @@ div#footer p a { font-size:1em; color:#fff; padding:3px 10px; border:0; }
 #order thead {cursor: pointer;}
 #order tbody tr td.lalign {text-align: center;}  
 #order thead tr th span {padding-right: 16px; background-repeat: no-repeat; background-position: 90% 90%;}
-#order thead tr th {font-weight: bold; padding: 10px 10px; padding-left: 20px;}
+#order thead tr th {font-weight: bold; padding: 5px 5px; padding-left: 10px;}
 #order tbody tr td {text-align: center; padding: 8px 8px;}
 
 /* Ordinamento delle tabelle centrate */

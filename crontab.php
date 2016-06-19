@@ -26,7 +26,7 @@ foreach ($messageSchedulation as $program){
         foreach ($activeUsers as $user) {
           //Control for channel
           if (strpos($user, "@") === FALSE) {
-              $responce = sendMessage($user, $testo_ricevuto);
+              sendMessage($user, $testo_ricevuto);
           } else {
               sendMessageChannel($user, $testo_ricevuto);
           }  
