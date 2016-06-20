@@ -55,6 +55,7 @@ $xmldom->load($linkNew);
 //recupera il nodo rappresentato da <item>
 $nodo = $xmldom->getElementsByTagName("item");
 $risultato = "";
+$conteggio = 0;
 // Scorre tutti i nodi <item> della pagina
 // Limita a 7 il blocco di estrazione
 for($i=0; $i<=$nodo->length-1; $i++){

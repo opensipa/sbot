@@ -52,7 +52,7 @@ ALTER TABLE `software_config` CHANGE `Param` `Param` VARCHAR(300) CHARACTER SET 
 --
 
 INSERT INTO `software_config` (`ID`, `SoftDesc`, `Code`, `Param`, `Number`, `Note`, `Active`, `Log`, `DateUpdt`) VALUES
-(NULL, 'Search', 'url', 'http://www.google.it/search?hl=it&ie=UTF-8&q=', NULL, 'Puoi scegliere tra http://www.google.it/search?hl=it&ie=UTF-8&q= oppure http://www.google.com/search?as_sitesearch=www.SITO_INTERNET.COM&as_q=', '1', 'admin', NULL),
-(NULL, 'Search', 'text', 'Tento la ricerca con Google:', NULL, 'Messaggio di testo pre URL che invio in caso di mancata risposta del Bot', '1', 'admin', NULL),
-(NULL, 'Message', 'exit', 'Questo bot non riesce a rispondere alla domanda.', NULL, 'Messaggio di scuse quando il Bot non sa rispondere', '1', 'admin', NULL);
+(NULL, 'Search', 'url', 'http://www.google.it/search?hl=it&ie=UTF-8&q=', NULL, 'Puoi scegliere tra http://www.google.it/search?hl=it&ie=UTF-8&q= oppure http://www.google.com/search?as_sitesearch=www.SITO_INTERNET.COM&as_q=', 1, 'admin', NULL),
+(NULL, 'Search', 'text', 'Tento la ricerca con Google:', NULL, 'Messaggio di testo pre URL che invio in caso di mancata risposta del Bot', 1, 'admin', NULL),
+(NULL, 'Message', 'exit', 'Questo bot non riesce a rispondere alla domanda.', NULL, 'Messaggio di scuse quando il Bot non sa rispondere', 1, 'admin', NULL);
 

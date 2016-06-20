@@ -153,7 +153,7 @@ function initShort($link){
         foreach ($tableParm as $param) {
         if ($param['Code'] == "key"){$GOOGLE_KEY = $param['Param'];}
         }
-        if($GOOGLE_KEY != ''){
+        if($GOOGLE_KEY != ""){
             $googleShort = new GoogleURLAPI($GOOGLE_KEY);
             // Test: Shorten a URL
             $shortDWName = $googleShort->shorten($link);

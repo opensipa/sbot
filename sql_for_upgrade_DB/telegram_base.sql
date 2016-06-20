@@ -121,9 +121,9 @@ INSERT INTO `software_config` (`ID`, `SoftDesc`, `Code`, `Param`, `Number`, `Not
 (11, 'Demone', 'nomebot', 'Bot di Test', NULL, 'Nome del bot che stai gestendo', 1, 'admin', NULL),
 (12, 'Google', 'key', 'xxxxxxxxxxxxxxxxxxxxxxx', NULL, 'Key per le Api Google - https://console.developers.google.com', 0, 'admin', NULL),
 (13, 'Message', 'waiting', 'Attendere prego ...', NULL, 'Messaggio di attesa in caso di elaborazione.', 1, 'admin', NULL),
-(14, 'Search', 'url', 'http://www.google.it/search?hl=it&ie=UTF-8&q=', NULL, 'Puoi scegliere tra http://www.google.it/search?hl=it&ie=UTF-8&q= oppure http://www.google.com/search?as_sitesearch=www.SITO_INTERNET.COM&as_q=', '1', 'admin', NULL),
-(15, 'Search', 'text', 'Tento la ricerca con Google:', NULL, 'Messaggio di testo pre URL che invio in caso di mancata risposta del Bot', '1', 'admin', NULL),
-(16, 'Message', 'exit', 'Questo bot non riesce a rispondere alla domanda.', NULL, 'Messaggio di scuse quando il Bot non sa rispondere', '1', 'admin', NULL);
+(14, 'Search', 'url', 'http://www.google.it/search?hl=it&ie=UTF-8&q=', NULL, 'Puoi scegliere tra http://www.google.it/search?hl=it&ie=UTF-8&q= oppure http://www.google.com/search?as_sitesearch=www.SITO_INTERNET.COM&as_q=', 1, 'admin', NULL),
+(15, 'Search', 'text', 'Tento la ricerca con Google:', NULL, 'Messaggio di testo pre URL che invio in caso di mancata risposta del Bot', 1, 'admin', NULL),
+(16, 'Message', 'exit', 'Questo bot non riesce a rispondere alla domanda.', NULL, 'Messaggio di scuse quando il Bot non sa rispondere', 1, 'admin', NULL);
 
 -- --------------------------------------------------------
 --
