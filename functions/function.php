@@ -115,12 +115,12 @@ function processMessage($message) {
                 if($message != ''){
                     apiRequest("sendMessage", array('chat_id' => $chat_id, "text" =>  $message, 'reply_markup' => $reply_markup));
                     $functionPersonal = Launcher($chat_id,$reply_markup, $responceKeyFinal['Param']);  
-                    apiRequest("sendMessage", array('chat_id' => $chat_id, "text" =>  $functionPersonal, 'reply_markup' => $reply_markup));
+                    apiRequest("sendMessage", array('chat_id' => $chat_id, 'text' =>  $functionPersonal, 'reply_markup' => $reply_markup));
                     $textControl = "";
                     break; //Exit cicle
                 } else {
                     $functionPersonal = Launcher($chat_id,$reply_markup, $responceKeyFinal['Param']);  
-                    apiRequest("sendMessage", array('chat_id' => $chat_id, "text" =>  $functionPersonal, 'reply_markup' => $reply_markup));
+                    apiRequest("sendMessage", array('chat_id' => $chat_id, 'text' =>  $functionPersonal, 'reply_markup' => $reply_markup));
                     $textControl = "";
                     break; //Exit cicle
                 }
@@ -128,7 +128,7 @@ function processMessage($message) {
             //QUESTO DIVENTA UN ARRAY NON UNA RIGA SOLA QUINDI SERVE UN FOREACH
             $responceFinal = html_entity_decode($responceKeyFinal['Param']);
             $responceFinal = str_replace ("&#39;","'" ,$responceFinal);
-            apiRequest("sendMessage", array('chat_id' => $chat_id, "text" => $responceFinal, 'reply_markup' => $reply_markup));
+            apiRequest("sendMessage", array('chat_id' => $chat_id, 'text' => $responceFinal, 'reply_markup' => $reply_markup));
             $textControl = "";
             break; //Exit cicle
             }  
