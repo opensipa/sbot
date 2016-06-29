@@ -12,36 +12,45 @@ include ('functions/passwordHash.php');
 if (isset($_POST["Valori"])) {
     $ID = filter_input(INPUT_POST, 'ID', FILTER_SANITIZE_STRING);
     $extractParam = dbParamExtraction('ID = '.$ID);
-//Variable extract: Code, Param, SoftDesc, Active, Log, ID
+    //Variable extract: Code, Param, SoftDesc, Active, Log, ID
     foreach ($extractParam as $extract) {
-    echo'<div id="content" class="clearfix">
+    echo'
+    <div id="content" class="clearfix">
         <form id="changesetting" action="panel.php" method="post" accept-charset="UTF-8">
-            <fieldset>
-            <legend>Aggiorna i settaggi/paramentri:</legend>
-            <div class="form-group">
-            <label for="software" >Software*: </label>
-            <input class="form-control" type="software" name="software" id="software" value="'.$extract['SoftDesc'].'" readonly />
-            <label for="code" >Variabile*: </label>
-            <input class="form-control" type="code" name="code" id="code" value="'.$extract['Code'].'" readonly />
-            <label for="param" >Valore*: </label>
-            <input class="form-control" type="param" name="param" id="param" value="'.$extract['Param'].'" maxlength="300" required="1"/>
-            <label for="note" >Note: </label>
-            <input class="form-control" type="note" name="note" id="note" value="'.$extract['Note'].'" maxlength="200" />
-            <label for="active" >Stato*: </label>
-            <select class="form-control" name="active">
-            <option value="1">Attivo</option>
-            <option value="0">Disattivo</option>
-            </select>
-            <input class="form-control" type="hidden" name="ID" id="ID" value="'.$extract['ID'].'" />
-            <br>
-            <input type="submit" name="Cambia" value="Cambia" />
-            </div>
-            </fieldset>
-        </form>
+        <fieldset>
+        <legend>Aggiorna i settaggi/paramentri:</legend>
+        <div class="form-group">
+        <label for="software" >Software*: </label>
+        <input class="form-control" type="software" name="software" id="software" value="'.$extract['SoftDesc'].'" readonly />
+        <label for="code" >Variabile*: </label>
+        <input class="form-control" type="code" name="code" id="code" value="'.$extract['Code'].'" readonly />
+        <label for="param" >Valore*: </label>
+        <input class="form-control" type="param" name="param" id="param" value="'.$extract['Param'].'" maxlength="300" required="1"/>
+        <label for="note" >Note: </label>
+        <input class="form-control" type="note" name="note" id="note" value="'.$extract['Note'].'" maxlength="200" />
+        <label for="active" >Stato*: </label>
+        <select class="form-control" name="active">';
+        if ($extract['Active']){
+            echo'
+                <option value="1">Attivo</option>
+                <option value="0">Disattivo</option>';
+        }else{
+            echo'
+                <option value="0">Disattivo</option>
+                <option value="1">Attivo</option';
+        } 
+        echo'
+        </select>
+        <input class="form-control" type="hidden" name="ID" id="ID" value="'.$extract['ID'].'" />
+        <br>
+        <input type="submit" name="Cambia" value="Cambia" />
         </div>
-        ';
-    }
+        </fieldset>
+        </form>
+    </div>';
+   }
 }
+
 // Change the variable
 if (isset($_POST["Cambia"])) {
     $software = filter_input(INPUT_POST, 'software', FILTER_SANITIZE_STRING);
@@ -52,7 +61,6 @@ if (isset($_POST["Cambia"])) {
     $state = filter_input(INPUT_POST, 'active', FILTER_SANITIZE_STRING);
     $user = $_SESSION['username'];
     $submit = filter_input(INPUT_POST, 'Cambia', FILTER_SANITIZE_STRING);
-
 if (!empty($submit)) {
     dbParamUpdate($ID, $software, $code, $param, $state, $user, $note);
     echo'<div id="content" class="clearfix">

@@ -43,7 +43,7 @@
                 . '<ul>'    
                 . '<li><a href="update.php">Controlla</a></li>'
                 . '</ul></li>';
-            echo'<li><a href="help.php">Help on-line</a></li>';
+            echo'<li><a href="help.php">Help / Informazioni</a></li>';
             echo'<li><a href="logout.php">Esci '.strtoupper ($_SESSION['username']).'</a></li>';
             } else {
             echo'<li><a href="index.php">Home page {S}Bot</a></li>';

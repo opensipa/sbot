@@ -23,7 +23,7 @@ function Launcher($chat_id,$reply_markup,$param){
 
 /*
  * Function ore()
- * return time now
+ * return time now from server
  * 
 */
 
@@ -36,16 +36,16 @@ function ore(){
  * Function Read($link)
  * return string
  * 
+ * Trovate questo e altri script su http://www.manuelmarangoni.it
+ * Autore: Manuel Marangoni
+ * Data messa online dello script: 9 ottobre 2013
+ * Lo script mostra come recuperare un feed rss da un link online.
+ * Utilizza le funzioni dell'XML DOM di PHP.
+ * 
 */
 
 function Read($link){
-/*******************************************************
-Trovate questo e altri script su http://www.manuelmarangoni.it
-Autore: Manuel Marangoni
-Data messa online dello script: 9 ottobre 2013
-Lo script mostra come recuperare un feed rss da un link online.
-Utilizza le funzioni dell'XML DOM di PHP.
-*******************************************************/
+
 // crea un nuovo oggetto XML DOM
 $xmldom = new DOMDocument();
 // carica il contenuto del feed presente al link indicato
@@ -59,18 +59,23 @@ $conteggio = 0;
 // Scorre tutti i nodi <item> della pagina
 // Limita a 7 il blocco di estrazione
 for($i=0; $i<=$nodo->length-1; $i++){
-     $conteggio = $conteggio + 1;
+    $conteggio = $conteggio + 1;
     if ($conteggio>14){
         break;
     } else {
         // Estraggo il contenuto dei singoli tag del nodo <item>
-        $titolo = $nodo->item($i)->getElementsByTagName("title")->item(0)->childNodes->item(0)->nodeValue;
-        $collegamento = $nodo->item($i)->getElementsByTagName("link")->item(0)->childNodes->item(0)->nodeValue;
-        //Short link create
-        $shortURL = initShort($collegamento);
-        // Not used:
-        // $descrizione = $nodo->item($i)->getElementsByTagName("description")->item(0)->childNodes->item(0)->nodeValue;
-        $risultato .= $titolo."\r\n".$shortURL."\r\n\r\n";
+        $categoria = $nodo->item($i)->getElementsByTagName("category")->item(0)->childNodes->item(0)->nodeValue;
+            if (is_null($categoria)){
+                $titolo = $nodo->item($i)->getElementsByTagName("title")->item(0)->childNodes->item(0)->nodeValue;
+                $collegamento = $nodo->item($i)->getElementsByTagName("link")->item(0)->childNodes->item(0)->nodeValue;
+                //Short link create
+                $shortURL = initShort($collegamento);
+                // Not used:
+                // $descrizione = $nodo->item($i)->getElementsByTagName("description")->item(0)->childNodes->item(0)->nodeValue;
+                $risultato .= $titolo."\r\n".$shortURL."\r\n\r\n";
+            } else {
+                $risultato .= $categoria;
+            }
         }
     } 
 return $risultato;
@@ -161,7 +166,6 @@ function scrapeOroscopo($testo,$txt_inizio,$txt_fine,$offset){
     $darestituire = substr($testo,$inizio,$fine-$inizio+$offset);
     return $darestituire;
 }
-
 
 /*
  * 

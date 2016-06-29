@@ -14,10 +14,9 @@ if (isset($_POST['Archivia'])) {
         }
     }
 ?>
-
 <div id="content" class="clearfix">
     <div class="content-row">
-        <form method="post" action="fullSend.php" method="POST" />
+        <form method="post" action="fullSend.php" />
             <input type="submit" name="Archivia" value="Archivia" />
             <br><br>
 	<table border="1">
@@ -33,23 +32,22 @@ if (isset($_POST['Archivia'])) {
              ******/
             $messageSend = dbLogTextFullSend();
             foreach ($messageSend as $message) { 
-                echo '<tr>';
-                   echo '<td>'.(date('d/m/Y H:i:s', strtotime($message['DataInsert']))).'</td>';
-                   echo '<td>'.$message['Signature'].'</td>';
-                   echo '<td>'.$message['Text'].'</td>';
-                   echo '<td align="center"><input type="checkbox" name="update_archivia[]" value="'.$message['ID'].'" /></td>';
-                echo '</tr>';
+                echo ' <tr> ';
+                   echo '<td> '.(date('d/m/Y H:i:s', strtotime($message['DataInsert']))).' </td>';
+                   echo '<td> '.$message['Signature'].' </td>';
+                   echo '<td> '.$message['Text'].' </td>';
+                   echo '<td align="center"> <input type="checkbox" name="update_archivia" value="'.$message['ID'].'" /> </td> ';
+                echo ' </tr> ';
             }
 ?>      
-          </table>
-    </form>
+        </table>
+        </form>
     </div>			
 </div>
 <div id="content" class="clearfix">
-        <div class="content-row">
-        <br>
+    <div class="content-row"> <br>
         <form action="messageExport.php"> 
-        <input type="submit" name="esporta" value="Esporta in Excel" />
+            <input type="submit" name="esporta" value="Esporta in Excel" />
         </form>
     </div>
 </div>

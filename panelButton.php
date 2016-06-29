@@ -74,19 +74,25 @@ if (isset($_POST["Valori"])) {
                 <textarea class="form-control" type="param" name="param" id="param" maxlength="400">'.$extract['Param'].'</textarea>
                 <label for="param" >Tipo operazione del pulsante*: </label>
                 <select class="form-control" name="type">';
-                if ($extract['Type']== "Normal"){
-                echo '<option value="Normal">Normale</option>
-                      <option value="Function">Funzione</option>';
+                if ($extract['Type'] == "Normal"){
+                    echo '<option value="Normal">Normale</option>
+                          <option value="Function">Funzione</option>';
                 }else{   
-                 echo '<option value="Function">Funzione</option>
-                       <option value="Normal">Normale</option>';
+                    echo '<option value="Function">Funzione</option>
+                          <option value="Normal">Normale</option>';
                 }
-                echo 
-                '</select>
+                echo '
+                </select>
                 <label for="active" >Stato*: </label>
-                <select class="form-control" name="active">
-                <option value="1">Attivo</option>
-                <option value="0">Disattivo</option>
+                <select class="form-control" name="active">';
+                if ($extract['Type'] == "Normal"){
+                    echo '<option value="1">Attivo</option>
+                          <option value="0">Disattivo</option>';
+                }else{   
+                    echo '<option value="0">Disattivo</option>
+                          <option value="1">Attivo</option>';
+                }
+                echo '
                 </select>
                 <input type="hidden" name="ID" id="ID" value="'.$extract['ID'].'" />
                 <br>
@@ -109,7 +115,6 @@ if (isset($_POST["Cambia"])) {
     $state = filter_input(INPUT_POST, 'active', FILTER_SANITIZE_NUMBER_INT);
     $user = $_SESSION['username'];
     $submit = filter_input(INPUT_POST, 'Cambia', FILTER_SANITIZE_STRING);
-
 if (!empty($submit)) {
     if ($number>99){
         echo'<div id="content" class="clearfix">
@@ -119,8 +124,7 @@ if (!empty($submit)) {
     dbButtonUpdate($ID, $software, $param, $tipo, $number, $state, $user, $titolo);
         echo'<div id="content" class="clearfix">
             <h2>Hai aggiornato correttamente i valori.</h2>
-        </div>'; 
-            
+        </div>';   
     }
 } else  {	
     echo'<div id="content" class="clearfix">
@@ -154,49 +158,48 @@ if (!empty($submit)) {
 ?>
 <!-- Table for view the variable of bot -->
 <div id="content" class="clearfix">
-        <form method="post" action="panelButton.php">   
-        <div align="center">  
-        <button type='submit' name='New' value='New' />Inserisci un pulsante</button>
-        <button type='submit' name='Valori' value='Valori' />Modifica il pulsante</button>
-        </div>
-        <br>
-        <table border="1" id="order"> 
-            <thead>
-                <tr>
-                <th><span>Desc.</span></th>
-                <th><span>N.</span></th>
-                <th><span>Nome</span></th>
-                <th><span>Testo</span></th>
-                <th><span>Tipo</span></th>
-                <th><span>Att/Dis</span></th>
-                <th><span>Log</span></th>
-                <th><span>Sel.</span></th>
-                </tr>
-            </thead>             
-            <tbody>
-            <?php $extractParam = dbButtonExtraction("SoftDesc is not null");
-            foreach ($extractParam as $extract) { 
-                echo'<tr class="align">
-                    <td>'.$extract['SoftDesc'].'</td>
-                    <td>'.$extract['Number'].'</td>
-                    <td>'.$extract['Titolo'].'</td>
-                    <td>'.$extract['Param'].'</td>
-                    <td>'.$extract['Type'].'</td>
-                    <td>'.$extract['Active'].'</td>
-                    <td>'.$extract['Log'].'</td> 
-                    <td><input type="radio" name="ID" value="'.$extract['ID'].'" /></td>
-                    </tr>';
-            }
-            ?>
-            </tbody>            
-        </table>
-        </form>
-        <!-- table order --> 
-        <script type="text/javascript">
-            $(function(){
-            $('#order').tablesorter(); 
-            });
-       </script>
+    <form method="post" action="panelButton.php">   
+    <div align="center">  
+    <button type='submit' name='New' value='New' />Inserisci un pulsante</button>
+    <button type='submit' name='Valori' value='Valori' />Modifica il pulsante</button>
+    </div><br>
+    <table border="1" id="order"> 
+    <thead>
+        <tr>
+            <th><span>Desc.</span></th>
+            <th><span>N.</span></th>
+            <th><span>Nome</span></th>
+            <th><span>Testo</span></th>
+            <th><span>Tipo</span></th>
+            <th><span>Att/Dis</span></th>
+            <th><span>Log</span></th>
+            <th><span>Sel.</span></th>
+        </tr>
+    </thead>             
+    <tbody>
+        <?php $extractParam = dbButtonExtraction("SoftDesc is not null");
+        foreach ($extractParam as $extract) { 
+            echo'<tr class="align">
+                <td>'.$extract['SoftDesc'].'</td>
+                <td>'.$extract['Number'].'</td>
+                <td>'.$extract['Titolo'].'</td>
+                <td>'.$extract['Param'].'</td>
+                <td>'.$extract['Type'].'</td>
+                <td>'.$extract['Active'].'</td>
+                <td>'.$extract['Log'].'</td> 
+                <td><input type="radio" name="ID" value="'.$extract['ID'].'" /></td>
+                </tr>';
+        }
+        ?>
+    </tbody>            
+    </table>
+    </form>
+    <!-- table order --> 
+    <script type="text/javascript">
+        $(function(){
+        $('#order').tablesorter(); 
+        });
+    </script>
 </div>
 <!-- Footer page -->
 <?php include ('theme/footer.php');?>
