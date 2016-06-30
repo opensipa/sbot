@@ -8,11 +8,7 @@ include ('functions/functionInit.php');
 include ('functions/passwordHash.php');
 ?>
 <div id="content" class="clearfix" align="center">
-    <p>
-    <h3>
-        Al momento attuale &egrave; possibile inserire l'invio di una informazione <strong>senza alcuna ripetizioni</strong>.
-    </h3>
-    </p>
+    <p><h3>Al momento attuale &egrave; possibile inserire l'invio di una informazione <strong>senza alcuna ripetizione</strong>.</h3></p>
 </div>
 <?php
 //Insert new button
@@ -23,8 +19,8 @@ if (isset($_POST["New"])) { ?>
             <legend>Per inserire nuovi Scheduler, compila questi campi:</legend>
                 <div class="form-group">
                 <input type='hidden' name='alreadysent' id='alreadysent' value='1'/>
-                <label for="testo" >Testo*: </label>
-                <textarea class="form-control" type="testo" name="testo" id="testo" maxlength="2048" required="1"></textarea>
+                <label for='testo' >Testo*: </label>
+                <textarea class='form-control' type='testo' name='testo' id='testo' maxlength='2048' required='1'></textarea>
                 <label for="firma" >Firma da inserire nel messaggio*: </label>
                 <input class="form-control" type="signature" name="signature" id="signature" required="1" />
                 <label for="note" >Note (non inviate): </label>
