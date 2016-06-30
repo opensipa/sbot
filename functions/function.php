@@ -103,6 +103,7 @@ function processMessage($message) {
         //Filtering response for select button for users with title in DB
         $responceKey = dbDemoneKeyboard("Titolo = '". $text ."'");
         $textControl = $text; //Copy of variable for more control exit to cicle
+        $messageWait = ""; //Variable empty
         foreach ($responceKey as $responceKeyFinal){
             //Insert her for control this is a function, not a button. Implement this control with if function
             if ($responceKeyFinal['Type'] === 'Function'){
@@ -111,7 +112,7 @@ function processMessage($message) {
                 foreach ($tableParm as $param) {
                     if ($param['Code'] == "waiting"){$messageWait = $param['Param'];}
                 }
-                if($messageWait != ''){
+                if($messageWait != ""){
                     apiRequest("sendMessage", array('chat_id' => $chat_id, "text" =>  $messageWait, 'reply_markup' => $reply_markup));
                     $functionPersonal = Launcher($chat_id,$reply_markup, $responceKeyFinal['Param']);  
                     apiRequest("sendMessage", array('chat_id' => $chat_id, 'text' =>  $functionPersonal, 'reply_markup' => $reply_markup));
