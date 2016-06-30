@@ -1,12 +1,12 @@
 # README #
 
-Date: 19/06/2016
+Date: 29/06/2016
 
 
 ### What is this repository for? ###
 
 * Telegram Bot
-* Version: 0.51.0
+* Version: 0.51.1
 * name: {S}bot
 
 ### How do I get set up? ###
@@ -61,6 +61,9 @@ Date: 19/06/2016
 
 
 ### Changelog ###
+
+### 29/06/2016###
+* BugFix and clean a code
 
 ### 19/06/2016###
 * New parameter for message exit and search with Google or my site if user not found responce.
