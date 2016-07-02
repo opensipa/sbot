@@ -8,9 +8,9 @@ include('functions/functionInit.php');
 ?>
 <?php
 if (isset($_POST['Archivia'])) {
-        $selected_radio = filter_input(INPUT_POST, 'update_archivia', FILTER_DEFAULT);
-        foreach ($selected_radio as $value){
-        dbLogTextUpdateSend ($value);  
+        $selectedRadio = $_POST['update_archivia'];
+        foreach ($selectedRadio as $value){
+        dbLogTextUpdateSend($value);  
         }
     }
 ?>
@@ -33,10 +33,10 @@ if (isset($_POST['Archivia'])) {
             $messageSend = dbLogTextFullSend();
             foreach ($messageSend as $message) { 
                 echo ' <tr> ';
-                   echo '<td> '.(date('d/m/Y H:i:s', strtotime($message['DataInsert']))).' </td>';
-                   echo '<td> '.$message['Signature'].' </td>';
-                   echo '<td> '.$message['Text'].' </td>';
-                   echo '<td align="center"> <input type="checkbox" name="update_archivia" value="'.$message['ID'].'" /> </td> ';
+                   echo '<td>'.(date('d/m/Y H:i:s', strtotime($message['DataInsert']))).' </td>';
+                   echo '<td>'.$message['Signature'].' </td>';
+                   echo '<td>'.$message['Text'].' </td>';
+                   echo '<td align="center"> <input type="checkbox" name="update_archivia[]" value="'.$message['ID'].'" /> </td> ';
                 echo ' </tr> ';
             }
 ?>      

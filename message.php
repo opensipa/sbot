@@ -16,7 +16,7 @@ if (isset($_POST['Archivia'])) {
 ?>
 <div id="content" class="clearfix">
         <div align="center">
-            <form method="post" action="search.php" method="POST">
+            <form action="search.php" method="POST">
             <fieldset>
             <legend>Funzione di ricerca dei messaggi ricevuti</legend>
             <label><strong>La funzione di ricerca utilizza al massimo UNA PAROLA CHIAVE.</strong></label><br>

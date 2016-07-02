@@ -629,12 +629,14 @@ function dbCountActiveUsers()
  * 
  * @return type Array 
  */
-function dbActiveUsersFull()
+function dbActiveUsersFull($start, $forPage)
 {
     try {
         $conn=getDbConnection();
-        $sql = "select UserID, FirstName, LastName, Username, DATE_FORMAT(DataInsert,'%d/%m/%Y') as insertDate from utenti where StatoUtente=1 order BY DataInsert";
+        $sql = "select UserID, FirstName, LastName, Username, DATE_FORMAT(DataInsert,'%d/%m/%Y') as insertDate from utenti where StatoUtente=1 ORDER BY DataInsert LIMIT :limit , :offset";
         $stmt = $conn->prepare($sql);
+        $stmt->bindValue(':limit', $start, PDO::PARAM_INT);
+        $stmt->bindValue(':offset', $forPage, PDO::PARAM_INT);
         $stmt->execute();
         $tableUser=array();
         while ($riga=$stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -807,7 +809,7 @@ function dbLogTextUpdateSend($ID)
         $conn=getDbConnection();
         $sql = "UPDATE message_send SET Archive=0 WHERE ID=:ID";
         $stmt = $conn->prepare($sql);
-        $stmt->bindValue(':ID',$ID,PDO::PARAM_STR);
+        $stmt->bindValue(':ID',$ID,PDO::PARAM_INT);
         $stmt->execute();
     } catch (Exception $ex) {
         return ($ex->getMessage());
