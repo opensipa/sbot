@@ -48,8 +48,8 @@ function initSendAnswer($chat_id,$first_name_id,$message_id,$text){
         }
         if($link != '' & $linkText != ''){
             $text = str_replace(" ","+" ,$text);
-            $messagePrivate = $linkText . $link . $text;
-            apiRequest("sendMessage", array('chat_id' => $chat_id, "text" => $messagePrivate));
+            $messagePrivate = $linkText . " " . $link . $text;
+            apiRequest("sendMessage", array('chat_id' => $chat_id, 'text' => $messagePrivate, 'disable_web_page_preview' => true));
         }
 }
 
