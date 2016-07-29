@@ -32,7 +32,7 @@ function initSendAnswer($chat_id,$first_name_id,$message_id,$text){
         }  
     }
     if($messageExit != ''){
-    apiRequest("sendMessage", array('chat_id' => $chat_id, "reply_to_message_id" => $message_id, "text" => $messageExit));
+    apiRequest("sendMessage", array('chat_id' => $chat_id, 'reply_to_message_id' => $message_id, 'text' => $messageExit));
     }
     dbLogTextOn($chat_id,$first_name_id,$message_id,$text);
     sendMail("Hai ricevuto un messaggio nel Bot","Da: ".$first_name_id." - Testo del messaggio: ".$text);
@@ -150,6 +150,7 @@ function initShort($link){
         // Create instance with key
         // Extract Google API key
         $tableParm = dbParamExtraction('SoftDesc = "Google" AND Active = "1"');
+        $GOOGLE_KEY = "";
         foreach ($tableParm as $param) {
         if ($param['Code'] == "key"){$GOOGLE_KEY = $param['Param'];}
         }
