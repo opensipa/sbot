@@ -63,19 +63,16 @@ for($i=0; $i<=$nodo->length-1; $i++){
     if ($conteggio>20){
     break;
     } else {
-        // Estraggo il contenuto dei singoli tag del nodo <item>
+         // Estraggo il contenuto dei singoli tag del nodo <item>
         $titolo = $nodo->item($i)->getElementsByTagName("title")->item(0)->childNodes->item(0)->nodeValue;
-        if ($titolo != ""){
         $collegamento = $nodo->item($i)->getElementsByTagName("link")->item(0)->childNodes->item(0)->nodeValue;
         //Short link create
         $shortURL = initShort($collegamento);
         // Not used:
         // $descrizione = $nodo->item($i)->getElementsByTagName("description")->item(0)->childNodes->item(0)->nodeValue;
         $risultato .= $titolo."\r\n".$shortURL."\r\n\r\n";
-    } else {
-        $risultato = "Non ci sono feed rss per oggi.";}
-    }
-}  
+        }
+    } 
 return $risultato;
 }
 
