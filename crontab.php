@@ -4,6 +4,7 @@ include ('functions/functionDb.php');
 include ('config.php');
 include ('functions/functionInit.php');
 include ('functions/passwordHash.php');
+//Parameter not used in this release
 $bad = "Request has failed with error 403: Bot was blocked by the user";
 ?>
 <?php
