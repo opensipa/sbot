@@ -19,7 +19,7 @@ include ('functions/passwordHash.php');
     </h4>
     I pulsanti possono essere di tipo <strong>"normale" o di tipo "funzione"</strong> nell'ultimo caso devi crearti una funzione in<br>
     "functionPlugin.php" ed inserire nel campo testo il nome della funzione e i suoi parametri con il seguente formato:<br>
-    nome_funzione|nome_parametro1|nome_parametro2 , per passare i parametri separarli dal "|".
+    nome_funzione|nome_parametro1|nome_parametro2 , per passare i parametri separali con il "|".
     </p>
 </div>
 <?php
@@ -38,7 +38,7 @@ if (isset($_POST["New"])) { ?>
                 <label for="titolo" >Nome del bottone*: </label>
                 <input class="form-control" type="titolo" name="titolo" id="titolo" maxlength="50" required="1">
                 <label for="param" >Testo*: </label>
-                <textarea class="form-control" type="param" name="param" id="param" maxlength="1000"required="1"></textarea>
+                <textarea class="form-control" type="param" name="param" id="param" maxlength="1000" required="1"></textarea>
                 <label for="param" >Tipo operazione del pulsante*: </label>
                 <select class="form-control" name="type" required="1">
                 <option value="Normal">Normale</option>
@@ -116,21 +116,17 @@ if (isset($_POST["Cambia"])) {
     $user = $_SESSION['username'];
     $submit = filter_input(INPUT_POST, 'Cambia', FILTER_SANITIZE_STRING);
 if (!empty($submit)) {
-    if ($number>99){
-        echo'<div id="content" class="clearfix">
-                <h2>NON puoi assegnare un numero di pulsante maggiore di 99.</h2>
-            </div>';   
-    } else {
-    dbButtonUpdate($ID, $software, $param, $tipo, $number, $state, $user, $titolo);
-        echo'<div id="content" class="clearfix">
+    //Update and control error update into DB
+    $error = dbButtonUpdate($ID, $software, $param, $tipo, $number, $state, $user, $titolo);
+    if ($error !=0){    
+    echo'<div id="content" class="clearfix">
             <h2>Hai aggiornato correttamente i valori.</h2>
-        </div>';   
-    }
-} else  {	
+        </div>';
+    } else  {	
     echo'<div id="content" class="clearfix">
             <h2>Hai inserito in modo sbagliato i parametri dei pulsanti, riprova!</h2>
         </div>'; 
-  }
+    } }
 }
 
 // Insert the variable
@@ -177,7 +173,7 @@ if (!empty($submit)) {
         </tr>
     </thead>             
     <tbody>
-        <?php $extractParam = dbButtonExtraction("SoftDesc is not null");
+<?php $extractParam = dbButtonExtraction("SoftDesc is not null");
         foreach ($extractParam as $extract) { 
             echo'<tr class="align">
                 <td>'.$extract['SoftDesc'].'</td>
