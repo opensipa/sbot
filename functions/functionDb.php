@@ -2,6 +2,43 @@
 
 /**
  * ############################################
+ * Connection Mysql
+ * ############################################
+ */
+
+
+/**
+ * getDbConnection
+ * 
+ * Funzione che tenta di aprire il database e ritorna una connessione al database funzionante, oppure un messaggio di errore
+ * 
+ * @return \PDO
+ * @throws Exception
+ */
+
+function getDbConnection() {
+    // Apertura connessione al database
+    // NB: Non necessita di chiusura connessione - vedi http://php.net/manual/en/pdo.connections.php
+    try {
+        $mysqlConn = new PDO('mysql:dbname='.$GLOBALS['mysql_db'].';port='.$GLOBALS['mysql_port'].';host='.$GLOBALS['mysql_host'],$GLOBALS['mysql_user'],$GLOBALS['mysql_pass']);
+        if ($mysqlConn===false) {
+            throw new Exception ('Apertura database MySql fallita. Host '.$GLOBALS['mysql_host'].', User '.$GLOBALS['mysql_user']);
+        }
+        /* Only for debug
+         * $mysqlConn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+         * $mysqlConn->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+        */
+    } catch (PDOException $e) {
+        die("Connessione fallita al DB (connection failed). Non posso proseguire <br>");
+        /* Only for debug
+         *  return 'Connection failed: ' . $e->getMessage();
+         */
+    }
+    return $mysqlConn;
+}
+
+/**
+ * ############################################
  * Funzione database per la gestione del demone
  * ############################################
  */
@@ -956,32 +993,4 @@ function dbParamInsert($software, $param, $valore, $attivo, $user, $note)
         return $ex->getMessage();
     }
     return 0;
-}
-
-/**
- * getDbConnection
- * 
- * Funzione che tenta di aprire il database e ritorna una connessione al database funzionante, oppure un messaggio di errore
- * 
- * @return \PDO
- * @throws Exception
- */
-function getDbConnection() {
-    // Apertura connessione al database
-    // NB: Non necessita di chiusura connessione - vedi http://php.net/manual/en/pdo.connections.php
-    try {
-        $mysqlConn = new PDO('mysql:dbname='.$GLOBALS['mysql_db'].';port='.$GLOBALS['mysql_port'].';host='.$GLOBALS['mysql_host'],$GLOBALS['mysql_user'],$GLOBALS['mysql_pass']);
-        if ($mysqlConn===false) {
-            throw new Exception ('Apertura database MySql fallita. Host '.$GLOBALS['mysql_host'].', User '.$GLOBALS['mysql_user']);
-        }
-        /* scommentare per debug */
-        $mysqlConn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $mysqlConn->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
-        /***/
-    } catch (PDOException $e) {
-        die('Connessione fallita al DB. Non posso proseguire');
-        // return 'Connection failed: ' . $e->getMessage();
-    }
-
-    return $mysqlConn;
 }

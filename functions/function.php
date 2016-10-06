@@ -18,16 +18,16 @@ function avvio(){
  */
  
 function writeLog($message, $destination){
- // Posiziona il puntatore alla fine del file indicato
- // Se il file non esiste prova a crearlo
- if( !$fileHandle = fopen($destination.'error.log', 'a+') ){
-    echo "Impossibile aprire il file di Log";
-    return false;
- }
- // Scrittura della riga di log
-  fwrite($fileHandle, $message."\r\n");
- // Chiusura dell'handle
- fclose($fileHandle);
+    // Posiziona il puntatore alla fine del file indicato
+    // Se il file non esiste prova a crearlo
+    if( !$fileHandle = fopen($destination.'error.log', 'a+') ){
+        echo "Impossibile aprire il file di Log";
+        return false;
+    }
+    // Scrittura della riga di log
+    fwrite($fileHandle, $message."\r\n");
+    // Chiusura dell'handle
+    fclose($fileHandle);
 }
 
 /*
@@ -77,7 +77,7 @@ function processMessage($message) {
    * The very function of process messag
    */   
     if (strpos($text, "/start") === 0) {
-      apiRequest("sendMessage", array('chat_id' => $chat_id, "text" => $num0, 'reply_markup' => $reply_markup));
+      apiRequest("sendMessage", array('chat_id' => $chat_id, 'text' => $num0, 'reply_markup' => $reply_markup));
       /*
        * Log the user in DB. If the user is already activated only you change their status in active also.
        */
@@ -90,14 +90,14 @@ function processMessage($message) {
     /*
      * Here inserted disabling user from the DB (not cleared but only put off)
      */
-        apiRequest("sendMessage", array('chat_id' => $chat_id, "text" => MESSAGE_EXIT));
+        apiRequest("sendMessage", array('chat_id' => $chat_id, 'text' => MESSAGE_EXIT));
         dbLogUserStop ($chat_id);
     } else if (strpos($text, "Stop") === 0) {
         /*
          * For ecception 
          * Here inserted disabling user from the DB (not cleared but only put off)
          */
-        apiRequest("sendMessage", array('chat_id' => $chat_id, "text" => MESSAGE_EXIT));
+        apiRequest("sendMessage", array('chat_id' => $chat_id, 'text' => MESSAGE_EXIT));
         dbLogUserStop ($chat_id);
     } else {
         //Filtering response for select button for users with title in DB
@@ -113,19 +113,20 @@ function processMessage($message) {
                     if ($param['Code'] == "waiting"){$messageWait = $param['Param'];}
                 }
                 if($messageWait != ""){
-                    apiRequest("sendMessage", array('chat_id' => $chat_id, "text" =>  $messageWait, 'reply_markup' => $reply_markup));
-                    $functionPersonal = Launcher($chat_id,$reply_markup, $responceKeyFinal['Param']);  
+                    //This is a Function (WITH please wait) with responce
+                    apiRequest("sendMessage", array('chat_id' => $chat_id, 'text' =>  $messageWait, 'reply_markup' => $reply_markup));
+                    $functionPersonal = Launcher($chat_id,$reply_markup, $responceKeyFinal['Param']); //Launch function 
                     apiRequest("sendMessage", array('chat_id' => $chat_id, 'text' =>  $functionPersonal, 'reply_markup' => $reply_markup));
                     $textControl = "";
                     break; //Exit cicle
                 } else {
+                    //This is a Function (ANY please wait) with responce
                     $functionPersonal = Launcher($chat_id,$reply_markup, $responceKeyFinal['Param']);  
                     apiRequest("sendMessage", array('chat_id' => $chat_id, 'text' =>  $functionPersonal, 'reply_markup' => $reply_markup));
                     $textControl = "";
                     break; //Exit cicle
                 }
             } else if ($textControl === $responceKeyFinal['Titolo']){
-            //QUESTO DIVENTA UN ARRAY NON UNA RIGA SOLA QUINDI SERVE UN FOREACH
             $responceFinal = html_entity_decode($responceKeyFinal['Param']);
             $responceFinal = str_replace ("&#39;","'" ,$responceFinal);
             apiRequest("sendMessage", array('chat_id' => $chat_id, 'text' => $responceFinal, 'reply_markup' => $reply_markup));
@@ -153,14 +154,12 @@ function apiRequest($method, $parameters) {
     error_log("Method name must be a string\n");
     return false;
   }
-
   if (!$parameters) {
     $parameters = array();
   } else if (!is_array($parameters)) {
     error_log("Parameters must be an array\n");
     return false;
   }
-
   foreach ($parameters as $key => &$val) {
     // encoding to JSON array parameters, for example reply_markup
     if (!is_numeric($val) && !is_string($val)) {
@@ -168,14 +167,11 @@ function apiRequest($method, $parameters) {
     }
   }
   $url = API_URL.$method.'?'.http_build_query($parameters);
-
   $handle = curl_init($url);
   curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
   curl_setopt($handle, CURLOPT_CONNECTTIMEOUT, 5);
   curl_setopt($handle, CURLOPT_TIMEOUT, 60); 
-
   $response = curl_exec($handle);
-
   if ($response === false) {
     $errno = curl_errno($handle);
     $error = curl_error($handle);
@@ -183,10 +179,8 @@ function apiRequest($method, $parameters) {
     curl_close($handle);
     return false;
   }
-
   $http_code = intval(curl_getinfo($handle, CURLINFO_HTTP_CODE));
   curl_close($handle);
-
   if ($http_code >= 500) {
     // we wouldn't want to DDOS the server if something goes wrong
     sleep(10); //default 10
@@ -209,7 +203,6 @@ function apiRequest($method, $parameters) {
     }
     $response = $response['result'];
   }
-
   return $response;
 }
 // Fine API Telegram
