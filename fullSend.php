@@ -27,9 +27,9 @@ if (isset($_POST['Archivia'])) {
                 <td>Archivia</td>
             </tr>
 <?php
-            /******
-             * questa fase cicla sui messaggi inviati agli utenti 
-             ******/
+            /*
+             * Manufacturer data table
+             */
             $messageSend = dbLogTextFullSend();
             foreach ($messageSend as $message) { 
                 echo ' <tr> ';
@@ -43,13 +43,6 @@ if (isset($_POST['Archivia'])) {
         </table>
         </form>
     </div>			
-</div>
-<div id="content" class="clearfix">
-    <div class="content-row"> <br>
-        <form action="messageExport.php"> 
-            <input type="submit" name="esporta" value="Esporta in Excel" />
-        </form>
-    </div>
 </div>
 <!-- Footer page -->
 <?php include('theme/footer.php'); ?>

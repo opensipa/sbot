@@ -30,9 +30,9 @@ header ("Content-Disposition: inline; filename=$filename");
                     <td>Messaggio ricevuto</td
                 </tr>
                 <?php
-                /******
-                 * questa fase cicla sugli utenti attivi inseriti nel database 
-                 ******/
+                /*
+                 * Manufacturer data table
+                 */
                 $messageUsers = dbLogTextFull();
                 foreach ($messageUsers as $message) { 
                     echo '<tr>';
