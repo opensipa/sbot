@@ -84,7 +84,7 @@ include('config.php');
         </script>
         -->
         </div>
-        </fieldset>
+    </fieldset>
     </div>
 </div>   
 <!-- Footer page -->

@@ -101,7 +101,7 @@ if (isset($_POST["Cambia"])) {
     $AlreadySent = filter_input(INPUT_POST, 'alreadysent', FILTER_SANITIZE_STRING);
     $Signature = filter_input(INPUT_POST, 'signature', FILTER_SANITIZE_STRING);
     $Note = filter_input(INPUT_POST, 'note', FILTER_SANITIZE_STRING);
-    $Testo = filter_input(INPUT_POST, 'testo', FILTER_SANITIZE_STRING);
+    $Testo = filter_input(INPUT_POST, 'testo', FILTER_DEFAULT);
     $Date = filter_input(INPUT_POST, 'data1', FILTER_SANITIZE_STRING);
     $ID = filter_input(INPUT_POST, 'ID', FILTER_SANITIZE_NUMBER_INT);
     $submit = filter_input(INPUT_POST, 'Cambia', FILTER_SANITIZE_STRING);
