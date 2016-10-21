@@ -68,31 +68,31 @@ if (isset($_POST["Valori"])) {
     $extractScheduler = dbSchedulerExtraction('ID = '.$ID);
     //Variable extract: ID, Date, Signature, Text, Note
     foreach ($extractScheduler as $extract) {
-    echo '
+    ?>
         <div id="content" class="clearfix">
             <form id="changesetting" name="formData" action="crontabInsert.php" method="post" accept-charset="UTF-8">
                 <fieldset>
                 <legend>Aggiorna i parametri dello scheduler selezionato</legend>
                 <div class="form-group">
-                <div class="form-group">
                 <input type="hidden" name="alreadysent" id="alreadysent" value="1"/>
                 <label for="testo" >Testo*: </label>
-                <textarea class="form-control" type="testo" name="testo" id="testo" maxlength="2048" required="1">'.$extract['Text'].'</textarea>
+                <textarea class="form-control" type="testo" name="testo" id="testo" maxlength="2048" required="1"><?php echo $extract['Text']; ?></textarea>
                 <label for="firma" >Firma da inserire nel messaggio*: </label>
-                <input class="form-control" type="signature" name="signature" id="signature" value="'.$extract['Signature'].'" required="1" />
+                <input class="form-control" type="signature" name="signature" id="signature" value="<?php echo $extract['Signature']; ?>" required="1" />
                 <label for="note" >Note (non inviate): </label>
-                <input class="form-control" type="note" name="note" id="note" maxlength="500" value="'.$extract['Note'].'">
+                <input class="form-control" type="note" name="note" id="note" maxlength="500" value="<?php echo $extract['Note']; ?>">
                 <label for="date" >Inserisci la data di invio*: </label>
-                <input type="Text" name="data1" value="'.$extract['DataScheduler'].'" required="1">
-                <a href="javascript:show_calendar("document.formData.data1", document.formData.data1.value);"><img src="theme/img/cal.gif" width="16" height="16" border="0" alt="Seleziona la data"></a>
+                <input type="Text" name="data1" value="<?php $extract['DataScheduler'] ?>" required="1">
+                <a href="javascript:show_calendar('document.formData.data1', document.formData.data1.value);"><img src="theme/img/cal.gif" width="16" height="16" border="0" alt="Seleziona la data"></a>
                 <br>
-                <input type="hidden" name="ID" id="ID" value="'.$extract['ID'].'" />
+                <input type="hidden" name="ID" id="ID" value="<?php echo $extract['ID']; ?>" />
                 <br>
                 <input type="submit" name="Cambia" value="Cambia" />
                 </div>
                 </fieldset>
             </form>
-        </div>';
+        </div>
+<?php
     }
 }
 

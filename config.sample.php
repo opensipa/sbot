@@ -20,7 +20,7 @@ $GLOBALS['mysql_db']='telegram';    //Don't change
  * Variabili dipendenti dal path - sostituire con il percorso della directory di upload
  * Define this variable immediatly. This is the path folder of upload image.
  */
-define('INFO_PHOTO', "@/var/www/html/sbot/upload_img/foto.jpg");    //qui serve il path alla foto di benvenuto
+define('INFO_PHOTO', "@/var/www/html/sbot/upload_img/foto.jpg");    //qui serve il path alla foto di benvenuto non togliere la @
 define('PHOTO_SEND', "@/var/www/html/sbot/upload_img/");            //qui serve solo il path, la foto cambia sempre
 
 /*
