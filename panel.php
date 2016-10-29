@@ -80,7 +80,7 @@ if (!empty($submit)) {
 <?php
 if (isset($_POST["Test"])) {
     $submit = filter_input(INPUT_POST, 'Test', FILTER_SANITIZE_STRING);
-
+    
 if (!empty($submit)) {
     $error = sendMail("Test di configurazione","Configurazione OK.");
     if (empty($error)){
@@ -99,6 +99,8 @@ if (!empty($submit)) {
     }
 }
 ?>
+<!-- Start control admin -->
+<?php if (($_SESSION['level']) == 'admin') { ?>
 <!-- Table for view the variable of bot -->
 <div id="content" class="clearfix">
     <div class="content-row">
@@ -145,6 +147,14 @@ if (!empty($submit)) {
        </script>
     </div>
 </div>
+<?php } else { ?>         
+<div id="content" class="clearfix">
+    <div class="content-row">
+        <h2><b>Utente non autorizzato </b></h2>
+    </div>
+</div>
+<?php } ?>
+<!-- End control admin -->
 
 <!-- Footer page -->
 <?php include ('theme/footer.php');?>

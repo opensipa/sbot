@@ -23,7 +23,7 @@ $submit = filter_input(INPUT_POST, 'Submit', FILTER_SANITIZE_STRING);
 
 if (!empty($submit)) {
     $conn=getDbConnection();
-    $sql="select username,password,signature from admins where username=:username and active=1";
+    $sql="select username,password,signature,level from admins where username=:username and active=1";
     //$password=password_hash($password, PASSWORD_DEFAULT);
     $stmt = $conn->prepare($sql);
     $stmt->bindValue(':username',$username, PDO::PARAM_STR);
@@ -33,6 +33,7 @@ if (!empty($submit)) {
     if ($riga != FALSE && validate_password($password, $riga['password'])) {
         $_SESSION['username']=$riga['username'];
         $_SESSION['signature']=$riga['signature'];
+        $_SESSION['level']=$riga['level'];
     } else {
         unset($_SESSION['username']);
     }
