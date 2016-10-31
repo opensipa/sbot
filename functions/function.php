@@ -132,6 +132,7 @@ function processMessage($message) {
             $responceFinal = html_entity_decode($responceKeyFinal['Param']);
             $responceFinal = str_replace ("&#39;","'" ,$responceFinal);
             apiRequest("sendMessage", array('chat_id' => $chat_id, 'text' => $responceFinal, 'reply_markup' => $reply_markup));
+            dbTrackerInsert($chat_id,$textControl, $responceFinal);
             $textControl = "";
             break; //Exit cicle
             }  
