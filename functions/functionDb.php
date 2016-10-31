@@ -636,8 +636,53 @@ function dbTrackerInsert($chat,$operation, $result)
     }
     return 0;
 }
-       
 
+/**
+ * Function dbTrackerSelect
+ * Ritorna un array posizionale con ......................
+ * 
+ * @return type Array 
+ */
+function dbTrackerSelect($start, $forPage)
+{
+    try {
+        $conn=getDbConnection();
+        $sql = "select UserID, Operation, Result, DATE_FORMAT(LogDate,'%d/%m/%Y-%h:%i %p') as LogDate from utenti_log ORDER BY LogDate LIMIT :limit , :offset";
+        $stmt = $conn->prepare($sql);
+        $stmt->bindValue(':limit', $start, PDO::PARAM_INT);
+        $stmt->bindValue(':offset', $forPage, PDO::PARAM_INT);
+        $stmt->execute();
+        $tableTracker=array();
+        while ($riga=$stmt->fetch(PDO::FETCH_ASSOC)) {
+            $tableTracker[]=$riga;
+        }
+    } catch (Exception $ex) {
+        return $ex->getMessage();
+    }
+    return ($tableTracker);
+}
+
+/**
+ * Function dbTrackerCount
+ * 
+ * 
+ * @return type Array 
+ */
+function dbTrackerCount()
+{
+    try {
+        $conn=getDbConnection();
+        $sql = "select count(*) as conteggioLog from utenti_log ";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+        $valore = $stmt->fetch(PDO::FETCH_ASSOC);
+    } catch (Exception $ex) {
+        return $ex->getMessage();
+    }
+    // restituisce il numero totale utenti attivi
+    return ($valore['conteggioLog']);
+}
+       
 /**
  * Function dbActiveUsers
  * Ritorna un array posizionale con gli userID inseriti tramite la funzione dbLogUserStart
@@ -684,7 +729,7 @@ function dbCountActiveUsers()
 
 /**
  * Function dbActiveUsersFull
- * Ritorna un array posizionale con tutti i dati degli utenti iscritti tramite la funzione dbLogUserStart
+ * Ritorna un array posizionale con tutti i dati .............................
  * 
  * @return type Array 
  */

@@ -26,6 +26,7 @@
                 . '<li><a href="message.php">Messaggi di utenti</a></li>'
                 . '<li><a href="fullSend.php">Messaggi di massa</a></li>'
                 . '<li><a href="user.php">Utenti attivi</a></li>'
+                . '<li><a href="userLog.php">Log User</a></li>'
                 . '</ul></li>';
             echo'<li><a href="#">Pianifica Invio</a>'
                 . '<ul>'
