@@ -37,6 +37,7 @@ $totPage=ceil($userLog/$forPage); //Ceil for page
             <tr>
                 <th><span>N:</span></th>
                 <th><span>ID utente</span></th>
+                <th><span>Nome</span></th>
                 <th><span>Operazione</span></th>
                 <th><span>Risultato</span></th>
                 <th><span>Data oper.</span></th>
@@ -50,6 +51,7 @@ $totPage=ceil($userLog/$forPage); //Ceil for page
                     echo '<tr class="align">';
                     echo '<td>'.$initCount.'</td>';
                     echo '<td>'.$tracker['UserID'].'</td>';
+                    echo '<td>'.$tracker['Firstname'].'</td>';
                     echo '<td>'.$tracker['Operation'].'</td>';
                     echo '<td>'.$tracker['Result'].'</td>';
                     $insertDate = $tracker['LogDate'];
