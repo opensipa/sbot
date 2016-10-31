@@ -647,7 +647,7 @@ function dbTrackerSelect($start, $forPage)
 {
     try {
         $conn=getDbConnection();
-        $sql = "select UserID, Operation, Result, DATE_FORMAT(LogDate,'%d/%m/%Y-%h:%i %p') as LogDate from utenti_log ORDER BY LogDate LIMIT :limit , :offset";
+        $sql = "select UserID, Operation, Result, DATE_FORMAT(LogDate,'%d/%m/%Y-%T') as LogDate from utenti_log ORDER BY LogDate DESC LIMIT :limit , :offset";
         $stmt = $conn->prepare($sql);
         $stmt->bindValue(':limit', $start, PDO::PARAM_INT);
         $stmt->bindValue(':offset', $forPage, PDO::PARAM_INT);
