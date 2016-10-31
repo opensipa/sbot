@@ -615,6 +615,28 @@ function dbLogUserStop ($chat)
     return 0;
 }        
 
+/**
+ * Function dbTrackerInsert
+ * Inserisce nel DB le operazioni eseguite dagli utenti
+ * 
+ * @return type Array 
+ */
+function dbTrackerInsert($chat,$operation, $result)
+{
+    try {
+        $conn=getDbConnection();
+        $sql = "insert into utenti_log(UserID, LogDate, Operation, Result) values (:UserID, now(), :Operation, :Result)";
+            $stmt = $conn->prepare($sql);
+            $stmt->bindValue(':UserID',$chat , PDO::PARAM_STR);
+            $stmt->bindValue(':Operation',$operation , PDO::PARAM_STR);
+            $stmt->bindValue(':Result',$result , PDO::PARAM_STR);
+            $stmt->execute();
+    } catch (Exception $ex) {
+        return $ex->getMessage();
+    }
+    return 0;
+}
+       
 
 /**
  * Function dbActiveUsers

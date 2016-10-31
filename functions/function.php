@@ -117,12 +117,14 @@ function processMessage($message) {
                     apiRequest("sendMessage", array('chat_id' => $chat_id, 'text' =>  $messageWait, 'reply_markup' => $reply_markup));
                     $functionPersonal = Launcher($chat_id,$reply_markup, $responceKeyFinal['Param']); //Launch function 
                     apiRequest("sendMessage", array('chat_id' => $chat_id, 'text' =>  $functionPersonal, 'reply_markup' => $reply_markup));
+                    dbTrackerInsert($chat_id,$textControl, $functionPersonal);
                     $textControl = "";
                     break; //Exit cicle
                 } else {
                     //This is a Function (ANY please wait) with responce
                     $functionPersonal = Launcher($chat_id,$reply_markup, $responceKeyFinal['Param']);  
                     apiRequest("sendMessage", array('chat_id' => $chat_id, 'text' =>  $functionPersonal, 'reply_markup' => $reply_markup));
+                    dbTrackerInsert($chat_id,$textControl, $functionPersonal);
                     $textControl = "";
                     break; //Exit cicle
                 }
