@@ -7,7 +7,7 @@ include ('config.php');
 include ('functions/functionInit.php');
 
 $userLog = dbTrackerCount(); //Log Count
-$forPage = 10; //Limit record view from page
+$forPage = 20; //Limit record view from page
 $totPage=ceil($userLog/$forPage); //Ceil for page
 ?>
 <div id="content" class="clearfix">
