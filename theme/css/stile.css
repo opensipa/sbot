@@ -50,7 +50,7 @@ div#container { width: 1120px; margin: 40px auto; background: #fff; border-top:3
    L'intestazione e' composta da un'unica riga e un'unica colonna 
    contiene sia il titolo che il menu di navigazione */
 
-div#header { width:900px; height:80px; background:#fff; position:relative; padding-left:20px; }
+div#header { width:1100px; height:80px; background:#fff; position:relative; padding-left:20px; }
 div#header h1 { font-size:1em; text-transform:uppercase; color:#bebebe; font-weight:normal; padding-top:21px; }
 div#header h1 span { font-family:georgia, serif; font-size:2.2em; font-weight:bold; color:#262626; position:relative; top:4px; padding:2px 15px 2px 0; margin-right:12px; border-right:1px solid #bebebe; }
 
@@ -75,7 +75,7 @@ div ul#admin_menu li.active a { color:#fff; border-bottom:0px solid #fff; paddin
 
 /* Contenuti - su 3 colonne - stile giornale */
 
-div#content { width:900px; height:auto; background:#fff; padding:0 10px 20px 10px; }
+div#content { width:1100px; height:auto; background:#fff; padding:0 10px 20px 10px; }
 
 div.content-row { display:block; background:#fff; padding:5px 0; float:left; }
 div.content-rows { display:block; background:#fff; padding:25px 0 5px 0; float:left; }
@@ -96,7 +96,7 @@ div.content-colwide a { font-size:1.3em; color:#c04343; }
 /* Pie' di Pagina, chiusura pagina 
    Unica riga, unica colonna */
 
-div#footer { width:900px; height:auto; background:#c04343 url(./img/bg-footer.jpg) top left repeat-x; padding:3px 10px; }
+div#footer { width:1100px; height:auto; background:#c04343 url(./img/bg-footer.jpg) top left repeat-x; padding:3px 10px; }
 div#footer p a { font-size:1em; color:#fff; padding:3px 10px; border:0; }
 
 /* Menu a discesa per pannello di gestione -- Nuova versione */
