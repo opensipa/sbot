@@ -5,6 +5,7 @@
         <meta name="copyright" content="Copyright 2015 © Opensipa">
         <meta name="language" content="italian">
         <meta name="email" content="opensipa[at]gmail[dot]com @gmail">
+        <meta name="viewport" content="width=device-width" >
         <link rel="shortcut icon" href="theme/img/favicon.ico" >
         <title>{S}Bot</title>
         <script src="http://code.jquery.com/jquery-latest.js"></script>
