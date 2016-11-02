@@ -6,9 +6,6 @@ require ('functions/functionDb.php');
 require ('config.php');
 include ('functions/passwordHash.php');
 ?>
-<!-- Start control admin -->
-<?php if (($_SESSION['level']) == 'admin') { ?>
-
 <div id="content" class="clearfix">
     <div class="content-row">
     <h2>Utenti amministratori presenti nel BOT:</h2>
@@ -16,6 +13,8 @@ include ('functions/passwordHash.php');
         <tr>
           <td>Nome Utente</td>
           <td>Firma</td>
+          <td>Profilo</td>
+          <td>Aggiorna livello</td>
           <td>Stato attuale</td>
           <td>Attiva/Disattiva</td>
         </tr>
@@ -29,6 +28,20 @@ include ('functions/passwordHash.php');
             echo'<tr>'
             .   '<td>'.$user['username'].'</td>'
             .   '<td>'.$user['signature'].'</td>'
+            .   '<td>'.$user['level'].'</td>'
+            .   '<td>'
+            .   '<form method="post" action="addAdmin.php" method="POST">'
+            .   '<input type="hidden" id="idUser" name="idUser" value='.$user['id'].'/>'
+            .   '<input type="hidden" id="idUser" name="user" value='.$user['username'].'/>'
+            .   '<select name="level">';
+            if($user['level']=="admin"){
+                echo '<option value="user">User</option>';  
+            } else {
+                echo '<option value="admin">Admin</option>';
+            }
+            echo   '</select>'
+            .   '<input type="submit" name="Salva" value="Salva" />'
+            .   '</form>'
             .   '<td>'.$stato.'</td>'
             .   '<td>'
             .   '<form method="post" action="addAdmin.php" method="POST">'
@@ -38,9 +51,9 @@ include ('functions/passwordHash.php');
             if($user['active']==1){
                 echo '<option value="0">Disattiva</option>';  
             } else {
-                echo '<option value="1">Attiva</option>';
+                echo '<option value="1">Attiva </option>';
             }
-            echo'</select>'
+            echo   '</select>'
             .   '<input type="submit" name="Aggiorna" value="Aggiorna" />'
             .   '</form>'
             .   '</tr>';
@@ -69,6 +82,31 @@ if (isset($_POST["Aggiorna"])) {
         } else {
         echo'<div class="content-row">'
         .   '<p align="center"><h2>Hai '.$putStato.' correttamente l\'utente: <strong>'.$user.'</strong></h2></p>'
+        .   '</div>';
+        }   
+    }
+}
+?>
+<?php
+if (isset($_POST["Salva"])) {
+    $idUser = filter_input(INPUT_POST, 'idUser', FILTER_SANITIZE_STRING);
+    $user = filter_input(INPUT_POST, 'user', FILTER_SANITIZE_EMAIL);
+    $level = filter_input(INPUT_POST, 'level', FILTER_SANITIZE_STRING);
+    $salva = filter_input(INPUT_POST, 'Salva', FILTER_SANITIZE_STRING);
+    if($level=="admin"){
+        $putStato="Admin";   
+    } else {
+        $putStato="User";
+    }
+    //controllo se i campi sono compilati
+    if (!empty($salva)) {
+        if (dbChangeLevelAdmin ($idUser, $level) == 1){
+        echo'<div class="content-row">'
+        .   '<p align="center"><h2>E\' accorso un errore, ritenta nuovamente.</h2></p>'
+        .   '</div>';
+        } else {
+        echo'<div class="content-row">'
+        .   '<p align="center"><h2>Hai aggiornato l\'utente: <strong>'.$user.'</strong> a questo stato: '.$putStato.' in modo corretto</h2></p>'
         .   '</div>';
         }   
     }
@@ -176,14 +214,5 @@ if (isset($_POST["Cambia"])) {
 }
 ?>
 </div>
-<?php } else { ?>         
-<div id="content" class="clearfix">
-    <div class="content-row">
-        <h2><b>Utente non autorizzato </b></h2>
-    </div>
-</div>
-<?php } ?>
-<!-- End control admin -->
-
 <!-- Footer della pagina html -->
 <?php include ('theme/footer.php'); ?>

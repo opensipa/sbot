@@ -488,7 +488,7 @@ try {
     $sql="UPDATE admins SET level=:level WHERE id=:id";
     $stmt = $conn->prepare($sql);
     $stmt->bindValue(':id',$id, PDO::PARAM_STR);
-    $stmt->bindValue(':level',$active, PDO::PARAM_STR);
+    $stmt->bindValue(':level',$level, PDO::PARAM_STR);
     $stmt->execute();
   } catch (Exception $ex) {
     return $ex->getMessage();
