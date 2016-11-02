@@ -34,10 +34,13 @@ include ('functions/passwordHash.php');
             .   '<form method="post" action="addAdmin.php" method="POST">'
             .   '<input type="hidden" id="idUser" name="idUser" value='.$user['id'].'/>'
             .   '<input type="hidden" id="idUser" name="user" value='.$user['username'].'/>'
-            .   '<select name="stato">'
-            .       '<option value="1">Attiva</option>'
-            .       '<option value="0">Disattiva</option>'
-            .   '</select>'
+            .   '<select name="stato">';
+            if($user['active']==1){
+                echo '<option value="0">Disattiva</option>';  
+            } else {
+                echo '<option value="1">Attiva</option>';
+            }
+            echo'</select>'
             .   '<input type="submit" name="Aggiorna" value="Aggiorna" />'
             .   '</form>'
             .   '</tr>';
