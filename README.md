@@ -63,7 +63,7 @@ Date: 02/11/2016
 ### Changelog ###
 
 ### 02/11/2016###
-* BugFix and insert tracker user
+* BugFix and insert tracker user and create level user (admin, user)
 
 ### 29/07/2016###
 * BugFix

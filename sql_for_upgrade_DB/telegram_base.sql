@@ -1,8 +1,8 @@
--- Version of Structure Jan 19, 2016
--- DB {S}Bot version 0.51.0
+-- Version of Structure Nov 02, 2016
+-- DB {S}Bot version 0.54.0
 --
 -- phpMyAdmin SQL Dump
--- version 19/06/2016
+-- version 02/11/2016
 
 -- phpMyAdmin SQL Dump
 -- version 4.5.1
@@ -199,6 +199,23 @@ CREATE TABLE `utenti_message` (
   `Archive` tinyint(1) DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `utenti_log`
+--
+
+CREATE TABLE `utenti_log` (
+  `IdOperation` int(11) NOT NULL,
+  `UserID` int(11) NOT NULL,
+  `LogDate` datetime NOT NULL,
+  `Operation` text NOT NULL,
+  `Result` varchar(4000) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
 --
 -- Indexes for dumped tables
 --
@@ -248,6 +265,13 @@ ALTER TABLE `utenti_message`
   ADD PRIMARY KEY (`ID`);
 
 --
+-- Indici per le tabelle `utenti_log`
+--
+ALTER TABLE `utenti_log`
+  ADD PRIMARY KEY (`IdOperation`),
+  ADD KEY `IdOperation` (`IdOperation`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -281,6 +305,11 @@ ALTER TABLE `software_config_button`
 --
 ALTER TABLE `utenti_message`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=172;
+--
+-- AUTO_INCREMENT per la tabella `utenti_log`
+--
+ALTER TABLE `utenti_log`
+  MODIFY `IdOperation` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
