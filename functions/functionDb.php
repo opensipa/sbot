@@ -448,11 +448,11 @@ try {
  * 
  * Function dbChangeStateAdmin
  * 
- * @param type $id id utente
- * @param type $active stato utente
+ * @param type $id id user
+ * @param type $active state user
  * Permette l'update dello stato degli utenti Amministratori 
  *  
- * @return int ritorna 1 su errore, altrimenti inserimento correto
+ * @return int ritorna 1 su errore, altrimenti aggiornamento correto
  */
 
 function dbChangeStateAdmin ($id, $active)
@@ -463,6 +463,32 @@ try {
     $stmt = $conn->prepare($sql);
     $stmt->bindValue(':id',$id, PDO::PARAM_STR);
     $stmt->bindValue(':active',$active, PDO::PARAM_STR);
+    $stmt->execute();
+  } catch (Exception $ex) {
+    return $ex->getMessage();
+  }
+    return 0;
+}
+
+/**
+ * 
+ * Function dbChangeLevelAdmin
+ * 
+ * @param type $id id user
+ * @param type $level level (admin or user) user
+ * Permette l'update dei permessi 
+ *  
+ * @return int ritorna 1 su errore, altrimenti aggiornamento correto
+ */
+
+function dbChangeLevelAdmin ($id, $level)
+{
+try {
+    $conn=getDbConnection(); 
+    $sql="UPDATE admins SET level=:level WHERE id=:id";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindValue(':id',$id, PDO::PARAM_STR);
+    $stmt->bindValue(':level',$active, PDO::PARAM_STR);
     $stmt->execute();
   } catch (Exception $ex) {
     return $ex->getMessage();
@@ -647,7 +673,7 @@ function dbTrackerSelect($start, $forPage)
 {
     try {
         $conn=getDbConnection();
-        $sql = "select Firstname, utenti_log.UserID, Operation, Result, DATE_FORMAT(LogDate,'%d/%m/%Y-%T') as LogDate from utenti_log, utenti where utenti_log.UserID=utenti.UserID ORDER BY LogDate ASC LIMIT :limit , :offset";
+        $sql = "select Firstname, utenti_log.UserID, Operation, Result, DATE_FORMAT(LogDate,'%d/%m/%Y-%T') as LogDate from utenti_log, utenti where utenti_log.UserID=utenti.UserID ORDER BY IdOperation DESC LIMIT :limit , :offset";
         $stmt = $conn->prepare($sql);
         $stmt->bindValue(':limit', $start, PDO::PARAM_INT);
         $stmt->bindValue(':offset', $forPage, PDO::PARAM_INT);
