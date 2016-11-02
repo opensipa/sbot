@@ -1,12 +1,12 @@
 # README #
 
-Date: 29/07/2016
+Date: 02/11/2016
 
 
 ### What is this repository for? ###
 
 * Telegram Bot
-* Version: 0.51.3
+* Version: 0.54.0
 * name: {S}bot
 
 ### How do I get set up? ###
@@ -61,6 +61,9 @@ Date: 29/07/2016
 
 
 ### Changelog ###
+
+### 02/11/2016###
+* BugFix and insert tracker user
 
 ### 29/07/2016###
 * BugFix
