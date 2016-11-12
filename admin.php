@@ -11,8 +11,8 @@ include('config.php');
     <?php 
     //Status Telegram Bot
     $output = controlTelgramState();
-    $risultato = $output[$risultato];
-    $controllo = $output[$controllo];
+    $risultato = $output[0];
+    $controllo = $output[1];
     $name = dbDemName(); 
     if( $risultato == $controllo ){ ?>
         Il sistema funziona correttamente.<br> 
