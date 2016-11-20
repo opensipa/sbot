@@ -6,6 +6,9 @@ require ('functions/functionDb.php');
 require ('config.php');
 include ('functions/passwordHash.php');
 ?>
+<!-- Start control admin -->
+<?php if (($_SESSION['level']) == 'admin') { ?>
+<!-- Table for view the user in the bot -->
 <div id="content" class="clearfix">
     <div class="content-row">
     <h2>Utenti amministratori presenti nel BOT:</h2>
@@ -214,5 +217,14 @@ if (isset($_POST["Cambia"])) {
 }
 ?>
 </div>
+<?php } else { ?>         
+<div id="content" class="clearfix">
+    <div class="content-row">
+        <h2><b>Utente non autorizzato </b></h2>
+    </div>
+</div>
+<?php } ?>
+<!-- End control admin -->
+
 <!-- Footer della pagina html -->
 <?php include ('theme/footer.php'); ?>
